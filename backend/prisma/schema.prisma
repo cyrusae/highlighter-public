@@ -14,6 +14,23 @@ model User {
   posts Post[]
 }
 
+model Statement {
+  statementID Int        @unique
+  content     String
+  coded       Boolean    @default(false)
+  comments    String?
+  Encoding    Encoding[]
+}
+
+model Encoding {
+  parent               Statement @relation(fields: [statementStatementID], references: [statementID])
+  codeUsed             String
+  phrase               String
+  comments             String?
+  phraseID             Int       @id @default(autoincrement())
+  statementStatementID Int
+}
+
 model Post {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
