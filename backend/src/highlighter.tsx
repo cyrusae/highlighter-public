@@ -9,22 +9,22 @@ app.use(express.json())
 app.use(cors())
 
 //How to fetch a statement (and its associated encoding)?
-app.get(`/:id`, async(req, res) => {
- const { id } = req.params
+app.get(`/:statementID`, async(req, res) => {
+ const { statementID } = req.params
  const statement = await prisma.statement.findUnique({
   where: {
-   statementID: Number(id),
+   statementID: Number(statementID),
   },
  })
  res.json(statement)
 })
 
 //How to update the body text (with mark additions), and add a record of coding having happened, AND conditionally add comments if needed?
-app.put(`/upd8`, async(req, res) => {
- const { id } = req.params
+app.put(`/upd8/:statementID`, async(req, res) => {
+ const { statementID } = req.params
  const { content } = req.body
  const refresh = await prisma.statement.update({
-  where: { id: Number(id) },
+  where: { statementID: Number(statementID) },
   data: {
    
   }
