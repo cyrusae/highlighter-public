@@ -1,3 +1,6 @@
+//NOTE: this file is not used by anything
+//It's for putting thoughts on how to code parts of the app before I have to make a call about where the code in question needs to go 
+
 const statement = document.querySelector('statement').innerHTML.toString();
 
 let markCode: string | null = null; //allow for a fallback that fails to code anything but "code, I guess" with null
