@@ -31,7 +31,9 @@ function addMark(statement: string, highlight: string): string {
  let parts = statement.split(highlight);
 
  for (let i = 0; i < parts.length; i++) {
-  let skimmed = parts[i]; //'skimmed' because we're quickly looking it over to make sure it matches the content we want. I'm not always imaginative with my variable names, okay
+  let skimmed = parts[i]; 
+  //'skimmed' because we're quickly looking it over to make sure it matches the content we want. 
+  // I'm not always imaginative with my variable names, okay
 
   if (parts[i] === highlight) {
    let skimmed = markStart + highlight + markEnd;
