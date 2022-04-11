@@ -10,16 +10,18 @@ export type StatementProps = {
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
  return (
-  <div onClick={() => Router.push('/p/[statementID]', `/p/${statement.id}`)}>
-   <div id='content'>
+  <div id='statementContent' onClick={() => Router.push('/p/[statementID]', `/p/${statement.id}`)}>
     {statement.content}
-   </div>
-   <div id='notes'>
-    <StatementAnnotation comment={statement.comment} />
-   </div>
   </div>
  )
 }
+
+// Previously I'd had this in:
+// <div id='notes'>
+//<StatementAnnotation comment={statement.comment} />
+// </div>
+// However, since annotations will need to be directly editable, best to leave for later.
+
 
 function StatementAnnotation(props: { comment: string | null }) {
  const comments = props.comment;
