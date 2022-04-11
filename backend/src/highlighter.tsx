@@ -26,7 +26,7 @@ app.put(`/upd8/:statementID`, async(req, res) => {
  const refresh = await prisma.statement.update({
   where: { statementID: Number(statementID) },
   data: {
-   
+   ...req.body,
   }
  })
  res.json(refresh)
