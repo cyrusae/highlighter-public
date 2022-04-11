@@ -3,10 +3,12 @@
 
 const statement = document.querySelector('statement').innerHTML.toString();
 
-let markCode: string | null = null; //allow for a fallback that fails to code anything but "code, I guess" with null
+let markCode: string | null = null; 
+//allow for a fallback that fails to code anything but "code, I guess" with null
 
 //get the dropdown:
-const codeSetter = document.querySelector('select') //TODO: add better identifier so I'm not dicking over anyone who wants to add another dropdown for some reason
+const codeSetter = document.querySelector('select') 
+//TODO: add better identifier so I'm not dicking over anyone who wants to add another dropdown for some reason
 
 codeSetter.addEventListener('change', () => {
  let markCode: string = `${this.target.value}`; //set the content
@@ -14,11 +16,13 @@ codeSetter.addEventListener('change', () => {
 })
 
 const markOpenClass: string = '<mark className="quote'
-let markStart: string = markOpenClass + markCode + '">';
+let markStart: string = markOpenClass + markCode + '">'; 
+//can this be const because it gets called again every time...?
 const markEnd: string = '</mark>'
 
 document.onselectionchange = function select() {
  let highlight: string = document.getSelection.toString();
+ return highlight;
 }
 
 //TODO: send information about that highlight to Encoding (where?)
