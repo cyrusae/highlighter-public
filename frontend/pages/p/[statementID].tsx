@@ -27,13 +27,13 @@ const Statement: React.FC<StatementProps> = props => {
  if (!props.coded) {
   props.coded = true;
  }
- let statementID = props.id;
+ let statementID = props.statementID;
 
 // TODO: Add ability to fetch other factors (metadata) when those are added to schema.prisma
 
  return (
   //TODO: make a layout for display (also, controls)
-  <div id='statement'>
+  <div id='`${statementID}`' className='statement'>
    {content}
   </div>
  )

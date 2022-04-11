@@ -2,7 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 
 export type StatementProps = {
- id: number;
+ statementID: number;
  content: string;
  coded: boolean;
  comment: string | null;
@@ -10,7 +10,7 @@ export type StatementProps = {
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
  return (
-  <div id='statementContent' onClick={() => Router.push('/p/[statementID]', `/p/${statement.id}`)}>
+  <div id='statementContent' onClick={() => Router.push('/p/[statementID]', `/p/${statement.statementID}`)}>
     {statement.content}
   </div>
  )
