@@ -18,6 +18,7 @@ model Statement {
   statementID Int        @unique
   content     String
   coded       Boolean    @default(false)
+  //I want to add an updatedAt but I'd have to reset the dummy database to do that so I keep putting it off 
   comments    String?
   Encoding    Encoding[]
 }
