@@ -4,6 +4,8 @@
 
 ***Note:*** This README is accurate to a version of the software that has not yet been synced with this repository. `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, see the first section below. For what it is meant to do, see the second.
 
+For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx).
+
 ## Why~~lighter~~ 
 
 This is a bit of a weird one! *(Skip this section if you just want to know about features; this is about philosophy.)*
