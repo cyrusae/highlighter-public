@@ -99,5 +99,5 @@ const CodePicker = (codeList:(string[])[] ) => {
    </select>
    <button onClick={CodeButton}>Code</button>
   </div>
- ) //How to make sure that the button is 
+ ) //How to make sure that the button is getting the right variables?
 }
