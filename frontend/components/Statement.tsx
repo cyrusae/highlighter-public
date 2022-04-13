@@ -9,9 +9,12 @@ export type StatementProps = {
 }
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
+  let content = statement.content;
+  let statementIDforDiv = '"' + statement.statementID + '"';
+
  return (
-  <div id='statementContent' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>
-    {statement.content}
+  <div className='statementBox' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>
+    <div className='statement' id={statementIDforDiv} dangerouslySetInnerHTML={{__html: content}}/>
   </div>
  )
 }
