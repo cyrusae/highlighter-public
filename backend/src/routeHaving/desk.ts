@@ -12,6 +12,8 @@ const router = Router()
 app.use(express.json())
 app.use(cors())
 
+console.log("desk is here")
+
 //How to fetch a statement (and its associated encoding)?
 
 //app.get('/unseen', async (req, res) => {
