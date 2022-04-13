@@ -101,3 +101,19 @@ const CodePicker = (codeList:(string[])[] ) => {
   </div>
  ) //How to make sure that the button is getting the right variables?
 }
+
+//this is the wrong kind of indent for my code because VSC on Mac's settings sync is worthless.
+
+//why does the example not have an index.d.ts?
+//if it did, I'd need this sort of thing
+
+//const prisma = new PrismaClient({
+//    rejectOnNotFound: {
+//      findUnique: true,
+//    },
+//  })
+//export type StatementFindUniqueID = {
+//    where: StatementIDWhereUniqueInput
+//    select?: StatementSelect | null
+//    include?: StatementInclude | null
+//}
