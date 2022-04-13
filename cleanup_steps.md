@@ -17,4 +17,4 @@
 - [ ] Roadmap for future features (comments)
 - [ ] Next steps advice 
 - [ ] Explanation of license and how to cite 
-- [ ] Add `![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)` to [readme](README.md) once stylesheets are up. Silly to do in advance though.
+- [x] Add `![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)` to [readme](README.md) once stylesheets are up. ~~Silly to do in advance though.~~ *frankly, screw it*, it's a to-do list item I can cross off now and not later, that's reason enough. 
