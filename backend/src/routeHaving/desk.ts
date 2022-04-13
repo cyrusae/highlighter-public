@@ -25,9 +25,9 @@ app.use(cors())
 router.get('/unseen', async (req, res, next) => {
 //  console.log("hello test")
   const statements = await prisma.statement.findMany(
- //  {
- //   where: { coded: false },
- // }
+   {
+    where: { coded: false },
+ }
   )
   res.json(statements)
  })
