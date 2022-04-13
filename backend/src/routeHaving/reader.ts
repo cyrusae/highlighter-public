@@ -18,16 +18,6 @@ app.use(cors())
 
 console.log("reader is here")
 
-//How to fetch a statement (and its associated encoding)?
-
-//app.get('/unseen', async (req, res) => {
-// const statements = await prisma.statement.findMany(
-//  {
-//   where: { coded: false },
-// })
-// res.json(statements)
-//})
-
 router.get('/', async (req, res, next) => {
  const statementID = req.params
  const statement = await prisma.statement.findUnique({
@@ -37,12 +27,5 @@ router.get('/', async (req, res, next) => {
  })
  res.json(statement)
  })
-
-
-//const server = app.listen(3001, () =>
-//  console.log(
-//    '🚀 Server ready at: http://localhost:3001',
- // ),
-//)
 
 export default router 

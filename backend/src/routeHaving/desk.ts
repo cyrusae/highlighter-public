@@ -13,18 +13,7 @@ app.use(cors())
 
 console.log("desk is here")
 
-//How to fetch a statement (and its associated encoding)?
-
-//app.get('/unseen', async (req, res) => {
-// const statements = await prisma.statement.findMany(
-//  {
-//   where: { coded: false },
-// })
-// res.json(statements)
-//})
-
 router.get('/', async (req, res, next) => {
-//  console.log("hello test") - makes it stop working altogether 
   const statements = await prisma.statement.findMany(
    {
     where: { coded: false },
@@ -32,12 +21,5 @@ router.get('/', async (req, res, next) => {
   )
   res.json(statements)
  })
-
-
-//const server = app.listen(3001, () =>
-//  console.log(
-//    '🚀 Server ready at: http://localhost:3001',
- // ),
-//)
 
 export default router 
