@@ -9,6 +9,20 @@ app.use(express.json())
 app.use(cors())
 
 //How to fetch a statement (and its associated encoding)?
+
+app.get('/unseen', async (req, res) => {
+ const statements = await prisma.statement.findMany( {
+  select: {
+   statementID: true
+  }
+ }
+//  {
+//   where: { coded: false },
+// }
+ )
+ res.json(statements)
+})
+
 app.get(`/:statementID`, async(req, res) => {
  const { statementID } = req.params
  const statement = await prisma.statement.findUnique({

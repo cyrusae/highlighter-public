@@ -10,7 +10,7 @@ export type StatementProps = {
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
  return (
-  <div id='statementContent' onClick={() => Router.push('/p/[statementID]', `/p/${statement.statementID}`)}>
+  <div id='statementContent' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>
     {statement.content}
   </div>
  )
