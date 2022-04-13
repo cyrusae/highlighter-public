@@ -23,16 +23,13 @@ const Statement: React.FC<StatementProps> = props => {
 // if (!props.coded) {
 //  props.coded = true;
 // }
- let statementIDasClass = '"' + props.statementID + '"';
+ let statementIDforDiv = '"' + props.statementID + '"';
 
 // TODO: Add ability to fetch other factors (metadata) when those are added to schema.prisma
 
  return (
   //TODO: make a layout for display (also, controls)
-  <div className='statement'>
-   This isn't working yet.
-   {content}
-  </div>
+  <div className='statement' id={statementIDforDiv} dangerouslySetInnerHTML={{__html: content}}/>
  )
 }
 
