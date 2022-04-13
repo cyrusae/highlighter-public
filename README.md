@@ -61,4 +61,4 @@ Elements that have to be manually configured by editing the code at this time in
 
 ---
 
-![Twitter](https://img.shields.io/badge/<chrysopoetics>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
+[![Twitter](https://img.shields.io/badge/chrysopoetics-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/chrysopoetics)
