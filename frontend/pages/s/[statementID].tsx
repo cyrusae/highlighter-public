@@ -38,15 +38,12 @@ const Statement: React.FC<StatementProps> = props => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
  const res = await fetch(`http://localhost:3001/statement/${context.params.statementID}`) 
- console.log(await res.clone().text()) //will not show me it :(
+ console.log(await res.clone().text()) 
  const pile = await res.json()
- console.log(pile) //also will not show me it :(
+ console.log(pile) 
  return {
   props: 
    { pile }
-//   props: { pile: {
-//    test: 'test'} 
-//   },
  }
 }
 
