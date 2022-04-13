@@ -62,6 +62,10 @@ Elements that have to be manually configured by editing the code at this time in
 - *(potential)* I use `highlighter` in OSX Safari, Chrome on OSX, and Microsoft Edge on Windows 11. It may not perform as expected on your machine.
 - *(idiosyncratic)* If you find my text size frustrating you'll have to edit it yourself.
 
+
+## I would like an alternative.
+[qcoder](https://github.com/ropenscilabs/qcoder) is filling a similar niche (potential con: RStudio-specific; potential pro: much less idiosyncratic) but is also in development. Other than that, I'm afraid I can't make any recommendations, or I wouldn't have written this in the first place.
+
 ***
 
 [^1] The end version of `highlighter` is planned to use Sass, but a) editing Sass is a lot like editing CSS and b) if that's still outside your comfort zone, you can delete the `.sass` files and edit their compiled `.css` files to suit your needs instead.
