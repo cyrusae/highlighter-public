@@ -34,3 +34,10 @@ router.post('/seen', async (req, res, next) => {
 This is for later, as I try to understand how to update the database with a) new statement content and b) the new encoding for the statement, with the relevant relational link.
 
 For now, `create` is preventing the backend from running, because it's a huge dick.
+
+Go to next unseen as...?
+
+```
+await prisma.statement.findFirst({
+  coded: false
+})
