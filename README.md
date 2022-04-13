@@ -1,6 +1,8 @@
 # project tag: *highlighter*
 
-![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) 
+
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
 ***Note:*** This README is accurate to a version of the software that has not yet been synced with this repository. `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, see the first section below. For what it is meant to do, see the second.
 
@@ -56,3 +58,7 @@ Elements that have to be manually configured by editing the code at this time in
 ***
 
 [^1] The end version of `highlighter` is planned to use Sass, but a) editing Sass is a lot like editing CSS and b) if that's still outside your comfort zone, you can delete the `.sass` files and edit their compiled `.css` files to suit your needs instead.
+
+---
+
+![Twitter](https://img.shields.io/badge/<chrysopoetics>-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)
