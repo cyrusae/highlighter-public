@@ -3,7 +3,12 @@ import cors from 'cors'
 import express from 'express'
 import { Router } from 'express'
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient({
+ rejectOnNotFound: {
+  findUnique: true
+ },
+})
+
 const app = express()
 
 const router = Router()
