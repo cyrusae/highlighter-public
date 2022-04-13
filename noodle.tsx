@@ -38,6 +38,9 @@ function addMark(statement: string, highlight: string): string {
 
   if (parts[i] === highlight) {
    let skimmed = markStart + highlight + markEnd;
+   //if you want to show a tooltip with the code given, add the CSS in noodle_harder and change the previous line to
+   // let skimmed = markStart + highlight + markEnd + '<span class="tooltip">' + markCode + '</span>'
+   //to generate tooltips that will show the code on hover. (N.B. this will still only show the css class/no-spaces version of the code.)
    return skimmed;
   }
 

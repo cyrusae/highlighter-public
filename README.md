@@ -10,7 +10,7 @@
 
 ---
 
-***Note:*** `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, see the first section below. For what it is meant to do, see the second.
+***Note:*** `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do).
 
 For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
 
@@ -36,10 +36,13 @@ Yep.
 ### I'm a technical audience.
 Cool! If that means you're interested in extending `highlighter`'s functionality to be easier to set up and/or do more things once set up, I would be absolutely elated; I'm interested in a universe where `highlighter` is usable without the caveats, but as long as I'm the sole or primary user my effort has to go towards meeting class deadlines first.
 
-(If that means you're frustrated that my documentation is written as an educational tool, I will have to kindly request that you deal with it.)
+(If that means you're frustrated that my documentation is intended partly as an educational tool, I will have to kindly request that you deal with it.)
+
+### Wait, not that technical. 
+Attempt at standoffishness aside, I'm still happy to entertain [comments, suggestions, and even feature requests](https://github.com/cyrusae/highlighter-public/issues).
 
 ## Great, but what does it actually *do*?
-`highlighter` provides a GUI for coding qualitative data stored in a SQLite database that does the following:
+`highlighter` provides a GUI for coding qualitative data, as stored in a SQLite database, that does the following:
 
 - Loads individual observations from your database and assigns a code to a selected fragment of text
 - Highlights displayed text with a color specific to that assigned code, including if you navigate back to that observation later 
@@ -47,7 +50,7 @@ Cool! If that means you're interested in extending `highlighter`'s functionality
 - Navigates between different observations in a table so you can do the same thing with the next set
 - *(Currently a stretch goal)* Saves comments on the observation as a whole or a specific phrase coded within it
 
-> [Screenshots TK]
+> *`[Screenshots TK]`*
 
 Elements that have to be manually configured by editing the code at this time include:
 - Hooking Prisma up to your actual database and adding a table for `highlighter` output
@@ -55,7 +58,7 @@ Elements that have to be manually configured by editing the code at this time in
 - Your list of codes and their respective color-coding 
 
 ### Known and potential accessibility issues
-- **Use of colors:** `highlighter` can be manually configured with colorblind-safe colors, but does not support alternate means of showing what the code given to a text fragment is out of the box 
+- **Use of colors:** `highlighter` can be manually configured with colorblind-safe colors, but does not support alternate means of showing what the code given to a text fragment is out of the box. (If that's a concern for you, you could--for example--add dotted/dashed/etc. borders, and configure the highlighting function to add a tooltip listing the code given to a highlight when made.) 
 - **Screenreader support:** Qual coding isn't a part of my workflow I use my screenreader for right now, so `highlighter` does not have a default means of announcing coding out loud yet. If you're interested in implementing one, you may need to adjust your verbosity settings, because codes are stored as `<mark>` tags and may be skipped over.
 - *(potential)* I don't know how the highlighting interacts with a keyboard-only UI (if you find out or have suggestions for avoiding issues in advance, [please let me know](https://github.com/cyrusae/highlighter-public/issues))
 - *(potential)* I use `highlighter` in OSX Safari, Chrome on OSX, and Microsoft Edge on Windows 11. It may not perform as expected on your machine.

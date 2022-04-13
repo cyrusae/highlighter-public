@@ -160,3 +160,36 @@ is still easier to do that way with an exported list from the database that I up
 But also surely there's a secret way to not be like that? The CSS is part of the frontend, it should be able to do this, dang it.
 
 Side note: Might be able to nest the `mark` more elegantly with [something like this](https://stackoverflow.com/questions/40310589/each-with-an-include-mixin) but if it's all compiling to CSS anyway I guess it's not that big of deal to not have my SCSS be nested perfectly.
+
+Tooltip with arrows if you like that sort of thing:
+```
+mark .tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  right: 50%;
+  margin-right: -60px;
+}
+
+mark .tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 50%;
+  margin-right: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+mark:hover .tooltip {
+  visibility: visible;
+}
+```
