@@ -4,13 +4,13 @@ import Statement, { StatementProps } from '../components/Statement'
 
 
 type Props = {
-  unseen: StatementProps[]
+  pile: StatementProps[]
 }
 
 const Desk : React.FC<Props> = props => {
   return (
     <main>
-     {props.unseen.map(statement => (
+     {props.pile.map(statement => (
       <div key={statement.statementID} className="statement">
        <Statement statement={statement} />
      </div>
@@ -21,10 +21,10 @@ const Desk : React.FC<Props> = props => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch('http://localhost:3001/unseen') //currently not working
-  console.log(res.clone().text())
   const pile = await res.json()
   return {
-   props: pile
+   props: 
+    { pile }
 //   props: { pile: {
 //    test: 'test'} 
 //   },

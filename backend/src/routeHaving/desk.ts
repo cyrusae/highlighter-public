@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
 import { Router } from 'express'
+import { nextTick } from 'process'
 
 const prisma = new PrismaClient()
 const app = express()
@@ -22,7 +23,7 @@ app.use(cors())
 //})
 
 router.get('/unseen', async (req, res, next) => {
-  console.log("hello test")
+//  console.log("hello test")
   const statements = await prisma.statement.findMany(
  //  {
  //   where: { coded: false },
@@ -30,6 +31,7 @@ router.get('/unseen', async (req, res, next) => {
   )
   res.json(statements)
  })
+
 
 //const server = app.listen(3001, () =>
 //  console.log(
