@@ -1,12 +1,16 @@
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
+import router from './routeHaving/desk'
 
 const prisma = new PrismaClient()
 const app = express()
 
 app.use(express.json())
 app.use(cors())
+
+//app.use('/unseen', router)
+app.use(router) //I like the prefix solution but as long as it's not working I am going to try the simpler one also 
 
 app.get('/drafts', async (req, res) => {
   const posts = await prisma.post.findMany({
@@ -97,7 +101,8 @@ app.post(`/user`, async (req, res) => {
   res.json(result)
 })
 
-const server = app.listen(3001, () =>
+//const server = 
+app.listen(3001, () =>
   console.log(
     '🚀 Server ready at: http://localhost:3001',
   ),
