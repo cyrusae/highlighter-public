@@ -1,8 +1,12 @@
 # project tag: *highlighter*
 
-![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) 
+![in active development](https://img.shields.io/badge/status%3A-in%20development-orange?style=for-the-badge) [![GitHub issues](https://img.shields.io/github/issues/cyrusae/highlighter-public?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/issues) ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=for-the-badge)
 
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white) ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+*(it's a very blue stack we've got here, isn't it?)*
+
+---
 
 ***Note:*** This README is accurate to a version of the software that has not yet been synced with this repository. `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, see the first section below. For what it is meant to do, see the second.
 
@@ -61,4 +65,4 @@ Elements that have to be manually configured by editing the code at this time in
 
 ---
 
-[![Twitter](https://img.shields.io/badge/chrysopoetics-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/chrysopoetics)
+[![Twitter](https://img.shields.io/badge/chrysopoetics-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/chrysopoetics) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/cyrusae/) [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://patreon.com/eosphoros)
