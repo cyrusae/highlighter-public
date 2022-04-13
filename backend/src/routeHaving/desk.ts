@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
 import { Router } from 'express'
-import { nextTick } from 'process'
 
 const prisma = new PrismaClient()
 const app = express()

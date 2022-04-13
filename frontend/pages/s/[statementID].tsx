@@ -41,3 +41,5 @@ const Statement: React.FC<StatementProps> = props => {
 
 //QUESTION: Would it be too cheeky to integrate the controls into this page instead of a different component and use that to encode the ID on the control firing?
 //Actually that's probably the right way to do it
+
+export default Statement 
