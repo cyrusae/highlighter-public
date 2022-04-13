@@ -15,7 +15,7 @@ async function update(statementID: number): Promise<void> {
  await fetch(`http://localhost:3001/upd8/${statementID}`, {
   method: 'PUT'
  })
- await Router.push('/')
+ await Router.push('/upd8/')
 }
 
 async function encode(statementID: number, phrase: string, code: string): Promise<void> {
@@ -27,7 +27,7 @@ const Statement: React.FC<StatementProps> = props => {
  if (!props.coded) {
   props.coded = true;
  }
- let statementID = props.statementID;
+// let statementID = props.statementID;
 
 // TODO: Add ability to fetch other factors (metadata) when those are added to schema.prisma
 
