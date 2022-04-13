@@ -24,7 +24,7 @@ console.log("desk is here")
 // res.json(statements)
 //})
 
-router.get('/unseen', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
 //  console.log("hello test") - makes it stop working altogether 
   const statements = await prisma.statement.findMany(
    {
