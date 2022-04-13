@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/unseen', unreads)
-app.use(`statement/:statementID`, reader)
+app.use(`/statement/:statementID`, reader)
 //app.use(router) //I like the prefix solution but as long as it's not working I am going to try the simpler one also 
 //update: screw it as long as it's not working let's go with the solution I like 
 
