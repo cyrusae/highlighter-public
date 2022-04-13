@@ -7,29 +7,93 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model Stimuli {
+  stimulusID Int                @id @unique
+  Statements StatementContext[]
+  //features can be added later
+  //verbatim can be added later, or not
+}
+
+model Questions {
+  questionID Int                @id @unique
+  topic      String? //e.g. "gender/sexuality"
+  type       String? //open, select one, or select multiple
+  section    String //e.g. "experiment"
+  subsection String? //e.g. "experiment > demographics"
+  closed     Boolean //never false if mandatory = true
+  mandatory  Boolean //never true if closed = false
+  Options    Options[] //only exists where closed = true
+  Statements StatementContext[] //only exists where closed = false
+}
+
+model Options {
+  question    Questions @relation(fields: [questionID], references: [questionID])
+  questionID  Int
+  option      String
+  optionGloss String?
+
+  @@id([questionID, option])
+}
+
+model Statement {
+  statementID Int                @unique
+  content     String
+  plainText   String? //add a method to push innerText when the HTML updates to make sure this is synced with minimal need for repeat edits if there's sneaky sensitive data hiding in the string
+  coded       Boolean            @default(false)
+  updatedAt   DateTime           @default(now()) @updatedAt
+  comments    String?
+  Encoding    Encoding[]
+  Context     StatementContext? //one Context per Statement, it is okay to import Statements without having synced their Context although I doubt that will come up
+  Abstract    StatementAbstract? //not doing this yet
+}
+
+model StatementContext {
+  statementID   Int          @id @unique
+  statement     Statement    @relation(fields: [statementID], references: [statementID])
+  stimulus      Stimuli      @relation(fields: [stimulusID], references: [stimulusID])
+  stimulusID    Int
+  question      Questions    @relation(fields: [questionID], references: [questionID])
+  questionID    Int
+  participant   Participants @relation(fields: [participantID], references: [participantID])
+  participantID Int
+}
+
+model StatementAbstract {
+  statementID Int       @id @unique
+  statement   Statement @relation(fields: [statementID], references: [statementID])
+  abstracted  String?
+}
+
+model Participants {
+  participantID Int               @id @unique
+  Statements    StatementContext[]
+}
+
+model Codes {
+  shortCode String     @id @unique
+  codeName  String?
+  codeGloss String?
+  colorCode String?
+  Uses      Encoding[]
+}
+
+model Encoding {
+  parent      Statement @relation(fields: [statementID], references: [statementID])
+  coding      Codes     @relation(fields: [codeUsed], references: [shortCode])
+  codeUsed    String
+  phrase      String
+  comments    String?
+  phraseID    Int       @id @default(autoincrement())
+  statementID Int
+  codedAt     DateTime  @default(now()) @updatedAt
+}
+
+//prisma pregenerated schema to cut later:
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
   posts Post[]
-}
-
-model Statement {
-  statementID Int        @unique
-  content     String
-  coded       Boolean    @default(false)
-  //I want to add an updatedAt but I'd have to reset the dummy database to do that so I keep putting it off 
-  comments    String?
-  Encoding    Encoding[]
-}
-
-model Encoding {
-  parent               Statement @relation(fields: [statementStatementID], references: [statementID])
-  codeUsed             String
-  phrase               String
-  comments             String?
-  phraseID             Int       @id @default(autoincrement())
-  statementStatementID Int
 }
 
 model Post {

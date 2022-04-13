@@ -29,11 +29,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/desk.js"
-    ],
-    "/s/[statementID]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/s/[statementID].js"
     ]
   },
   "ampFirstPages": []
