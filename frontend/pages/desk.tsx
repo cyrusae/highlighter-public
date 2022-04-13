@@ -21,10 +21,13 @@ const Desk : React.FC<Props> = props => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch('http://localhost:3001/unseen') //currently not working
-  console.log(res)
+  console.log(res.clone().text())
   const pile = await res.json()
   return {
-   props: { pile },
+   props: pile
+//   props: { pile: {
+//    test: 'test'} 
+//   },
   }
 }
 
