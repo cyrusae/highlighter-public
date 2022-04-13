@@ -16,3 +16,5 @@
 - [ ] Index of what to expect (what the resulting database will look like)
 - [ ] Roadmap for future features (comments)
 - [ ] Next steps advice 
+- [ ] Explanation of license and how to cite 
+- [ ] Add `![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)` to [readme](README.md) once stylesheets are up. Silly to do in advance though.
