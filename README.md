@@ -4,6 +4,8 @@
 
 ***Note:*** This README is accurate to a version of the software that has not yet been synced with this repository. `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, see the first section below. For what it is meant to do, see the second.
 
+For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
+
 ## Why~~lighter~~ 
 
 This is a bit of a weird one! *(Skip this section if you just want to know about features; this is about philosophy.)*
@@ -47,9 +49,10 @@ Elements that have to be manually configured by editing the code at this time in
 ### Known and potential accessibility issues
 - **Use of colors:** `highlighter` can be manually configured with colorblind-safe colors, but does not support alternate means of showing what the code given to a text fragment is out of the box 
 - **Screenreader support:** Qual coding isn't a part of my workflow I use my screenreader for right now, so `highlighter` does not have a default means of announcing coding out loud yet. If you're interested in implementing one, you may need to adjust your verbosity settings, because codes are stored as `<mark>` tags and may be skipped over.
+- *(potential)* I don't know how the highlighting interacts with a keyboard-only UI (if you find out or have suggestions for avoiding issues in advance, [please let me know](https://github.com/cyrusae/highlighter-public/issues))
 - *(potential)* I use `highlighter` in OSX Safari, Chrome on OSX, and Microsoft Edge on Windows 11. It may not perform as expected on your machine.
 - *(idiosyncratic)* If you find my text size frustrating you'll have to edit it yourself.
 
 ***
 
-[^1]`highlighter` uses Sass, but a) editing Sass is a lot like editing CSS and b) if that's still outside your comfort zone, you can delete the `.sass` files and edit their compiled `.css` files to suit your needs instead.
+[^1] The end version of `highlighter` is planned to use Sass, but a) editing Sass is a lot like editing CSS and b) if that's still outside your comfort zone, you can delete the `.sass` files and edit their compiled `.css` files to suit your needs instead.
