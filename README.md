@@ -2,13 +2,15 @@
 
 ![in active development](https://img.shields.io/badge/status%3A-in%20development-orange?style=for-the-badge) ![absolute baby alpha version](https://img.shields.io/badge/version%3A-0.0.1--alpha-red?style=for-the-badge) ![development branch: troubleshoot-compilation](https://img.shields.io/badge/development%20branch%3A-troubleshoot--compilation-blueviolet?style=for-the-badge) 
 
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) [![GitHub issues](https://img.shields.io/github/issues/cyrusae/highlighter-public?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/issues) ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=for-the-badge)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=for-the-badge) [![GitHub issues](https://img.shields.io/github/issues/cyrusae/highlighter-public?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/issues)
+
+---
 
 ![Next JS](https://img.shields.io/badge/Next-black?style=flat-square&logo=next.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=flat-square&logo=express&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=flat-square&logo=SASS&logoColor=white) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=flat-square&logo=Prisma&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=flat-square&logo=sqlite&logoColor=white) 
 
 ---
 
-***Note:*** This README is accurate to a version of the software that has not yet been synced with this repository. `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, see the first section below. For what it is meant to do, see the second.
+***Note:*** `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, see the first section below. For what it is meant to do, see the second.
 
 For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
 
@@ -19,7 +21,7 @@ This is a bit of a weird one! *(Skip this section if you just want to know about
 `highlighter` exists because I couldn't find other qualitative data analysis software that would do what I wanted in time for me to finish finals on a quarter system. (Yes this app exists because I didn't have the patience to find software that suited my purposes so I wrote it. I have a problem.) This repository consists of a limited subset of the `highlighter` project that I can publish without involving the database itself.
 
 ### What this means:
-You're welcome to clone the repository if you think it'd help you, but `highlighter` is not going to run out of the box in its public form. Part of the reason for making there be one at all is because I want the exercise of documenting what you'd need to do in order to make it work for you.
+You're welcome to clone the repository if you think it'd help you, but `highlighter` is not going to run out of the box on your data if you have data of your own already. Part of the reason for making there be one at all is because I want the exercise of documenting what you'd need to do in order to make it work for you.
 
 ### You might still benefit if...
 - You have qualitative data in need of coding that you've stored in, or can import into, a SQLite database
