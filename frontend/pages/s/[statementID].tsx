@@ -34,18 +34,21 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
  )
 }
 
+export default Statement
+
 //QUESTION: Would it be too cheeky to integrate the controls into this page instead of a different component and use that to encode the ID on the control firing?
 //Actually that's probably the right way to do it
+//nvm it can receive props better on its own I think? Unsure. Example at p/ doesn't help much.
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log(context.params)
- const res = await fetch(`http://localhost:3001/statement/${context.params.statementID}`) 
+export const getServerSideProps: GetServerSideProps = async (context) =>  {
+//  try {
+    const res = await fetch(`http://localhost:3001/statement/${context.params.statementID}`) 
  console.log(await res.clone().text()) 
  const pile = await res.json()
- return {
+// catch (e) {console.log(e)} //where can this go to not break things?
+  return {
   props: 
    { pile }
- }
-}
-
-export default Statement 
+ };
+}  
+//}
