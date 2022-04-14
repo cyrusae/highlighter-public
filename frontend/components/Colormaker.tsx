@@ -4,13 +4,29 @@ import Router from 'next/router'
 //NOTE: this doesn't work yet 
 
 export type CodeProps = {
- shortCode: string;
- codeName: string | null;
- codeGloss: string | null;
- colorCode: string | null;
+ short: string;
+ name: string | null;
+ gloss: string | null;
+ color: string | 'none';
 }
 
 //TO DO: rewrite: those props would be being passed from the form to things using the form, letting me break this up into components I find more pleasing.
+
+const PreviewCode: React.FC<{code: CodeProps}> = ({ code }) => {
+ const name = `<b>${code.name}</b> `;
+ const short = `(<code>${code.short}</code>)`;
+ const gloss = ` = <i>${code.gloss}</i>`
+
+ const output = `<span style="background-color: ${code.color}">` + name + short + gloss + '</span>'
+
+ return (
+  <div id='preview' dangerouslySetInnerHTML={{__html: output}}/>
+ )
+}
+
+//take a nap and then figure out how to integrate that ideally later.
+
+
 const Colormaker: React.FC<{code: CodeProps}> = ({ code }) => {
 
  return (
