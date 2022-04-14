@@ -18,18 +18,19 @@ async function encode(statementID: number, phrase: string, code: string): Promis
 
 
 
-const Statement: React.FC<StatementProps> = props => {
- let content = props.content;
+const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
+ let content = statement.content;
+ let statementID: number = statement.statementID;
 // if (!props.coded) {
 //  props.coded = true;
 // }
- let statementIDforDiv = '"' + props.statementID + '"';
+// let statementIDforDiv = '"' + statement.statementID + '"';
 
 // TODO: Add ability to fetch other factors (metadata) when those are added to schema.prisma
 
  return (
   //TODO: make a layout for display (also, controls)
-  <div className='statement' id={statementIDforDiv} dangerouslySetInnerHTML={{__html: content}}/>
+  <div className='statement'dangerouslySetInnerHTML={{__html: content}}/>
  )
 }
 
@@ -37,10 +38,10 @@ const Statement: React.FC<StatementProps> = props => {
 //Actually that's probably the right way to do it
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  console.log(context.params)
  const res = await fetch(`http://localhost:3001/statement/${context.params.statementID}`) 
  console.log(await res.clone().text()) 
  const pile = await res.json()
- console.log(pile) 
  return {
   props: 
    { pile }
