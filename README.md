@@ -8,9 +8,15 @@
 
 ---
 
-***Note:*** `highlighter` v1 is currently under development. In order to understand what that means and how much of it will be visible in this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do).
+***Note:*** `highlighter` v1 is currently under development. In order to understand what that means for this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do). 
+
+**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data.
 
 For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
+
+## Set up `highlighter` on your own machine
+
+> ***[INSTRUCTIONS TK]***
 
 ## Why~~lighter~~ 
 
@@ -19,12 +25,12 @@ This is a bit of a weird one! *(Skip this section if you just want to know about
 `highlighter` exists because I couldn't find other qualitative data analysis software that would do what I wanted in time for me to finish finals on a quarter system. (Yes this app exists because I didn't have the patience to find software that suited my purposes so I wrote it. I have a problem.) This repository consists of a limited subset of the `highlighter` project that I can publish without involving the database itself.
 
 ### What this means:
-You're welcome to clone the repository if you think it'd help you, but `highlighter` is not going to run out of the box on your data if you have data of your own already. Part of the reason for making there be one at all is because I want the exercise of documenting what you'd need to do in order to make it work for you.
+You're welcome to clone the repository if you think it'd help you, but `highlighter` is not going to run out of the box on your data if you have data of your own already; importing your own database requires some editing the code, albeit mostly search and replace (see ["what does it do"](#great-but-what-does-it-actually-do)). Part of the reason for making there be one at all is because I want the exercise of documenting what you'd need to do in order to make it work for you.
 
 ### You might still benefit if...
 - You have qualitative data in need of coding that you've stored in, or can import into, a SQLite database
-- You're comfortable editing JavaScript and CSS[^1] with step-by-step instructions 
-- You're doing data analysis in RStudio or similar and can't find a good way to reference your qualitative data coding there 
+- You're comfortable with editing small to medium amounts of JavaScript and CSS[^1] with step-by-step instructions 
+- You're doing data analysis in RStudio or similar software and can't find a good way to reference your qualitative data coding there 
 
 If that sounds like you, *please* be my guest, it would be nice for making this public to benefit someone other than my need for thought exercises.
 
@@ -48,14 +54,18 @@ Attempt at standoffishness aside, I'm still happy to entertain [comments, sugges
 - Navigates between different observations in a table so you can do the same thing with the next set
 - *(Currently a stretch goal)* Saves comments on the observation as a whole or a specific phrase coded within it
 
-In other words: have you ever wanted to print out all your observations to go through them in hard copy with color-coded highlighters, while knowing that's not worth it because how on Earth are you going to reference all that coding work once you've done it? That. It does that.
+In other words: have you ever wanted to print out all your observations to go through them in hard copy with color-coded highlighters, while knowing that's not worth it because how on Earth are you going to reference all that coding work once you've done it? 
+
+That. It does that.
 
 > *`[Screenshots TK]`*
 
-Elements that have to be manually configured by editing the code at this time include:
-- Hooking Prisma up to your actual database and adding a table for `highlighter` output
-- Your variable names
+### Important elements that still have to be manually configured:
+- Hooking Prisma up to your actual database, putting your own variable names into the code (search every time the 'canonical' ones in this version occur), and adding a table for `highlighter` output
 - Styling for codes (copy and paste output of the Sass map generator into the relevant .scss file)
+- Any troubleshooting if that doesn't go as planned
+
+But! The good news is: that's about it.
 
 ### Known and potential accessibility issues
 - **Use of colors:** `highlighter` can be manually configured with colorblind-safe colors, but does not support alternate means of showing what the code given to a text fragment is out of the box. (If that's a concern for you, you could--for example--add dotted/dashed/etc. borders, and configure the highlighting function to add a tooltip listing the code given to a highlight when made.) 
@@ -63,7 +73,6 @@ Elements that have to be manually configured by editing the code at this time in
 - *(potential)* I don't know how the highlighting interacts with a keyboard-only UI (if you find out or have suggestions for avoiding issues in advance, [please let me know](https://github.com/cyrusae/highlighter-public/issues))
 - *(potential)* I use `highlighter` in OSX Safari, Chrome on OSX, and Microsoft Edge on Windows 11. It may not perform as expected on your machine.
 - *(idiosyncratic)* If you find my text size frustrating you'll have to edit it yourself.
-
 
 ## I would like an alternative.
 [qcoder](https://github.com/ropenscilabs/qcoder) is filling a similar niche (potential con: RStudio-specific; potential pro: much less idiosyncratic) but is also in development. Other than that, I'm afraid I can't make any recommendations, or I wouldn't have written this in the first place.
