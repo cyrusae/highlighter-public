@@ -19,7 +19,7 @@ app.use(cors())
 
 console.log("reader is here")
 
-router.get('/', async (req, res, next) => {
+router.get('/:statementID', async (req, res, next) => {
  const { statementID } = req.params as any
  console.log(req.params)
  console.log(statementID)
