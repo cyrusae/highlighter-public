@@ -2,7 +2,7 @@
 
 ![in active development](https://img.shields.io/badge/status%3A-in%20development-orange?style=for-the-badge) ![absolute baby alpha version](https://img.shields.io/badge/version%3A-0.0.1--alpha-red?style=for-the-badge) [![development branch: troubleshoot-compilation](https://img.shields.io/badge/development%20branch%3A-troubleshoot--compilation-blueviolet?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/tree/troubleshoot-compilation)
 
-![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/w/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=for-the-badge) [![GitHub issues](https://img.shields.io/github/issues/cyrusae/highlighter-public?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/issues?q=is%3Aopen+is%3Aissue+-label%3A%22Priority%3A+-%22+-label%3A%22Priority%3A+%2B%22)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=for-the-badge) [![GitHub issues](https://img.shields.io/github/issues/cyrusae/highlighter-public?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/issues?q=is%3Aopen+is%3Aissue+-label%3A%22Priority%3A+-%22+-label%3A%22Priority%3A+%2B%22)
 
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=flat-square&logo=express&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white) ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=flat-square&logo=SASS&logoColor=white) ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=flat-square&logo=Prisma&logoColor=white) ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=flat-square&logo=sqlite&logoColor=white) ![Next JS](https://img.shields.io/badge/Next-black?style=flat-square&logo=next.js&logoColor=white)
 
@@ -48,12 +48,14 @@ Attempt at standoffishness aside, I'm still happy to entertain [comments, sugges
 - Navigates between different observations in a table so you can do the same thing with the next set
 - *(Currently a stretch goal)* Saves comments on the observation as a whole or a specific phrase coded within it
 
+In other words: have you ever wanted to print out all your observations to go through them in hard copy with color-coded highlighters, while knowing that's not worth it because how on Earth are you going to reference all that coding work once you've done it? That. It does that.
+
 > *`[Screenshots TK]`*
 
 Elements that have to be manually configured by editing the code at this time include:
 - Hooking Prisma up to your actual database and adding a table for `highlighter` output
-- Metadata to display about individual observations, if any
-- Your list of codes and their respective color-coding 
+- Your variable names
+- Styling for codes (copy and paste output of the Sass map generator into the relevant .scss file)
 
 ### Known and potential accessibility issues
 - **Use of colors:** `highlighter` can be manually configured with colorblind-safe colors, but does not support alternate means of showing what the code given to a text fragment is out of the box. (If that's a concern for you, you could--for example--add dotted/dashed/etc. borders, and configure the highlighting function to add a tooltip listing the code given to a highlight when made.) 
