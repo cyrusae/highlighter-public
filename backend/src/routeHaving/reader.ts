@@ -21,8 +21,8 @@ console.log("reader is here")
 
 router.get('/:statementID', async (req, res, next) => {
  const { statementID } = req.params as any
- console.log(req.params)
- console.log(statementID)
+// console.log(req.params) //troubleshooting tool
+// console.log(statementID) //troubleshooting tool
  try 
  {{const statement = await prisma.statement.findUnique({
   where: {
@@ -30,6 +30,7 @@ router.get('/:statementID', async (req, res, next) => {
   }
  })
  console.log(statement);
+ console.log(statement.content);
  res.json(statement)}}
  catch (e) {console.log(e)};
  res.status(500).send("fucking 500")
