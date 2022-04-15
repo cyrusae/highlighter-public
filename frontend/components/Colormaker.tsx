@@ -32,8 +32,11 @@ const Colormaker: React.FC<{code: CodeProps}> = ({ code }) => {
  return (
   <div>
    <form name='colormaker'>
-    <input type='text' id='shortCode' name='shortCode' required></input>
+    <label htmlFor='shortCode'>Unique code (a-zA-Z, no spaces):</label>
+    <input required type='text' id='shortCode' name='shortCode' onChange={() => {}}></input>
+    <label htmlFor='codeName'>Short name:</label>
     <input type='text' id='codeName' name='codeName'></input>
+    <label htmlFor='codeGloss'>Description of code:</label>
     <textarea id='codeGloss' name='codeGloss' rows={2} cols={30}/>
 
     <button id='wysiwyg' onClick={() => {
@@ -47,23 +50,17 @@ const Colormaker: React.FC<{code: CodeProps}> = ({ code }) => {
       manual.style.display = 'block';
      }
     }}>Switch color selection method</button>
-    
+    <label htmlFor='colorManual'>Color (for) code:</label>
     <input type='text' id='colorManual'></input>
     <input type='color' id='colorPicker'></input>
     <div id='preview'>
-     {() => {
-      const short = document.getElementById('shortCode')
-      const name = document.getElementById('codeName')
-      const gloss = document.getElementById('codeGloss')
-      const manual = document.getElementById('colorManual')
-      const visual = document.getElementById('colorPicker')
-
-      short.addEventListener
-     }}
+     <PreviewCode code={code}/>
     </div>
     <input type='submit'>Submit</input>
    </form>
-   <button id='mapmaker'>
+   <button id='mapmaker' onClick={() => {
+    //add call to the remapping function
+   }}>
     Regenerate Sass map
    </button>
    <div id='sassmap'></div>
