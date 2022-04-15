@@ -1,11 +1,13 @@
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
-import unreads from './routeHaving/conditionals/inbox' 
-import reads from './routeHaving/conditionals/outbox'
+import unreads from './routeHaving/swathes/inbox' 
+import reads from './routeHaving/swathes/outbox'
+import all from './routeHaving/swathes/all'
 import reader from './routeHaving/reader'
-import next from './routeHaving/navigation/next'
+// import next from './routeHaving/navigation/next'
 import mobility from './routeHaving/navigation/moving'
+import gloss from './routeHaving/maintenance/codegloss'
 
 const prisma = new PrismaClient()
 const app = express()
@@ -15,9 +17,13 @@ app.use(cors())
 
 app.use('/unseen', unreads)
 app.use('/seen', reads)
-app.use('/next', next)
+app.use('/all', all)
+
+//app.use('/next', next)
 app.use(`/go`, mobility)
 app.use(`/statement/`, reader)
+
+app.use('/gloss', gloss)
 
 app.get('/drafts', async (req, res) => {
   const posts = await prisma.post.findMany({
