@@ -2,6 +2,8 @@ import { Prisma, PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express, { Router } from 'express'
 
+//NOTE: This currently does not work
+
 const prisma = new PrismaClient()
 
 const app = express()
@@ -10,26 +12,27 @@ const router = Router()
 app.use(express.json())
 app.use(cors())
 
-export const highlightAndEncode = (
- statementID: number,
- content: string,
- coded: true,
- phrase: string,
- codeUsed: string,
-) => {
- return Prisma.validator<Prisma.StatementCreateInput>()({
-  statementID,
-  content,
-  coded,
-  Encoding: {
-   create: {
-    phrase: phrase,
-    parentID: statementID,
-    codeUsed: codeUsed
-   }
-  }
- })
-}
+//export const highlightAndEncode = (
+// statementID: number,
+// content: string,
+// coded: true,
+// phrase: string,
+// codeUsed: string,
+//) => {
+// return Prisma.validator<Prisma.StatementCreateInput>()({
+//  statementID,
+//  content,
+//  coded,
+//  Encoding: {
+//   create: {
+//    phrase: phrase,
+//    parentID: statementID,
+//    codeUsed: codeUsed
+//   }
+//  }
+// }
+//)
+//}
 
 export const findGivenStatement = (statementID: number) => {
  return Prisma.validator<Prisma.StatementWhereUniqueInput>()({
@@ -39,7 +42,7 @@ export const findGivenStatement = (statementID: number) => {
 
 export const findCodingsOfStatement = (statementID: number) => {
  return Prisma.validator<Prisma.EncodingWhereInput>()({
-  parentID: statementID
+//  parentID: statementID
  })
 }
 
@@ -51,15 +54,17 @@ router.put('/', async (req, res, next) => {
   where: {
    statementID: Number(statementID)
   },
-  data: highlightAndEncode(
-   Number(statementID),
-   String(content),
-   coded,
-   String(phrase),
-   String(codeUsed)
-  )
+  data: {
+//  highlightAndEncode(
+//   Number(statementID),
+//   String(content),
+//   coded,
+//   String(phrase),
+//   String(codeUsed)}
+//  )
+ },
+//res.json(encoding)
  })
-res.json(encoding)
 })
 
-export default router 
+ export default router
