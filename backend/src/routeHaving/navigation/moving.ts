@@ -101,3 +101,5 @@ router.get('/go', async(req, res, next) => {
   res.redirect(`/s/${destination}`); 
  }
 })
+
+export default router 

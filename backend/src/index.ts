@@ -5,6 +5,7 @@ import unreads from './routeHaving/conditionals/inbox'
 import reads from './routeHaving/conditionals/outbox'
 import reader from './routeHaving/reader'
 import next from './routeHaving/navigation/next'
+import mobility from './routeHaving/navigation/moving'
 
 const prisma = new PrismaClient()
 const app = express()
@@ -15,7 +16,8 @@ app.use(cors())
 app.use('/unseen', unreads)
 app.use('/seen', reads)
 app.use('/next', next)
-app.use('/statement/', reader)
+app.use(`/go`, mobility)
+app.use(`/statement/`, reader)
 
 app.get('/drafts', async (req, res) => {
   const posts = await prisma.post.findMany({

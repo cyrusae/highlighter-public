@@ -5,8 +5,8 @@ import NowBox from '../components/NowWrap'
 
 export type NavInfoProps = {
  statementID: number;
- updatedAt: Date;
 }
+
 export type NavButtonProps = {
  action: 'next' | 'prev' | 'flag' | 'pause';
 }
@@ -21,9 +21,7 @@ const NavButton: React.FC<{current: NavInfoProps, button: string}> = ({current, 
 
  return (
   <button onClick={() => {
-   const now = Date.now();
-   console.log('now:'); console.log(now); 
-   Router.push('/go', `/go?act=${act}&current=${currentID}&now=${now}`)}}>{act}</button>
+   Router.push('/go', `/go?act=${act}&current=${currentID}`)}}>{act}</button>
   )
 }
 
