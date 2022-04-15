@@ -3,6 +3,7 @@ import cors from 'cors'
 import express from 'express'
 import unreads from './routeHaving/conditionals/desk' 
 import reader from './routeHaving/reader'
+import next from './routeHaving/navigation/next'
 
 const prisma = new PrismaClient()
 const app = express()

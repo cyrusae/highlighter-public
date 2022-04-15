@@ -2,7 +2,6 @@ import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
 import { Router } from 'express'
-import { resourceUsage } from 'process'
 
 const prisma = new PrismaClient({
  rejectOnNotFound: {
@@ -33,7 +32,6 @@ router.get('/:statementID', async (req, res, next) => {
  console.log(statement.content);
  res.json(statement)}}
  catch (e) {console.log(e)};
- res.status(500).send("fucking 500")
  })
 
 export default router 
