@@ -21,27 +21,47 @@ app.use(cors())
 console.log("next is here")
 
 router.get('/', async(req, res, next) => {
- const { currentID, lastUpdated } = req.query as any
+ const current = req.query.current as string;
+ const nowString = req.query.now as string;
 
+ const now = parseInt(nowString, 10);
+ const currentID = parseInt(current, 10);
+// const lastUpdated = Date.parse(now);
+ 
  console.log("query:"); console.log(req.query) //troubleshooting tool
  console.log("value of 'currentID':"); console.log(currentID) //troubleshooting tool
+ console.log("value of 'now':"); console.log(now)
 
- try {{const nextStatement = await prisma.statement.findFirst({
+ try {
+  prisma.$use(async (params, next) => {
+   console.log("prisma thinks params are:"); console.log(params);
+   const result = await next(params);
+   console.log("prisma thinks result is:"); console.log(result);
+  })
+
+  const nextStatement = await prisma.statement.findFirst({
   where: {
    OR: [
     { 
-     updatedAt: {
-     lt: lastUpdated
+     lastSeenAsInt: {
+      lte: now
     },
-     coded: {
-      not: true
-     }
+   },
+   {
+    coded: {
+     not: true
     },
+   },
+   {
+    lastSeenAsInt: null,
+   }
    ],
    AND: [ 
-    { statementID: {
-    not: (parseInt(currentID, 10))
-    }},
+    { 
+     statementID: {
+      not: currentID
+    }
+   },
   ],
  },
  });
@@ -49,11 +69,22 @@ router.get('/', async(req, res, next) => {
  console.log('returned nextStatement:'); console.log(nextStatement);
  const next = nextStatement.statementID;
  res.json(nextStatement.statementID);
- res.redirect(`/s/${next}`, 303)
-}
+// res.redirect(`/s/${next}`, 303)
  }
- catch (e) {console.log(e)};
-})
+ catch (e) {console.log(e)}
+ finally {
+  try { 
+   const leaveThisStatement = await prisma.statement.update({
+    where: {
+     statementID: currentID,
+    },
+    data: {
+     lastSeenAsInt: now
+    }
+   })
+ } catch (e) {console.log(e)}
+}}
+)
 
 //app.use(`/statement/`, reader)
 

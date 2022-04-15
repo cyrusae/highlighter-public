@@ -14,10 +14,8 @@ app.use(cors())
 
 app.use('/unseen', unreads)
 app.use('/seen', reads)
-app.use(`/next?`, next)
-app.use(`/statement/`, reader)
-//app.use(router) //I like the prefix solution but as long as it's not working I am going to try the simpler one also 
-//update: screw it as long as it's not working let's go with the solution I like 
+app.use('/next', next)
+app.use('/statement/', reader)
 
 app.get('/drafts', async (req, res) => {
   const posts = await prisma.post.findMany({
