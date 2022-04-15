@@ -3,8 +3,6 @@ import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { StatementProps } from '../../components/Statement'
 
-//This isn't working yet
-
 async function update(statementID: number): Promise<void> {
  await fetch(`http://localhost:3001/upd8/${statementID}`, {
   method: 'PUT'
@@ -17,19 +15,12 @@ async function encode(statementID: number, phrase: string, code: string): Promis
 }
 
 
-
+//Working:
 const Statement: React.FC<{statement: StatementProps}> = ({ statement, ...rest }) => {
-  console.log("Contents of 'rest':");
-  console.log(rest);
+ // console.log("Contents of 'rest':"); //troubleshooting tool
+ // console.log(rest); //troubleshooting tool
  let content = statement.content;
  let statementID: number = statement.statementID;
-// if (!props.coded) {
-//  props.coded = true;
-// }
-// let statementIDforDiv = '"' + statement.statementID + '"';
-
-// TODO: Add ability to fetch other factors (metadata) when those are added to schema.prisma
-
  return (
   //TODO: make a layout for display (also, controls)
   <div className='statement'dangerouslySetInnerHTML={{__html: content}}/>
