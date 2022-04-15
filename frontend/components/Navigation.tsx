@@ -17,13 +17,13 @@ const NavButton: React.FC<{current: NavInfoProps, button: string}> = ({current, 
  //add:
  //&now=${lastUpdated}
  //to the url once date handling for Prisma in SQLite is fixed or I find a worthwhile workaround.
- const url = "'/" + act;
+// const url = "'/" + act;
 
  return (
   <button onClick={() => {
    const now = Date.now();
    console.log('now:'); console.log(now); 
-   Router.push(url, `/${act}?current=${currentID}&now=${now}`)}}>{act}</button>
+   Router.push('/go', `/go?act=${act}&current=${currentID}&now=${now}`)}}>{act}</button>
   )
 }
 

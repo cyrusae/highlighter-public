@@ -29,6 +29,7 @@ router.get('/:statementID', async (req, res, next) => {
   }
  })
 // console.log(statement); //troubleshooting tool 
+
 // console.log(statement.content); //troubleshooting tool
  res.json(statement)}}
  catch (e) {console.log(e)};
