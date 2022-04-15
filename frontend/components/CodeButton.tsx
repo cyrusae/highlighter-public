@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import { GetServerSideProps } from 'next'
 import Router from 'next/router';
 
-type Props = {
- code: string;
- highlight: string;
-}
-
 const CodeButton: React.FC<{code: string}> = ({code}) => {
  const statement = document.getElementById('statebox');
  return (
@@ -32,3 +27,5 @@ const CodeButton: React.FC<{code: string}> = ({code}) => {
   </div>
  )
 }
+
+export default CodeButton

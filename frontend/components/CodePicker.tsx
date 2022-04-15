@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GetServerSideProps } from 'next'
 import { CodeList } from './Glossary'
+import CodeButton from './CodeButton'
 
 type Props = {
  glossary: CodeList[];
@@ -17,6 +18,7 @@ const CodeDropdown: React.FC<Props> = props => {
      <option value={code.shortCode}>{code.codeName}</option>
     )}
    </input>
+   <CodeButton code={code} />
   </div>
  )
 }
