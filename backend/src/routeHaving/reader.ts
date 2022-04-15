@@ -28,8 +28,8 @@ router.get('/:statementID', async (req, res, next) => {
    statementID: (parseInt(statementID, 10)),
   }
  })
- console.log(statement);
- console.log(statement.content);
+// console.log(statement); //troubleshooting tool 
+// console.log(statement.content); //troubleshooting tool
  res.json(statement)}}
  catch (e) {console.log(e)};
  })
