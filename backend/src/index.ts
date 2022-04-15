@@ -1,7 +1,8 @@
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
-import unreads from './routeHaving/conditionals/desk' 
+import unreads from './routeHaving/conditionals/inbox' 
+import reads from './routeHaving/conditionals/outbox'
 import reader from './routeHaving/reader'
 import next from './routeHaving/navigation/next'
 
@@ -12,6 +13,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/unseen', unreads)
+app.use('/seen', reads)
+app.use(`/next?`, next)
 app.use(`/statement/`, reader)
 //app.use(router) //I like the prefix solution but as long as it's not working I am going to try the simpler one also 
 //update: screw it as long as it's not working let's go with the solution I like 

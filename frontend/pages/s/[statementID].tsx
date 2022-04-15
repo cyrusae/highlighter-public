@@ -2,6 +2,7 @@ import React from 'react'
 import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { StatementProps } from '../../components/Statement'
+import { Nav } from '../../components/Navigation'
 
 async function update(statementID: number): Promise<void> {
  await fetch(`http://localhost:3001/upd8/${statementID}`, {
@@ -21,9 +22,14 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement, ...rest }
  // console.log(rest); //troubleshooting tool
  let content = statement.content;
  let statementID: number = statement.statementID;
+
  return (
   //TODO: make a layout for display (also, controls)
-  <div className='statement'dangerouslySetInnerHTML={{__html: content}}/>
+  <main>
+    <div className='statement'dangerouslySetInnerHTML={{__html: content}}/>
+    <Nav current={statement} />
+  </main>
+  
  )
 }
 

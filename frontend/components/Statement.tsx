@@ -6,6 +6,7 @@ export type StatementProps = {
  content: string;
  coded: boolean;
  comment: string | null;
+ updatedAt: Date;
 }
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
