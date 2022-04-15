@@ -41,6 +41,7 @@ model Statement {
   plainText   String? //add a method to push innerText when the HTML updates to make sure this is synced with minimal need for repeat edits if there's sneaky sensitive data hiding in the string
   coded       Boolean            @default(false)
   updatedAt   DateTime           @default(now()) @updatedAt
+  lastSeenAsInt   Int?
   comments    String?
   Encoding    Encoding[]
   Context     StatementContext? //one Context per Statement, it is okay to import Statements without having synced their Context although I doubt that will come up
