@@ -9,6 +9,7 @@ export type StatementProps = {
 }
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
+  console.log(statement);
   let content = statement.content;
   let statementIDforDiv = '"' + statement.statementID + '"';
 

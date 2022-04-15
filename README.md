@@ -10,13 +10,11 @@
 
 ***Note:*** `highlighter` v1 is currently under development. In order to understand what that means for this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do). 
 
-**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data.
+Or you can just skip to the third section for installation instructions. 
+
+**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data. Click here if you want it.
 
 For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
-
-## Set up `highlighter` on your own machine
-
-> ***[INSTRUCTIONS TK]***
 
 ## Why~~lighter~~ 
 
@@ -76,6 +74,10 @@ But! The good news is: that's about it.
 
 ## I would like an alternative.
 [qcoder](https://github.com/ropenscilabs/qcoder) is filling a similar niche (potential con: RStudio-specific; potential pro: much less idiosyncratic) but is also in development. Other than that, I'm afraid I can't make any recommendations, or I wouldn't have written this in the first place.
+
+## Set up `highlighter` on your own machine
+
+> ***[INSTRUCTIONS TK]***
 
 ***
 

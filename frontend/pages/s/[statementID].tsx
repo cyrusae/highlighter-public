@@ -18,7 +18,9 @@ async function encode(statementID: number, phrase: string, code: string): Promis
 
 
 
-const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
+const Statement: React.FC<{statement: StatementProps}> = ({ statement, ...rest }) => {
+  console.log("Contents of 'rest':");
+  console.log(rest);
  let content = statement.content;
  let statementID: number = statement.statementID;
 // if (!props.coded) {
@@ -43,12 +45,15 @@ export default Statement
 export const getServerSideProps: GetServerSideProps = async (context) =>  {
 //  try {
     const res = await fetch(`http://localhost:3001/statement/${context.params.statementID}`) 
+  console.log("here's await res clone text output:");
  console.log(await res.clone().text()) 
- const pile = await res.json()
+ const statement = await res.json()
+ console.log("here is the statement:")
+ console.log(statement)
 // catch (e) {console.log(e)} //where can this go to not break things?
   return {
   props: 
-   { pile }
+   { statement }
  };
 }  
 //}
