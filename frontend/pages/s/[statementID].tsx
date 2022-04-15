@@ -26,7 +26,7 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement, ...rest }
  return (
   //TODO: make a layout for display (also, controls)
   <main>
-    <div className='statement'dangerouslySetInnerHTML={{__html: content}}/>
+    <div className='statement' id='statebox' dangerouslySetInnerHTML={{__html: content}}/>
     <Nav current={statement} />
   </main>
   
