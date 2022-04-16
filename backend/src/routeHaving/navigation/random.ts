@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
  const grab = Math.ceil(Math.random() * grabBag.length);
  const statement = grabBag[grab];
  console.log("randomly-grabbed statement has the ID:"); console.log(statement.statementID);
- res.redirect(`/s/${statement.statementID}`, 303)
+ res.location(`/s/${statement.statementID}`)
 })
 
 export default router
