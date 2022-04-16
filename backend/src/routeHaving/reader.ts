@@ -86,7 +86,7 @@ router.get('/:statementID', async (req, res, next) => {
  let prevID = prevStatement?.statementID;
 
  const output = [statement, nextID, prevID]; console.log("value of 'output':"); console.log(output); //troubleshooting tool
- if (prevID === undefined) { 
+ if (prevID === undefined || prevID === nextID) { 
   const head = Math.floor(Math.random() * 2);
   const tail = Math.abs(head - 1); 
  try {
@@ -107,7 +107,7 @@ router.get('/:statementID', async (req, res, next) => {
  }
   catch (e) { console.log(e) }
  }
- if (nextID === undefined) { 
+ if (nextID === undefined || nextID === prevID) { 
   const head = Math.floor(Math.random() * 2);
   const tail = Math.abs(head - 1); 
  try {
