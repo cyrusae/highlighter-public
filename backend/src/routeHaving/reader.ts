@@ -20,16 +20,17 @@ console.log("reader is here")
 
 router.get('/:statementID', async (req, res, next) => {
  const { statementID } = req.params as any;
- console.log("value of 'statementID':"); console.log(statementID);
+ console.log("value of 'statementID':"); console.log(statementID)
  const big = await prisma.$queryRaw<Statement[]>`SELECT MAX(lastSeenAsInt) FROM Statement`;
  console.log("output of 'big' raw query:"); console.log(big); //troubleshoot
  const mostRecent = big[0].lastSeenAsInt;
 
- const small = await prisma.$queryRaw<Statement[]>`Select MIN(lastSeenAsInt) FROM Statement`;
+ const small = await prisma.$queryRaw<Statement[]>`SELECT MIN(lastSeenAsInt) FROM Statement`;
  console.log("output of 'small' raw query:"); console.log(small);
  const leastRecent = small[0].lastSeenAsInt;
  console.log("output of params:"); console.log(req.params) //troubleshooting tool
  console.log("output of statementID:"); console.log(statementID) //troubleshooting tool
+
  try 
  {{const statement = await prisma.statement.findUnique({
   where: {
@@ -81,11 +82,52 @@ router.get('/:statementID', async (req, res, next) => {
    statementID: true,
   }
  })
- const nextID = nextStatement?.statementID;
- const prevID = prevStatement?.statementID;
+ let nextID = nextStatement?.statementID;
+ let prevID = prevStatement?.statementID;
 
- const output = [statement, nextID, prevID];
- console.log("value of 'output':"); console.log(output); //troubleshooting tool
+ const output = [statement, nextID, prevID]; console.log("value of 'output':"); console.log(output); //troubleshooting tool
+ if (prevID === undefined) { 
+  const head = Math.floor(Math.random() * 2);
+  const tail = Math.abs(head - 1); 
+ try {
+  const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 2`;
+  if (random[head].statementID != statement.statementID) {
+   let prevID = random[head].statementID;
+   console.log("randomized prevID:"); console.log(prevID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return prevID;
+  } else {
+   let prevID = random[tail].statementID;
+   console.log("randomized prevID:"); console.log(prevID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return prevID;
+  }
+ }
+  catch (e) { console.log(e) }
+ }
+ if (nextID === undefined) { 
+  const head = Math.floor(Math.random() * 2);
+  const tail = Math.abs(head - 1); 
+ try {
+  const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 2`;
+  if (random[head].statementID != statement.statementID) {
+   let nextID = random[head].statementID;
+   res.json({statement: statement, nextID: nextID, prevID: prevID})
+   console.log("randomized nextID:"); console.log(nextID);
+   return;
+//   return nextID;
+  } else {
+   let nextID = random[tail].statementID;
+   console.log("randomized nextID:"); console.log(nextID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return nextID;
+  }
+ }
+  catch (e) { console.log(e) }
+ }
  res.json({statement: statement, nextID: nextID, prevID: prevID})}}
  catch (e) {console.log(e)};
  })

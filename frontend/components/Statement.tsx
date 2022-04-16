@@ -7,18 +7,17 @@ export type StatementProps = {
  coded: boolean;
  comment: string | null;
  updatedAt: Date;
- nextID: number | null;
- prevID: number | null;
+// nextID: number | null;
+// prevID: number | null;
 }
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
   console.log(statement);
   let content = statement.content;
-  let statementIDforDiv = '"' + statement.statementID + '"';
 
  return (
   <div className='statementBox' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>
-    <div className='statement' id={statementIDforDiv} dangerouslySetInnerHTML={{__html: content}}/>
+    <div className='statement' id={statement.statementID.toString()} dangerouslySetInnerHTML={{__html: content}}/>
   </div>
  )
 }
