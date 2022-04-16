@@ -9,6 +9,7 @@ import reader from './routeHaving/reader'
 import mobility from './routeHaving/navigation/moving'
 import gloss from './routeHaving/maintenance/codegloss'
 import pinstick from './routeHaving/navigation/pinstick'
+import random from './routeHaving/navigation/random'
 
 const prisma = new PrismaClient()
 const app = express()
@@ -23,6 +24,9 @@ app.use('/all', all)
 app.use(`/go`, mobility)
 app.use(`/statement/`, reader)
 app.use(`/leave`, pinstick)
+
+//this one still produces 404:
+app.use('/random', random)
 
 app.use('/gloss', gloss)
 
