@@ -1,62 +1,67 @@
 import React, { FC } from 'react'
 import Router from 'next/router'
 import { GetServerSideProps } from 'next'
-import NowBox from '../components/NowWrap'
+import axios from 'axios'
 
 export type NavInfoProps = {
  statementID: number;
+ nextID: number;
+ prevID: number;
 }
 
 export type NavButtonProps = {
  action: 'next' | 'prev' | 'flag' | 'pause';
 }
 
-const NavButton: React.FC<{current: NavInfoProps, act: NavButtonProps["action"]}> = ({current, act}) => {
- const currentID = current.statementID;
- //add:
- //&now=${lastUpdated}
- //to the url once date handling for Prisma in SQLite is fixed or I find a worthwhile workaround.
-// const url = "'/" + act;
+const NavButton: React.FC<{info: NavInfoProps, act: NavButtonProps["action"]}> = ({info, act}) => {
+ const currentID = info.  statementID;
 
- return (
-  <div aria-role='button' className='button' onClick={() => {
-   Router.push('/go', `/go?act=${act}&current=${currentID}`)}}>
-     {act}
-  </div>
-  )
-}
-
-const FlagButton: React.FC<{current: NavInfoProps, act: NavButtonProps["action"]}> = ({current, act}) => {
-  const newFlag = current.statementID + ' ' + `&#013; &#010;`; //last part should produce line breaks
-
-  //changed from button to div to avoid automatic onsubmit events in case that would be a risk
-  return (
-    <div aria-role='button' className='button' onClick={() => {
-      if (document.getElementById('flags').innerText.includes(current.statementID.toString()) === false)
-        { document.getElementById('flags').innerHTML += newFlag }
-    }}>{act}</div>
-  )
-}
-
-const PauseButton: React.FC<{current: NavInfoProps, act: NavButtonProps["action"]}> = ({current, act}) => {
-  const currentID = current.statementID;
-  //TODO: add save on click 
-  //TODO: determine how best to handle saving
-  //NOTE: may end up being cookies
-  return (
-    <div aria-role='button' className='button'>
+  if (act === 'next') {
+    return (
+      <button type='button' className='button' onClick={() => {
+        axios.put('/leave', { currentID: currentID });
+       Router.push('/s', `/s/${info.nextID}`)}}>
+         {act}
+      </button>
+      )
+  } else if (act === 'prev') {
+    return (
+      <button type='button' className='button' onClick={() => {
+        axios.put('/leave', { currentID: currentID });
+       Router.push('/s', `/s/${info.prevID}`)}}>
+         {act}
+      </button>
+      )
+  } else if (act === 'flag') {
+    const newFlag = currentID + ' ' + `&#013; &#010;`; //last part should produce line breaks
+    return (
+      <button type='button' className='button' onClick={() => {
+        if (document.getElementById('flags').innerText.includes(currentID.toString()) === false)
+        	{ 
+          axios.put('/leave', { currentID: currentID });
+          document.getElementById('flags').innerHTML += newFlag 
+        }
+      }}>{act}</button>
+    )
+  } else {
+			return (
+    <button type='button' className='button' 
+				onClick={() => {
+					axios.put('/leave', { currentID: currentID });
+				}}>
       {act}
-    </div>
+    </button>
   )
+  }
 }
 
 export const Nav: React.FC<{current: NavInfoProps}> = ({current}) => {
  return (
   <div id='nav'>
-   <NavButton current={current} act={'prev'} />
-   <PauseButton current={current} act={'pause'} />
-   <FlagButton current={current} act={'flag'} />
-   <NavButton current={current} act={'next'} />
+   <NavButton info={current} act={'prev'} />
+   <NavButton info={current} act={'pause'} />
+   <NavButton info={current} act={'flag'} />
+   <NavButton info={current} act={'next'} />
   </div>
  )
 }
