@@ -11,7 +11,7 @@ const Map: React.FC<Props> = props => {
  return (
   <div>
    <code>
-    (
+    $codes: (
     {props.glossary.map(code => `"${code.shortCode}": ${code.colorCode}`, )}
     );
    </code>

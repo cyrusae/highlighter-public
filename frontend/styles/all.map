@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "all.css",
+	"sources": [
+		"scss/all.scss"
+	],
+	"sourcesContent": [
+		"@use './markers.scss';\n@use './annotating';\n@use './multiview';\n@use './codemanage';\n@use './multiview';\n\n$bg: #ccd0d6; /* denote importance by making things increments whiter */\n$fg: #f1f3f5;\n\n* {\n background-color: $bg;\n font-size: 1.2em;\n};\n\ndiv.statement {\n background-color: scale-color($bg, $lightness: 90%)\n};\n\n"
+	],
+	"names": [],
+	"mappings": "AAAA,IAAI,CAAJ,gBAAI;AACJ,IAAI,CAAJ,cAAI;AACJ,IAAI,CAAJ,aAAI;AACJ,IAAI,CAAJ,cAAI;AACJ,IAAI,CAAJ,aAAI;AAEU,0DAA0D;;AAGxE,AAAA,CAAC,CAAC;EACD,gBAAgB,EAJZ,OAAO;EAKX,SAAS,EAAE,KAAK;CAChB;;;AAED,AAAA,GAAG,AAAA,UAAU,CAAC;EACb,gBAAgB,EAAE,OAAiC;CACnD"
+}

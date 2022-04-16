@@ -81,7 +81,7 @@ But! The good news is: that's about it.
 
 ***
 
-[^1] The end version of `highlighter` is planned to use Sass, but a) editing Sass is a lot like editing CSS and b) if that's still outside your comfort zone, you can delete the `.sass` files and edit their compiled `.css` files to suit your needs instead.
+[^1] The end version of `highlighter` is planned to use Sass, but a) editing Sass is a lot like editing CSS and b) if that's still outside your comfort zone, you can delete the `.scss` files and edit their compiled `.css` files to suit your needs instead.
 
 ---
 

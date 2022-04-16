@@ -1,0 +1,17 @@
+@use "sass:map";
+
+/* PASTE YOUR MAP HERE: */
+$codes: ("example": #ff7733, "example2": #76dd32);
+/* Remember to name it "$codes", make sure there aren't trailing commas left from the list generation, etc. */
+
+mark {
+ font-family: 'Victor Mono', 'Anonymous Pro', 'Courier Prime', monospace;
+ font-style: italic;
+}
+
+@each $code, $color in $codes {
+ mark.#{$code} {
+  background: scale-color($color, $lightness: 25%, $saturation: 25%) !important;
+ }
+}
+

@@ -195,3 +195,23 @@ mark:hover .tooltip {
   visibility: visible;
 }
 ```
+
+First sass draft:
+```
+@use "sass:map";
+mark {
+ font-family: 'Victor Mono', Consolas;
+ font-style: italic;
+}
+/* have a map of codes */
+$codes: ("code_1": #ff5555,  "code_2": #55ff55,  "code_3": #5555ff);
+
+/* create a class for each one */
+ /* lighten colors as needed */
+@each $code, $color in $codes {
+ $paler: rgba($color, 0.5);
+ mark.#{$code} {
+   background: $paler !important;
+ }
+}
+```

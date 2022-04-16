@@ -1,5 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
+import Map from './Remap'
 
 //NOTE: this doesn't work yet 
 
@@ -58,12 +59,13 @@ const Colormaker: React.FC<{code: CodeProps}> = ({ code }) => {
     </div>
     <input type='submit'>Submit</input>
    </form>
-   <button id='mapmaker' onClick={() => {
+   <div id='sassmap'>
+    <button id='mapmaker' onClick={() => {
     //add call to the remapping function
-   }}>
-    Regenerate Sass map
-   </button>
-   <div id='sassmap'></div>
+    }}>
+     Regenerate Sass map
+    </button>
+   </div>
   </div>
  )
 }
