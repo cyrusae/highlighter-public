@@ -3,7 +3,6 @@ import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { StatementProps } from '../../components/Statement'
 import { Nav } from '../../components/Navigation'
-import { json } from 'stream/consumers'
 
 async function update(statementID: number): Promise<void> {
  await fetch(`http://localhost:3001/upd8/${statementID}`, {
@@ -16,22 +15,30 @@ async function encode(statementID: number, phrase: string, code: string): Promis
  await fetch(`http://localhost:3001/code/`)
 }
 
+export type ReaderProps = {
+  statement: StatementProps[];
+  nextID: number | null;
+  prevID: number | null;
+}
 
-//Working:
-const Statement: React.FC<{statement: StatementProps}> = ({ statement, ...rest }) => {
- // console.log("Contents of 'rest':"); //troubleshooting tool
- // console.log(rest); //troubleshooting tool
- let content = statement.content;
- let statementID: number = statement.statementID;
+const Statement: React.FC<{statement: ReaderProps}> = ({statement}) => {
+ // console.log("Contents of 'rest':"); console.log(rest); //troubleshooting tool
+ let statementID: number = statement.statement["statementID"];
+ console.log('statementID attempts to log the current ID:'); console.log(statementID);
+ let content = statement.statement["content"];
+ console.log("statementID attempts to log the statement content:"); console.log(content);
  let next = statement.nextID;
+ console.log("statementID attempts to log next ID"); console.log(next);
+ let prev = statement.prevID;
+ console.log("statementID attempts to log the previous ID"); console.log(prev);
 
  return (
   //TODO: make a layout for display (also, controls)
-  <main>
+  <div>
+    <div className='metadata'>ID: {statementID}</div>
     <div className='statement' id='statebox' dangerouslySetInnerHTML={{__html: content}}/>
     <Nav current={statement} />
-  </main>
-  
+  </div>
  )
 }
 
@@ -52,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async (context) =>  {
 // catch (e) {console.log(e)} //where can this go to not break things?
   return {
   props: 
-   { ...statement }
+   { statement }
  };
 }  
 //}

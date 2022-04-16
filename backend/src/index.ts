@@ -8,6 +8,7 @@ import reader from './routeHaving/reader'
 // import next from './routeHaving/navigation/next'
 import mobility from './routeHaving/navigation/moving'
 import gloss from './routeHaving/maintenance/codegloss'
+import pinstick from './routeHaving/navigation/pinstick'
 
 const prisma = new PrismaClient()
 const app = express()
@@ -19,9 +20,9 @@ app.use('/unseen', unreads)
 app.use('/seen', reads)
 app.use('/all', all)
 
-//app.use('/next', next)
 app.use(`/go`, mobility)
 app.use(`/statement/`, reader)
+app.use(`/leave`, pinstick)
 
 app.use('/gloss', gloss)
 

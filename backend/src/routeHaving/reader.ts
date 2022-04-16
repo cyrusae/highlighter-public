@@ -19,7 +19,8 @@ app.use(cors())
 console.log("reader is here")
 
 router.get('/:statementID', async (req, res, next) => {
- const { statementID } = req.params as any
+ const { statementID } = req.params as any;
+ console.log("value of 'statementID':"); console.log(statementID);
  const big = await prisma.$queryRaw<Statement[]>`SELECT MAX(lastSeenAsInt) FROM Statement`;
  console.log("output of 'big' raw query:"); console.log(big); //troubleshoot
  const mostRecent = big[0].lastSeenAsInt;
@@ -27,8 +28,8 @@ router.get('/:statementID', async (req, res, next) => {
  const small = await prisma.$queryRaw<Statement[]>`Select MIN(lastSeenAsInt) FROM Statement`;
  console.log("output of 'small' raw query:"); console.log(small);
  const leastRecent = small[0].lastSeenAsInt;
-// console.log(req.params) //troubleshooting tool
-// console.log(statementID) //troubleshooting tool
+ console.log("output of params:"); console.log(req.params) //troubleshooting tool
+ console.log("output of statementID:"); console.log(statementID) //troubleshooting tool
  try 
  {{const statement = await prisma.statement.findUnique({
   where: {

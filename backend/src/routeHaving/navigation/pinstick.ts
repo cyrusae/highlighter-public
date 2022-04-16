@@ -27,5 +27,8 @@ router.put('/', async (req, res, next) => {
    lastSeenAsInt: now,
   }
  })
+ res.json(seenIt)
 } catch (e) {console.log(e)}}
  )
+
+export default router
