@@ -30,7 +30,8 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
    arcss.push(str);
  }
  const css = arcss.join('');
-
+ console.log("check that the css is happening as intended:"); console.log(css);
+ 
  return (
   //TODO: make a layout for display (also, controls)
   <div>
