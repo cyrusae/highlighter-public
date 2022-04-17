@@ -1,50 +1,54 @@
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
-import express from 'express'
+import express, { Router } from 'express'
 
 const prisma = new PrismaClient()
 const app = express()
+const router = Router()
 
 app.use(express.json())
 app.use(cors())
 
-//How to fetch a statement (and its associated encoding)?
+console.log("highlighter is here!")
 
-app.get(`/:statementID`, async(req, res) => {
- const { statementID } = req.params
- const statement = await prisma.statement.findUnique({
-  where: {
-   statementID: Number(statementID),
-  },
- })
- res.json(statement)
+router.put('/', async(req, res, next) => {
+
+//have the axios put have the following:
+// - currentID: current statement ID;
+// - now: calculate now;
+// - annot8: the updated innerHTML;
+// - plaintext: the innerText;
+// - phrase: the highlighted phrase;
+// - codeUsed: the code used (in the dropdown)
+
+ const statementID = parseInt(req.body.currentID, 10);
+	const now = parseInt(req.body.now, 10);
+	const annot8 = req.body.annot8 as string;
+	const plaintext = req.body.plain as string;
+	const phrase = req.body.phrase as string;
+	const codeUsed = req.body.code as string;
+	try {
+		const coding = await prisma.statement.update({
+			where: {
+				statementID: statementID
+			},
+			data: {
+				content: annot8,
+				plainText: plaintext,
+				lastSeenAsInt: now,
+				Encoding: {
+					create: [
+						{ 
+							codeUsed: codeUsed,
+							phrase: phrase,
+							statementID: statementID
+						}
+					]
+				}
+			}
+		});
+		res.json(coding);
+	} catch (e) {console.log(e)}
 })
 
-//How to update the body text (with mark additions), and add a record of coding having happened, AND conditionally add comments if needed?
-app.put(`/upd8/:statementID`, async(req, res) => {
- const { statementID } = req.params
- const { content } = req.body
- const refresh = await prisma.statement.update({
-  where: { statementID: Number(statementID) },
-  data: {
-   ...req.body,
-  }
- })
- res.json(refresh)
-})
-
-//would this create a new encoding...?
-app.put(`/code`, async(req, res) => {
- const coding = await prisma.encoding.create({
-  data: {
-   ...req.body,
-  }
- })
- res.json(coding)
-})
-
-const server = app.listen(3001, () =>
-  console.log(
-    '🚀 Server ready at: http://localhost:3001',
-  ),
-)
+export default router 
