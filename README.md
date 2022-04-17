@@ -1,6 +1,6 @@
 # project tag: *highlighter*
 
-![in active development](https://img.shields.io/badge/status%3A-in%20development-orange?style=for-the-badge) ![absolute baby alpha version](https://img.shields.io/badge/version%3A-0.1.0--alpha-red?style=for-the-badge) [![development branch: troubleshoot-compilation](https://img.shields.io/badge/development%20branch%3A-troubleshoot--compilation-blueviolet?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/tree/troubleshoot-compilation)
+![in active development](https://img.shields.io/badge/status%3A-in%20development-orange?style=for-the-badge) ![absolute baby alpha version](https://img.shields.io/badge/version%3A-1.0.0--alpha-red?style=for-the-badge) [![development branch: troubleshoot-compilation](https://img.shields.io/badge/development%20branch%3A-troubleshoot--compilation-blueviolet?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/tree/troubleshoot-compilation)
 
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/cyrusae/highlighter-public/troubleshoot-compilation?style=for-the-badge) ![GitHub last commit (main)](https://img.shields.io/github/last-commit/cyrusae/highlighter-public?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2022?style=for-the-badge) [![GitHub issues](https://img.shields.io/github/issues/cyrusae/highlighter-public?style=for-the-badge)](https://github.com/cyrusae/highlighter-public/issues?q=is%3Aopen+is%3Aissue+-label%3A%22Priority%3A+-%22+-label%3A%22Priority%3A+%2B%22)
 
