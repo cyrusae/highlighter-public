@@ -5,20 +5,17 @@
 
 const statement = document.querySelector('.statement').innerHTML;
 
-let markCode: string | null = null; 
-//allow for a fallback that fails to code anything but "code, I guess" with null
+let markCode: string = ''; 
+//allow for a fallback that fails to code anything but "code, I guess" with an empty string
 
 //get the dropdown:
 const codeSetter = document.querySelector('.codePicker') 
-
 codeSetter.addEventListener('change', () => {
  let markCode: string = `${this.target.value}`; //set the content
  return markCode;
 })
 
 const markOpenClass: string = '<mark className="quote'
-let markStart: string = markOpenClass + markCode + '">'; 
-//can this be const because it gets called again every time...?
 const markEnd: string = '</mark>'
 
 document.onselectionchange = function select() {
@@ -30,7 +27,8 @@ document.onselectionchange = function select() {
 
 function addMark(statement: string, highlight: string): string {
  let parts = statement.split(highlight);
-
+ let markStart: string = markOpenClass + markCode + '">'; 
+ 
  for (let i = 0; i < parts.length; i++) {
   let skimmed = parts[i]; 
   //'skimmed' because we're quickly looking it over to make sure it matches the content we want. 
@@ -38,9 +36,11 @@ function addMark(statement: string, highlight: string): string {
 
   if (parts[i] === highlight) {
    let skimmed = markStart + highlight + markEnd;
+   //if you want to show a tooltip with the code given, add the CSS in noodle_harder and change the previous line to
+   // let skimmed = markStart + highlight + markEnd + '<span class="tooltip">' + markCode + '</span>'
+   //to generate tooltips that will show the code on hover. (N.B. this will still only show the css class/no-spaces version of the code.)
    return skimmed;
   }
-
   //if it was highlighted, the html should now be changed accordingly
   parts[i] = skimmed;
  }

@@ -1,0 +1,49 @@
+@use "sass:map";
+
+/* PASTE YOUR MAP HERE: */
+$codes: ("example": #ff7733, "example2": #76dd32);
+/* Remember to name it "$codes", make sure there aren't trailing commas left from the list generation, etc. */
+
+mark {
+ font-family: 'Victor Mono', 'Anonymous Pro', 'Courier Prime', monospace;
+ font-style: italic;
+}
+
+@each $code, $color in $codes {
+ mark.#{$code} {
+  background: scale-color($color, $lightness: 25%, $saturation: 25%);
+ }
+}
+
+/*  '!important' is bad practice, I just worry about the possibility that <mark> will keep its automatic classic-flavor yellow without it */
+
+/* add a tooltip: */ 
+mark .tooltip {
+ visibility: hidden;
+ width: 120px;
+ background-color: black;
+ color: #fff;
+ text-align: center;
+ border-radius: 6px;
+ padding: 5px 0;
+ position: absolute;
+ z-index: 1;
+ top: 150%;
+ right: 50%;
+ margin-right: -60px;
+}
+
+mark .tooltip::after {
+ content: "";
+ position: absolute;
+ bottom: 100%;
+ right: 50%;
+ margin-right: -5px;
+ border-width: 5px;
+ border-style: solid;
+ border-color: transparent transparent black transparent;
+}
+
+mark:hover .tooltip {
+ visibility: visible;
+}

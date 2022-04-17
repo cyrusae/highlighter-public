@@ -1,0 +1,21 @@
+@use './markers.scss';
+@use './annotating';
+@use './multiview';
+@use './codemanage';
+@use './multiview';
+
+$bg: #ccd0d6; /* Thought: denote importance by making things increments whiter? */
+$fg: #f1f3f5;
+
+* {
+ background-color: $bg;
+ font-size: 1.2em;
+};
+
+div.statement {
+ background-color: scale-color($bg, $lightness: 90%)
+};
+
+div.statement::before {
+ background-color: scale-color($bg, $lightness: 70%)
+}

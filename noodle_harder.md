@@ -159,4 +159,105 @@ is still easier to do that way with an exported list from the database that I up
 
 But also surely there's a secret way to not be like that? The CSS is part of the frontend, it should be able to do this, dang it.
 
-Side note: Might be able to nest the `mark` more elegantly with [something like this](https://stackoverflow.com/questions/40310589/each-with-an-include-mixin) but if it's all compiling to CSS anyway I guess it's not that big of deal to not have my SCSS be nested perfectly.
+Side note: Might be able to nest the `mark` more elegantly with [something like this](https://stackoverflow.com/questions/40310589/each-with-an-include-mixin) but if it's all compiling to CSS anyway I guess it's not that big of deal to not have my SCSS be nested exactly how I'd want to read it.
+
+---
+
+Tooltip with arrows if you like that sort of thing:
+```
+mark .tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  right: 50%;
+  margin-right: -60px;
+}
+
+mark .tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 50%;
+  margin-right: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+mark:hover .tooltip {
+  visibility: visible;
+}
+```
+
+First sass draft:
+```
+@use "sass:map";
+mark {
+ font-family: 'Victor Mono', Consolas;
+ font-style: italic;
+}
+/* have a map of codes */
+$codes: ("code_1": #ff5555,  "code_2": #55ff55,  "code_3": #5555ff);
+
+/* create a class for each one */
+ /* lighten colors as needed */
+@each $code, $color in $codes {
+ $paler: rgba($color, 0.5);
+ mark.#{$code} {
+   background: $paler !important;
+ }
+}
+```
+---
+Code to randomly find another ID for next/prev:
+```
+ if (prevID === undefined || prevID === nextID) { 
+  const head = Math.floor(Math.random() * 2);
+  const tail = Math.abs(head - 1); 
+ try {
+  const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 2`;
+  if (random[head].statementID != statement.statementID) {
+   let prevID = random[head].statementID;
+   console.log("randomized prevID:"); console.log(prevID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return prevID;
+  } else {
+   let prevID = random[tail].statementID;
+   console.log("randomized prevID:"); console.log(prevID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return prevID;
+  }
+ }
+  catch (e) { console.log(e) }
+ }
+ if (nextID === undefined || nextID === prevID) { 
+  const head = Math.floor(Math.random() * 2);
+  const tail = Math.abs(head - 1); 
+ try {
+  const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 2`;
+  if (random[head].statementID != statement.statementID) {
+   let nextID = random[head].statementID;
+   res.json({statement: statement, nextID: nextID, prevID: prevID})
+   console.log("randomized nextID:"); console.log(nextID);
+   return;
+//   return nextID;
+  } else {
+   let nextID = random[tail].statementID;
+   console.log("randomized nextID:"); console.log(nextID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return nextID;
+  }
+ }
+  catch (e) { console.log(e) }
+ }
+ ```
