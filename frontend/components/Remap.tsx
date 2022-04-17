@@ -5,7 +5,11 @@ import { CodeList } from './Glossary'
 import { CodeProps } from './Colormaker'
 
 const Map: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
+  const bgopen = ' { background-color: ';
+  const bgclose = '; }  ';
+
  return (
+  <>
   <div id='sassmap'>
   <h2>Map for use in Sass</h2>
   <p><i>Reload the page to regenerate.</i></p>
@@ -19,6 +23,11 @@ const Map: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
      <i>Remember to trim the trailing space and comma off of your output before using it. When pasting into <code>markers.css</code>, check that no data has been lost.</i>
     </details>
   </div>
+  <div id='justcss'>
+    <h2>Plain CSS to copy and paste</h2>
+    {glossary?.map(code => <code key={code.shortCode}>mark.{code.shortCode} {bgopen}{code.colorCode}{bgclose}</code>)}
+  </div>
+  </>
  )
 }
 

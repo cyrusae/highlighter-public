@@ -48,17 +48,12 @@ const prevStatement = await prisma.statement.findFirst({
 			not: statement.statementID
 		}
 	},
-	select: {
-		statementID: true,
-	},
 	rejectOnNotFound: true,
 })
+console.log("found as prevStatement:"); console.log(prevStatement);
 const prevID = prevStatement.statementID;
 const nextStatement = await prisma.statement.findFirst({
   where: {
-//   AND: 
-//				[
-//					{
 						lastSeenAsInt: {
 							lte: small[0].lastSeenAsInt,
 							equals: leastRecent
@@ -67,20 +62,11 @@ const nextStatement = await prisma.statement.findFirst({
 							not: prevID,
 							notIn: [statement.statementID]
 						}
-//					},
-//   	{
-//					statementID: {
-//     	not: statement.statementID
-//					}
-//			}]
 		},
-  select: {
-   statementID: true,
-  },
 		rejectOnNotFound: true,
  });
+	console.log("found as nextStatement:"); console.log(nextStatement);
  const nextID = nextStatement.statementID;
-
 
  const output = [statement, nextID, prevID]; console.log("value of 'output':"); console.log(output); //troubleshooting tool
 
