@@ -1,3 +1,4 @@
+```
 import { PrismaClient, Statement } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
@@ -13,14 +14,8 @@ const app = express()
 
 const router = Router()
 
-const corsOptions ={
-	origin:'http://localhost:3000', 
-	credentials:true,            //access-control-allow-credentials:true
-	optionSuccessStatus:200
-}
-
 app.use(express.json())
-app.use(cors(corsOptions))
+app.use(cors())
 
 console.log("reader is here")
 
@@ -44,8 +39,7 @@ router.get('/:statementID', async (req, res, next) => {
 			return fresh[0];
 		}
 	}
-	const prevID = lastOne(fresh, statementID);
-	console.log("lastOne result as prevID:"); console.log(prevID);
+	console.log("lastOne result:"); console.log(lastOne(fresh, statementID));
 
 	const oldest = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY lastSeenAsInt ASC LIMIT 2`;
 	console.log("output of oldest query:"); console.log(oldest);
@@ -61,8 +55,8 @@ router.get('/:statementID', async (req, res, next) => {
 			return stale[0];
 		}
 	}
-	const nextID = nextOne(stale, statementID);
-	console.log("resulting nextOne nextID:"); console.log(nextID);
+	console.log("resulting nextOne:"); console.log(nextOne(stale, statementID));
+
 
  try 
  {{console.log("check statementID:"); console.log(statementID);
@@ -72,6 +66,36 @@ router.get('/:statementID', async (req, res, next) => {
   }
  });
 // console.log(statement); //troubleshooting tool 
+const prevStatement = await prisma.statement.findFirst({
+	where: {
+//		lastSeenAsInt: {
+//			gte: big[0].lastSeenAsInt,
+//			not: statement.lastSeenAsInt
+//		},
+		statementID: {
+			not: statement.statementID,
+			in: fresh
+		}
+	},
+	rejectOnNotFound: true,
+})
+console.log("found as prevStatement:"); console.log(prevStatement);
+const prevID = prevStatement.statementID;
+const nextStatement = await prisma.statement.findFirst({
+ where: {
+//						lastSeenAsInt: {
+//							lte: small[0].lastSeenAsInt,
+//							equals: leastRecent
+//						},
+	statementID: {
+//							not: prevID,
+		notIn: [statement.statementID, prevID],
+		in: stale
+		}
+		},
+ });
+	console.log("found as nextStatement:"); console.log(nextStatement);
+ const nextID = nextStatement?.statementID;
 
  const output = [statement, nextID, prevID]; console.log("value of 'output':"); console.log(output); //troubleshooting tool
 
@@ -80,3 +104,4 @@ router.get('/:statementID', async (req, res, next) => {
  })
 
 export default router 
+```
