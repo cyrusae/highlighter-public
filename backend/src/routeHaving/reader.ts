@@ -40,7 +40,10 @@ router.get('/:statementID', async (req, res, next) => {
 // console.log(statement); //troubleshooting tool 
 const prevStatement = await prisma.statement.findFirst({
 	where: {
-		lastSeenAsInt: big[0].lastSeenAsInt,
+		lastSeenAsInt: {
+			gte: big[0].lastSeenAsInt,
+			not: statement.lastSeenAsInt
+		},
 		statementID: {
 			not: statement.statementID
 		}
@@ -56,9 +59,13 @@ const nextStatement = await prisma.statement.findFirst({
 //   AND: 
 //				[
 //					{
-						lastSeenAsInt: small[0].lastSeenAsInt,
+						lastSeenAsInt: {
+							lte: small[0].lastSeenAsInt,
+							equals: leastRecent
+						},
 						statementID: {
-							notIn: [statement.statementID, prevID]
+							not: prevID,
+							notIn: [statement.statementID]
 						}
 //					},
 //   	{
