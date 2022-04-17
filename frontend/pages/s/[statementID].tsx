@@ -23,14 +23,23 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
  let prev = statement.prevID;
  console.log("statementID attempts to log the previous ID"); console.log(prev);
 
+ //generate the CSS:
+ let arcss: string[] = [];
+ for (let i = 0; i < glossary.length; i++) {
+   const str = 'mark.' + glossary[i].shortCode + ' { background-color: ' + glossary[i].colorCode + '; } ';
+   arcss.push(str);
+ }
+ const css = arcss.join('');
+
  return (
   //TODO: make a layout for display (also, controls)
   <div>
     <div className='metadata'>ID: {statementID}</div>
     <div className='statement' id='statebox' dangerouslySetInnerHTML={{__html: content}}/>
-				<CodeDropdown current={statementID} glossary={glossary} />
-				<Glossary glossary={glossary} />
-    <Nav current={statement} />
+		<CodeDropdown current={statementID} glossary={glossary} />
+		<Glossary css={css} glossary={glossary} />
+    <Nav current={statement} />    
+      
   </div>
  )
 }

@@ -9,7 +9,8 @@ export type CodeList = {
  colorCode: string | null;
 }
 
-const Glossary: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
+const Glossary: React.FC<{glossary: CodeProps[], css: string}> = ({ glossary, css }) => {
+// console.log("imported css:"); console.log(css);
  return (
   <details>
    <summary>Currently-existing codes:</summary>
@@ -18,6 +19,12 @@ const Glossary: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
      <mark className={code.shortCode}><dfn><b>{code.codeName}</b></dfn> (<abbr title={code.codeName}><code>{code.shortCode}</code></abbr>)</mark>: <i>{code.codeGloss}</i>
     </p>
    ))}
+  <style jsx>
+    {`mark {
+       font-family: "Victor Mono", "Anonymous Pro", "Courier Prime", monospace;
+      }
+     ${css}`}
+  </style>
   </details>
  )
 }
