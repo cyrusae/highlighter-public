@@ -39,7 +39,7 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
    	const newFlag = current + ' ' + `&#013; &#010;`; //last part should produce line breaks
    	return (
       <button type='button' className='button' onClick={() => {
-       if (document.getElementById('flags').innerText.includes(current) === false)
+       if (typeof document !== null && document.getElementById('flags').innerText.includes(current) === false)
       		{ 
          const now = Date.now();
   				  	axios.put('http://localhost:3001/leave/', { 

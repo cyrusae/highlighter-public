@@ -1,8 +1,7 @@
 @use "sass:map";
 
 /* PASTE YOUR MAP HERE: */
-$codes: ("example": #ff7733, "example2": #76dd32);
-/* Remember to name it "$codes", make sure there aren't trailing commas left from the list generation, etc. */
+$codes: ("exampleCode": #eeffee, "exampleTwo": #ffffee, "exampleThree": #eeffff, "test": #f6a4c4, "test2": #e5a0c9, "test3": #e6b7f3, "test4": #f9b1d4);/* Remember to name it "$codes", make sure there aren't trailing commas left from the list generation, etc. */
 
 mark {
  font-family: 'Victor Mono', 'Anonymous Pro', 'Courier Prime', monospace;

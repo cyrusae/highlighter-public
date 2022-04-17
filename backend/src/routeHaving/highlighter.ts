@@ -12,17 +12,8 @@ app.use(cors())
 console.log("highlighter is here!")
 
 router.put('/', async(req, res, next) => {
-
-//have the axios put have the following:
-// - currentID: current statement ID;
-// - now: calculate now;
-// - annot8: the updated innerHTML;
-// - plaintext: the innerText;
-// - phrase: the highlighted phrase;
-// - codeUsed: the code used (in the dropdown)
-
+	console.log("log contents of req.body:"); console.log(req.body); //troubleshoot
  const statementID = parseInt(req.body.currentID, 10);
-	const now = parseInt(req.body.now, 10);
 	const annot8 = req.body.annot8 as string;
 	const plaintext = req.body.plain as string;
 	const phrase = req.body.phrase as string;
@@ -36,7 +27,6 @@ router.put('/', async(req, res, next) => {
 				content: annot8,
 				plainText: plaintext,
 				coded: true,
-				lastSeenAsInt: now,
 				Encoding: {
 					create: [
 						{ 

@@ -1,13 +1,15 @@
 import React, { ReactNode } from "react"
+import { StatementProps } from "./Statement"
 
-type Props = {
- children: ReactNode
+const StatementBox: React.FC<{sample: StatementProps[], css: string}> = ( {sample, css} ) => {
+ let content = sample["content"];
+ let statementID = sample["statementID"];
+
+ return (
+ <><div className='statement'><div className='metadata'>ID: {statementID}</div>
+  <div className='statement' id='statebox' dangerouslySetInnerHTML={{__html: content}}/><style jsx>{`${css}`}</style>
+ </div></>
+)
 }
 
-const StatementBox: React.FC<Props> = ( props ) => (
- <div className='statement_box'>
-  {props.children}
- </div>
-)
-
-
+export default StatementBox
