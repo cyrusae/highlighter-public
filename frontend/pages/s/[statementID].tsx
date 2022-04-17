@@ -5,6 +5,7 @@ import { StatementProps } from '../../components/Statement'
 import { Nav } from '../../components/Navigation'
 import Glossary, { CodeList } from '../../components/Glossary'
 import CodeDropdown from '../../components/CodePicker'
+import StatementBox from '../../components/Workspace'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -14,9 +15,10 @@ export type ReaderProps = {
 
 const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({statement, glossary}) => {
  // console.log("Contents of 'rest':"); console.log(rest); //troubleshooting tool
- let statementID: number = statement.statement["statementID"];
+ let sample = statement.statement;
+ let statementID: number = sample["statementID"];
  console.log('statementID attempts to log the current ID:'); console.log(statementID);
- let content = statement.statement["content"];
+ let content = sample["content"];
  console.log("statementID attempts to log the statement content:"); console.log(content);
  let next = statement.nextID;
  console.log("statementID attempts to log next ID"); console.log(next);
@@ -30,17 +32,17 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
    arcss.push(str);
  }
  const css = arcss.join('');
- console.log("check that the css is happening as intended:"); console.log(css);
- 
+// console.log("check that the css is happening as intended:"); console.log(css);
+
  return (
   //TODO: make a layout for display (also, controls)
   <div>
-    <div className='metadata'>ID: {statementID}</div>
-    <div className='statement' id='statebox' dangerouslySetInnerHTML={{__html: content}}/>
+    <StatementBox css={css} sample={sample} />
+    <style jsx>{`${css}`}</style>
 		<CodeDropdown current={statementID} glossary={glossary} />
 		<Glossary css={css} glossary={glossary} />
-    <Nav current={statement} />    
-      
+    <Nav current={statement} />
+    <style jsx global>{`${css}`}</style>
   </div>
  )
 }
