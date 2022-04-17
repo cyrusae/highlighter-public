@@ -3,19 +3,14 @@ import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { CodeList } from './Glossary'
 
-type Props = {
- glossary: CodeList[];
-}
-
-const Map: React.FC<Props> = props => {
+const Map: React.FC<{glossary: CodeList[]}> = ({ glossary }) => {
  return (
   <div>
    <code>
     $codes: (
-    {props.glossary.map(code => `"${code.shortCode}": ${code.colorCode}`, )}
+    {glossary?.map(code => `"${code.shortCode}": ${code.colorCode}`, )}
     );
    </code>
-   <p><i>(Trim the trailing space and comma off of your output before using it!)</i></p>
   </div>
  )
 }
