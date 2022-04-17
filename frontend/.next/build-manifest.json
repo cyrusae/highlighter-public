@@ -25,16 +25,6 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/codes": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/codes.js"
-    ],
-    "/desk": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/desk.js"
-    ],
     "/s/[statementID]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

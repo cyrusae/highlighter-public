@@ -9,7 +9,12 @@ export type CodeList = {
  colorCode: string | null;
 }
 
-const Glossary: React.FC<{glossary: CodeProps[], css: string}> = ({ glossary, css }) => {
+const Glossary: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
+  let css: string = '';
+  for (let i = 0; i < glossary.length; i++) {
+    const str = 'mark.' + glossary[i].shortCode + ' { background-color: ' + glossary[i].colorCode + '; } ';
+    css += str;
+  }
 // console.log("imported css:"); console.log(css);
  return (
   <details>
