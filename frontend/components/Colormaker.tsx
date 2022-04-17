@@ -33,23 +33,23 @@ const Colormaker: React.FC<{}> = () => {
   setName('');
   setColor('');
   setGloss('');
-  alert("Refresh the page to get an updated glossary.")
  }
 
  return (
   <div>
-
-   <h3>Add a new code:</h3>
+   <h2>Add a new code:</h2>
    <form name='colormaker' onSubmit={handleSubmit}>
-    <label htmlFor='shortCode'>Unique code (a-zA-Z, no spaces):</label>
-    <input required type='text' id='shortCode' name='shortCode' value={code} onChange={(e) => setCode(e.target.value)}/>
+    <div><label htmlFor='shortCode'title='This must be unique! Non-unique shortcodes will crash the server.'>Unique code (a-zA-Z, no spaces):
+    </label>
+    <input required type='text' id='shortCode' name='shortCode' title='This must be unique! Non-unique shortcodes will crash the server.' value={code} onChange={(e) => setCode(e.target.value)}/><p>Note: non-unique codes <b>will</b> crash the server on submit. Refresh and check the most recent glossary if you're unsure.</p>
+    </div>
     <label htmlFor='codeName'>Short name:</label>
     <input type='text' id='codeName' name='codeName' value={name} onChange={(e) => setName(e.target.value)}/>
     <label htmlFor='codeGloss'>Description of code:</label>
     <textarea id='codeGloss' name='codeGloss' rows={2} cols={30} value={gloss} onChange={(e) => setGloss(e.target.value)}/>
 
     <label htmlFor='colorManual'>Color (for) code:</label>
-    <input type='text' id='colorManual'  value={color} onChange={(e) => setColor(e.target.value)}/>
+    <input type='text' id='colorManual' required value={color} onChange={(e) => setColor(e.target.value)}/>
     <input type='color' id='colorPicker' value={color} onChange={(e) => setColor(e.target.value)}/>
 
     <button type='button' id='colorRandom' value={color} onClick={() => {
@@ -70,6 +70,7 @@ const Colormaker: React.FC<{}> = () => {
     `}</style>
     <button type='submit'>Submit</button>
    </form>
+   <p><b><i>Refresh the page after submitting</i></b> in order to see an updated code list (recommended to avoid accidental duplicates).</p>
   </div>
  )
 }
