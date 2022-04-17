@@ -215,3 +215,49 @@ $codes: ("code_1": #ff5555,  "code_2": #55ff55,  "code_3": #5555ff);
  }
 }
 ```
+---
+Code to randomly find another ID for next/prev:
+```
+ if (prevID === undefined || prevID === nextID) { 
+  const head = Math.floor(Math.random() * 2);
+  const tail = Math.abs(head - 1); 
+ try {
+  const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 2`;
+  if (random[head].statementID != statement.statementID) {
+   let prevID = random[head].statementID;
+   console.log("randomized prevID:"); console.log(prevID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return prevID;
+  } else {
+   let prevID = random[tail].statementID;
+   console.log("randomized prevID:"); console.log(prevID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return prevID;
+  }
+ }
+  catch (e) { console.log(e) }
+ }
+ if (nextID === undefined || nextID === prevID) { 
+  const head = Math.floor(Math.random() * 2);
+  const tail = Math.abs(head - 1); 
+ try {
+  const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 2`;
+  if (random[head].statementID != statement.statementID) {
+   let nextID = random[head].statementID;
+   res.json({statement: statement, nextID: nextID, prevID: prevID})
+   console.log("randomized nextID:"); console.log(nextID);
+   return;
+//   return nextID;
+  } else {
+   let nextID = random[tail].statementID;
+   console.log("randomized nextID:"); console.log(nextID);
+   res.json({statement: statement, nextID: nextID, prevID: prevID});
+   return;
+//   return nextID;
+  }
+ }
+  catch (e) { console.log(e) }
+ }
+ ```

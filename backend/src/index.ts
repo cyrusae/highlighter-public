@@ -32,7 +32,7 @@ app.use('/all', all)
 
 app.use(`/go`, mobility)
 app.use(`/statement/`, reader)
-app.use(`/leave`, pinstick)
+app.use('/leave/', pinstick)
 
 //this one still produces 404:
 app.use('/random', random)

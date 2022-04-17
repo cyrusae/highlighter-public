@@ -50,26 +50,14 @@ router.get('/go', async(req, res, next) => {
  console.log("output of 'small' raw query:"); console.log("small");
  const leastRecent = small[0].lastSeenAsInt;
  
- let destination: number | null;
-
  if (act === 'next') {
   const goTo = await prisma.statement.findFirst({
    where: {
-    OR: [
-    {
-     lastSeenAsInt: null
+    lastSeenAsInt: leastRecent,
+    statementID: {
+     not: currentID
     },
-    {
-     coded: false,
-    },
-    {
-     lastSeenAsInt: leastRecent
-    }
-   ],
-   NOT: {
-    statementID: currentID
-   } 
-  }, 
+  },
   select: {
     statementID: true
    }
@@ -79,19 +67,12 @@ router.get('/go', async(req, res, next) => {
   res.redirect(`/s/${destination}`); 
  } else if (act === 'prev') {
   const goTo = await prisma.statement.findFirst({
-   where: {
-    OR: [
-    {
-     lastSeenAsInt: mostRecent
-    },
-    {
-     coded: true,
-    }
-   ],
-   NOT: {
-    statementID: currentID
-   } 
-  }, 
+    where: {
+     lastSeenAsInt: mostRecent,
+     statementID: {
+      not: currentID
+     },
+   }, 
   select: {
     statementID: true
    }

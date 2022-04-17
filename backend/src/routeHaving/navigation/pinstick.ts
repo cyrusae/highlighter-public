@@ -14,19 +14,20 @@ app.use(cors())
 console.log("stick a pin in it, it is here");
 
 router.put('/', async (req, res, next) => {
- const { statementID } = req.params as any
+ const statementID = parseInt(req.body.currentID, 10);
+ const now = parseInt(req.body.now);
  console.log(req.params) //troubleshooting tool
  console.log(statementID) //troubleshooting tool
- let now = Date.now();
  try {
   const seenIt = await prisma.statement.update({
   where: {
-   statementID: (parseInt(statementID, 10)),
+   statementID: statementID,
   }, 
   data: {
    lastSeenAsInt: now,
   }
  })
+ console.log("If that update happened successfully..."); console.log(seenIt); //troubleshooting
  res.json(seenIt)
 } catch (e) {console.log(e)}}
  )
