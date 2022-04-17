@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 const FlagTracker: React.FC<{current: number}> = ({current}) => {
@@ -22,9 +23,21 @@ const FlagTracker: React.FC<{current: number}> = ({current}) => {
   <div className='flagtracker'>
    <details open>
     <summary>Statements flagged this session:</summary>
-    <div id='flags'><ul dangerouslySetInnerHTML={{__html: flagged}}></ul></div>
-    <button type='button' onClick={() => navigator.clipboard.writeText(flagged)}>Copy flags</button>
-    <button type='button' onClick={() => {localStorage.clear(); setFlagged('')}}>Clear flags</button>
+    <div id='flags'>
+     <ul dangerouslySetInnerHTML={{__html: flagged}}></ul>
+    </div>
+    <button type='button' onClick={() => axios.post('http://localhost:3001/saveflags', {
+     content: flagged,
+     type: 'flags'
+    })}>
+     Save flags
+    </button>
+    <button type='button' onClick={() => navigator.clipboard.writeText(flagged)}>
+     Copy flags
+    </button>
+    <button type='button' onClick={() => {localStorage.clear(); setFlagged('')}}>
+     Clear flags
+    </button>
    </details>
   </div>
  )

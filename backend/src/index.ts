@@ -14,12 +14,13 @@ import random from './routeHaving/navigation/random'
 import gloss from './routeHaving/maintenance/codegloss'
 import newcode from './routeHaving/maintenance/newcode'
 import highlighter from './routeHaving/highlighter'
+import savenote from './routeHaving/maintenance/notetake'
 
 const prisma = new PrismaClient()
 const app = express()
 
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin:'https://localhost:3000', 
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }
@@ -34,6 +35,7 @@ app.use('/all', all)
 //this is a work in progress:
 app.use('/upd8/', highlighter)
 
+app.use('/saveflags', savenote)
 app.use(`/go`, mobility) //mobility is buggy right now 
 app.use(`/statement/`, reader)
 app.use('/leave/', pinstick)

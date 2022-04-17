@@ -7,6 +7,14 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model CodingNotes {
+  dateUpdated   DateTime    @default(now()) @updatedAt
+  noteContent   String
+  noteType      String?
+
+  @@id([dateUpdated, noteContent])
+}
+
 model Stimuli {
   stimulusID Int                @id @unique
   Statements StatementContext[]

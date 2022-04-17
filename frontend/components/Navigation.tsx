@@ -36,7 +36,6 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
        {act}
  		</button>
  	)} else if (act === 'flag') {
-   	const newFlag = current + ' ' + `&#013; &#010;`; //last part should produce line breaks
    	return (
       <button id='flagButton' type='button' className='button' onClick={() => {
        const now = Date.now();
@@ -44,12 +43,7 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 								currentID: current,
 								now: now,
 							});
-							if (typeof document !== undefined) {let flags = localStorage.getItem('flag');
-							if (flags === undefined || flags === null || flags.includes(current) === false) {
-								flags += newFlag;
-								localStorage.setItem('flag', flags);
-								}
-       }}}>
+							}}>
 							{act}
 						</button>
  	)} else {
