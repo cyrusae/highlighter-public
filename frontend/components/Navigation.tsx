@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
 import { ReaderProps } from '../pages/s/[statementID]'
@@ -36,18 +36,14 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
        {act}
  		</button>
  	)} else if (act === 'flag') {
-   	const newFlag = current + ' ' + `&#013; &#010;`; //last part should produce line breaks
    	return (
-      <button type='button' className='button' onClick={() => {
-       if (typeof document !== null && document.getElementById('flags').innerText.includes(current) === false)
-      		{ 
-         const now = Date.now();
-  				  	axios.put('http://localhost:3001/leave/', { 
-										currentID: current,
-										now: now,
-									});
-         document.getElementById('flags').innerHTML += newFlag 
-        }}}>
+      <button id='flagButton' type='button' className='button' onClick={() => {
+       const now = Date.now();
+  				 axios.put('http://localhost:3001/leave/', { 
+								currentID: current,
+								now: now,
+							});
+							}}>
 							{act}
 						</button>
  	)} else {

@@ -6,6 +6,7 @@ import { Nav } from '../../components/Navigation'
 import Glossary, { CodeList } from '../../components/Glossary'
 import CodeDropdown from '../../components/CodePicker'
 import StatementBox from '../../components/Workspace'
+import FlagTracker from '../../components/FlagTracker'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -26,23 +27,21 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
  console.log("statementID attempts to log the previous ID"); console.log(prev);
 
  //generate the CSS:
- let arcss: string[] = [];
- for (let i = 0; i < glossary.length; i++) {
-   const str = 'mark.' + glossary[i].shortCode + ' { background-color: ' + glossary[i].colorCode + '; } ';
-   arcss.push(str);
- }
- const css = arcss.join('');
+ let css: string = '';
+  for (let i = 0; i < glossary.length; i++) {
+    const str = 'mark.' + glossary[i].shortCode + ' { background-color: ' + glossary[i].colorCode + '; } ';
+    css += str;
+  }
 // console.log("check that the css is happening as intended:"); console.log(css);
 
  return (
   //TODO: make a layout for display (also, controls)
   <div>
     <StatementBox css={css} sample={sample} />
-    <style jsx>{`${css}`}</style>
 		<CodeDropdown current={statementID} glossary={glossary} />
-		<Glossary css={css} glossary={glossary} />
+		<Glossary glossary={glossary} />
     <Nav current={statement} />
-    <style jsx global>{`${css}`}</style>
+    <FlagTracker current={statementID}/>
   </div>
  )
 }

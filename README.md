@@ -10,13 +10,13 @@
 
 ***Note:*** `highlighter` v1 is currently under development. In order to understand what that means for this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do). 
 
-Or you can just skip to the third section for installation instructions. 
+Or you can just skip [to the third section for installation instructions](#set-up-highlighter-on-your-own-machine) *(tk)*. 
 
-**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data. Click here if you want it.
+**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data. [Click here if you want it](#set-up-highlighter-on-your-own-machine).
 
 For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
 
-## Why~~lighter~~ 
+## ***Why***lighter
 
 This is a bit of a weird one! *(Skip this section if you just want to know about features; this is about philosophy.)*
 
