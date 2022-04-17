@@ -30,7 +30,9 @@ app.use(cors(corsOptions))
 app.use('/unseen', unreads)
 app.use('/seen', reads)
 app.use('/all', all)
-app.use('/upd8', highlighter)
+
+//this is a work in progress:
+app.use('/upd8/', highlighter)
 
 app.use(`/go`, mobility) //mobility is buggy right now 
 app.use(`/statement/`, reader)

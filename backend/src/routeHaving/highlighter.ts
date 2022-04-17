@@ -35,13 +35,13 @@ router.put('/', async(req, res, next) => {
 			data: {
 				content: annot8,
 				plainText: plaintext,
+				coded: true,
 				lastSeenAsInt: now,
 				Encoding: {
 					create: [
 						{ 
 							codeUsed: codeUsed,
 							phrase: phrase,
-							statementID: statementID
 						}
 					]
 				}
