@@ -16,7 +16,7 @@ Or you can just skip [to the third section for installation instructions](#set-u
 
 For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
 
-## Why~~*lighter*~~ 
+## ***Why***lighter
 
 This is a bit of a weird one! *(Skip this section if you just want to know about features; this is about philosophy.)*
 
