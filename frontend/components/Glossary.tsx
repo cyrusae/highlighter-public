@@ -1,5 +1,6 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
+import { CodeProps } from './Colormaker'
 
 export type CodeList = {
  shortCode: string;
@@ -8,16 +9,12 @@ export type CodeList = {
  colorCode: string | null;
 }
 
-type Props = {
- glossary: CodeList[];
-}
-
-const Glossary: React.FC<Props> = props => {
+const Glossary: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
  return (
   <details>
    <summary>Currently-existing codes:</summary>
-   {props.glossary.map(code => (
-    <p>
+   {glossary?.map(code => (
+    <p key={code.shortCode}>
      <mark className={code.shortCode}><dfn><b>{code.codeName}</b></dfn> (<abbr title={code.codeName}><code>{code.shortCode}</code></abbr>)</mark>: <i>{code.codeGloss}</i>
     </p>
    ))}
@@ -26,7 +23,7 @@ const Glossary: React.FC<Props> = props => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
- const res = await fetch(`https://localhost:3001/gloss`);
+ const res = await fetch(`http://localhost:3001/gloss`);
  console.log("here's await res clone text output:"); console.log(await res.clone().text());
  const glossary = await res.json();
  console.log("here's the glossary output:"); console.log(glossary);

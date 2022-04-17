@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GetServerSideProps } from 'next'
 import { CodeList } from './Glossary'
 import CodeButton from './CodeButton'
+import { ReaderProps } from '../pages/s/[statementID]';
 
 type Props = {
  glossary: CodeList[];
