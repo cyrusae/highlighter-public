@@ -15,7 +15,8 @@ console.log("gloss is here")
 
 router.get('/', async (req, res, next) => {
  const codes = await prisma.codes.findMany();
- res.json(codes)
+ console.log("codes gotten:"); console.log(codes); //troubleshooting tool
+ res.json(codes);
 })
 
 export default router 

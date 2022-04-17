@@ -12,3 +12,17 @@ app.use(express.json())
 app.use(cors())
 
 console.log("newcode is here")
+
+router.post('/', async (req, res, next) => {
+ const newCode = await prisma.codes.create({
+  data: {
+   shortCode: req.body.shortCode,
+   codeName: req.body.codeName,
+   codeGloss: req.body.codeGloss,
+   colorCode: req.body.colorCode
+  },
+ })
+ res.json(newCode)
+})
+
+export default router 

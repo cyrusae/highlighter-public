@@ -7,10 +7,10 @@ import Glossary from './Glossary'
 //NOTE: this doesn't work yet 
 
 export type CodeProps = {
- short: string;
- name: string | null;
- gloss: string | null;
- color: string | 'none';
+ shortCode: string;
+ codeName: string | null;
+ codeGloss: string | null;
+ colorCode: string | null;
 }
 
 const Colormaker: React.FC<{}> = () => {
@@ -23,7 +23,7 @@ const Colormaker: React.FC<{}> = () => {
  const handleSubmit = (e) => {
   e.preventDefault();
   console.log('Submit button clicked!');
-  axios.post('https://localhost:3001/newcode', {
+  axios.post('http://localhost:3001/newcode', {
    shortCode: code, 
    codeName: name, 
    codeGloss: gloss, 
@@ -33,18 +33,11 @@ const Colormaker: React.FC<{}> = () => {
   setName('');
   setColor('');
   setGloss('');
+  alert("Refresh the page to get an updated glossary.")
  }
-
- const handleGloss = (e) => {
-  e.preventDefault();
-  async () => {
-   const res = await fetch(`https://localhost:3001/gloss`); 
-   setGlossary(await res.json())
- }}
 
  return (
   <div>
-   <Glossary glossary={glossary}/>
 
    <h3>Add a new code:</h3>
    <form name='colormaker' onSubmit={handleSubmit}>
@@ -77,19 +70,6 @@ const Colormaker: React.FC<{}> = () => {
     `}</style>
     <button type='submit'>Submit</button>
    </form>
-
-   <div id='sassmap'>
-    <h4>Current map for Sass:</h4>
-    <Map glossary={glossary} />
-    <button id='mapmaker' onClick={handleGloss}>
-     Regenerate Sass map
-    </button>
-
-    <details>
-     <summary>Reminder</summary>
-     <i>Remember to trim the trailing space and comma off of your output before using it. When pasting into <code>markers.css</code>, check that no data has been lost.</i>
-    </details>
-   </div>
   </div>
  )
 }

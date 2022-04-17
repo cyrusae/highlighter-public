@@ -7,7 +7,7 @@ type Props = {
   pile: StatementProps[]
 }
 
-const Desk : React.FC<Props> = props => {
+const Desk: React.FC<Props> = props => {
   return (
     <main>
      {props.pile.map(statement => (

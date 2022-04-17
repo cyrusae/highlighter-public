@@ -2,19 +2,25 @@ import React from 'react'
 import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { CodeList } from './Glossary'
+import { CodeProps } from './Colormaker'
 
-const Map: React.FC<{glossary: CodeList[]}> = ({ glossary }) => {
+const Map: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
  return (
-  <div>
+  <div id='sassmap'>
+  <h4>Map for use in Sass</h4>
+  <p><i>Reload the page to regenerate.</i></p>
    <code>
-    $codes: (
-    {glossary?.map(code => `"${code.shortCode}": ${code.colorCode}`, )}
-    );
+    $codes: (</code>
+    {glossary?.map(code => <code key={code.shortCode}>"{code.shortCode}": {code.colorCode}, </code>)}
+    <code>);
    </code>
+   <details>
+     <summary>Reminder</summary>
+     <i>Remember to trim the trailing space and comma off of your output before using it. When pasting into <code>markers.css</code>, check that no data has been lost.</i>
+    </details>
   </div>
  )
 }
-//TODO: Figuring out how best to let this update more than once without redirecting on the page 
 
 export const getServerSideProps: GetServerSideProps = async () => {
  const res = await fetch(`https://localhost:3001/gloss`);

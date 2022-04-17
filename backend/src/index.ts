@@ -1,21 +1,30 @@
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
+
+import reader from './routeHaving/reader'
 import unreads from './routeHaving/swathes/inbox' 
 import reads from './routeHaving/swathes/outbox'
 import all from './routeHaving/swathes/all'
-import reader from './routeHaving/reader'
-// import next from './routeHaving/navigation/next'
+
 import mobility from './routeHaving/navigation/moving'
-import gloss from './routeHaving/maintenance/codegloss'
 import pinstick from './routeHaving/navigation/pinstick'
 import random from './routeHaving/navigation/random'
+
+import gloss from './routeHaving/maintenance/codegloss'
+import newcode from './routeHaving/maintenance/newcode'
 
 const prisma = new PrismaClient()
 const app = express()
 
+const corsOptions ={
+  origin:'http://localhost:3000', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
+}
+
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use('/unseen', unreads)
 app.use('/seen', reads)
@@ -28,6 +37,7 @@ app.use(`/leave`, pinstick)
 //this one still produces 404:
 app.use('/random', random)
 
+app.use('/newcode', newcode)
 app.use('/gloss', gloss)
 
 app.get('/drafts', async (req, res) => {
