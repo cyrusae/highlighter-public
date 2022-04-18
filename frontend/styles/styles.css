@@ -1,0 +1,51 @@
+/* Basic formatting */
+
+* {
+ font-size: 25px;
+ color: black;
+ line-height: 1.35;
+/* background: #ccd0d6; */
+ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+ background-color: #e0e0e0;
+}
+
+/* Increase of emphasis */
+
+div {
+/* background: #efefef; */
+ padding: 0.5rem;
+}
+
+.statement {
+ background: white;
+ margin: 0.5rem;
+}
+
+
+/* Highlights */
+
+mark, mark * {
+ font-family: 'Victor Mono', 'Courier Prime', monospace;
+}
+
+mark {
+ font-weight: lighter;
+ font-style: italic;
+}
+
+/* REPLACE THIS SECTION WHEN YOU HAVE CODES */
+.exampleCode, .exampleCode * { background-color: #eeffee !important; } .exampleTwo, .exampleTwo * { background-color: #ffffee !important; } .exampleThree, .exampleThree * { background-color: #eeffff !important; } .test, .test * { background-color: #f6a4c4 !important; } .test2, .test2 * { background-color: #e5a0c9 !important; } .test3, .test3 * { background-color: #e6b7f3 !important; } .test4, .test4 * { background-color: #f9b1d4 !important; } .inputTest, .inputTest * { background-color: #efffc4 !important; } .showingPeter, .showingPeter * { background-color: #f4fbc3 !important; } .ChromeTest, .ChromeTest * { background-color: #cdb1fc !important; }
+
+/* Glossary */
+.glossary, .glossary * {
+ background: white;
+}
+
+.glossary p {
+ margin-left: 0.5rem;
+ margin-right: 0.5rem;
+}
+
