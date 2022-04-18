@@ -12,7 +12,7 @@ const CodeButton: React.FC<{code: string, current: number}> = ({code, current}) 
    const highlight = document.getSelection();
    const phrase = highlight.toString();
    const html = statement.innerHTML.toString();
-   const highlighted = '<mark className="' + code + '">' + phrase + '</mark>';
+   const highlighted = '<mark class="' + code + '">' + phrase + '</mark>';
    const output = html.replace(phrase, highlighted);
    console.log(output);
    statement.innerHTML = output;

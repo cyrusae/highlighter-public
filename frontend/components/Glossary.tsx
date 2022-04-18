@@ -17,7 +17,7 @@ const Glossary: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
   }
 // console.log("imported css:"); console.log(css);
  return (
-  <details>
+  <details className= 'glossary'>
    <summary>Currently-existing codes:</summary>
    {glossary?.map(code => (
     <p key={code.shortCode}>

@@ -53,9 +53,9 @@ const Colormaker: React.FC<{}> = () => {
     <input type='color' id='colorPicker' value={color} onChange={(e) => setColor(e.target.value)}/>
 
     <button type='button' id='colorRandom' value={color} onClick={() => {
-     const red = (Math.ceil(Math.random() * 100) + 155).toString(16);
-     const blue = (Math.ceil(Math.random() * 100) + 155).toString(16);
-     const green = (Math.ceil(Math.random() * 100) + 155).toString(16);
+     const red = (Math.ceil(Math.random() * 65) + 190).toString(16);
+     const blue = (Math.ceil(Math.random() * 65) + 190).toString(16);
+     const green = (Math.ceil(Math.random() * 65) + 190).toString(16);
      const random = '#' + red + blue + green;
 //     console.log("the generated random color:"); console.log(random); //troubleshooting tool
      setColor(random)}}>Generate random color</button>
@@ -64,7 +64,7 @@ const Colormaker: React.FC<{}> = () => {
      <mark className={code}><b>{name}</b> (<code>{code}</code>): <i>{gloss}</i></mark>
     </div>
     <style jsx>{`
-     mark.${code} { 
+     .${code}, ${code} * { 
       background-color: ${color}
      }
     `}</style>
