@@ -18,26 +18,17 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
  // console.log("Contents of 'rest':"); console.log(rest); //troubleshooting tool
  let sample = statement.statement;
  let statementID: number = sample["statementID"];
- console.log('statementID attempts to log the current ID:'); console.log(statementID);
+// console.log('statementID attempts to log the current ID:'); console.log(statementID);
  let content = sample["content"];
- console.log("statementID attempts to log the statement content:"); console.log(content);
+// console.log("statementID attempts to log the statement content:"); console.log(content);
  let next = statement.nextID;
- console.log("statementID attempts to log next ID"); console.log(next);
+// console.log("statementID attempts to log next ID"); console.log(next);
  let prev = statement.prevID;
- console.log("statementID attempts to log the previous ID"); console.log(prev);
-
- //generate the CSS:
- let css: string = '';
-  for (let i = 0; i < glossary.length; i++) {
-    const str = 'mark.' + glossary[i].shortCode + ' { background-color: ' + glossary[i].colorCode + '; } ';
-    css += str;
-  }
-// console.log("check that the css is happening as intended:"); console.log(css);
+// console.log("statementID attempts to log the previous ID"); console.log(prev);
 
  return (
-  //TODO: make a layout for display (also, controls)
   <div>
-    <StatementBox css={css} sample={sample} />
+    <StatementBox sample={sample} />
 		<CodeDropdown current={statementID} glossary={glossary} />
 		<Glossary glossary={glossary} />
     <Nav current={statement} />

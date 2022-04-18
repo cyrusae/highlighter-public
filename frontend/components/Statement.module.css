@@ -1,0 +1,6 @@
+mark {
+ font-family: 'Victor Mono', 'Courier Prime', monospace;
+ font-style: italic;
+}
+
+mark.exampleCode { background-color: #eeffee; } mark.exampleTwo { background-color: #ffffee; } mark.exampleThree { background-color: #eeffff; } mark.test { background-color: #f6a4c4; } mark.test2 { background-color: #e5a0c9; } mark.test3 { background-color: #e6b7f3; } mark.test4 { background-color: #f9b1d4; } mark.inputTest { background-color: #efffc4; } mark.showingPeter { background-color: #f4fbc3; } mark.ChromeTest { background-color: #cdb1fc; }

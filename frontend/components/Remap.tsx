@@ -25,7 +25,7 @@ const Map: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
   </div>
   <div id='justcss'>
     <h2>Plain CSS to copy and paste</h2>
-    {glossary?.map(code => <code key={code.shortCode}>mark.{code.shortCode} {bgopen}{code.colorCode}{bgclose}</code>)}
+    {glossary?.map(code => <code key={code.shortCode}>.{code.shortCode}, .{code.shortCode} * {bgopen}{code.colorCode} !important{bgclose}</code>)}
   </div>
   </>
  )

@@ -14,10 +14,10 @@ const Codepage: React.FC<Props> = (props) => {
     const str = 'mark.' + props.initialGlossary[i].shortCode + ' { background-color: ' + props.initialGlossary[i].colorCode + '; } ';
     arcss.push(str);
   }
-  const css = arcss.join('');
+ // const css = arcss.join('');
  return (
   <div>
-   <Glossary css={css} glossary={props.initialGlossary} />
+   <Glossary glossary={props.initialGlossary} />
    <Colormaker/>
    <Map glossary={props.initialGlossary}/>
   </div>
