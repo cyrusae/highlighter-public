@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
 import { ReaderProps } from '../pages/s/[statementID]'
+import { StatementProps } from './Statement'
 
 export type NavButtonProps = {
  action: 'next' | 'prev' | 'flag' | 'pause';
@@ -62,8 +63,6 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 }
 
 export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
-	const here = parseInt(current.statement["statementID"].toString(), 10)
-//	console.log('Nav attempts to log current statementID here:'); console.log(here);
  return (
   <div id='nav'>
    <NavButton from={current} act={'prev'} />
@@ -72,4 +71,18 @@ export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
    <NavButton from={current} act={'next'} />
   </div>
  )
+}
+
+export const NavMini: React.FC<{current: number}> = ({current}) => {
+	return (
+		<div className='multinav'>
+			<button id='flagButton' type='button' className='button' onClick={() => {
+  		 axios.put('http://localhost:3001/leave/', { 
+					currentID: current,
+				});
+			}}>
+				flag
+			</button>
+		</div>
+	)
 }
