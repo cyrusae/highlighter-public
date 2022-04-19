@@ -10,7 +10,7 @@ const StatementBox: React.FC<{sample: StatementProps[]}> = ( {sample} ) => {
  return (
  <div className='statement'>
   <div className='metadata'>ID: {statementID}</div>
-  <div className='statement' id='statebox' dangerouslySetInnerHTML={{__html: content}}/>
+  <div className='statebox' id='statebox' dangerouslySetInnerHTML={{__html: content}}/>
  </div>
 )
 }

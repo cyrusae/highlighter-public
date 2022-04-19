@@ -20,7 +20,7 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 
  if (act === 'next') {
   return (
-   <button type='button' className='button' onClick={() => {
+   <button id='nextButton' type='button' className='button' onClick={() => {
 					const now = Date.now();
     	axios.put('http://localhost:3001/leave/', { 
 						currentID: current,
@@ -31,7 +31,7 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
    </button>
   )} else if (act === 'prev') {
     return (
-     <button type='button' className='button' onClick={() => {
+     <button id='prevButton' type='button' className='button' onClick={() => {
       axios.put('http://localhost:3001/leave/', { currentID: current });
       Router.push('/s/', `/s/${prev}`)}}>
        {act}
@@ -49,7 +49,8 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 						</button>
  	)} else {
 				return (
-   	 <button type='button' className='button' 
+   	 <button 
+     id='pauseButton' type='button' className='button' 
 					onClick={() => {
 						const now = Date.now();
     		axios.put('http://localhost:3001/leave/', { 

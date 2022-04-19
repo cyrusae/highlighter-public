@@ -7,7 +7,7 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
   const [code, setCode] = useState('');
 
  return (
-  <div>
+  <div id='codepick'>
    <select id='code-select' onChange={ (e) => setCode(e.target.value)}>
      <option value={null}>Select a code</option>
     {props.glossary?.map(code => 

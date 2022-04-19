@@ -9,14 +9,8 @@ type Props = {
 }
 
 const Codepage: React.FC<Props> = (props) => {
-  let arcss: string[] = [];
-  for (let i = 0; i < props.initialGlossary.length; i++) {
-    const str = 'mark.' + props.initialGlossary[i].shortCode + ' { background-color: ' + props.initialGlossary[i].colorCode + '; } ';
-    arcss.push(str);
-  }
- // const css = arcss.join('');
  return (
-  <div>
+  <div id='codepage'>
    <Glossary glossary={props.initialGlossary} />
    <Colormaker/>
    <Map glossary={props.initialGlossary}/>

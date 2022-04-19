@@ -1,15 +1,19 @@
 /* Basic formatting */
 
 * {
- font-size: 25px;
+ font-size: 28px;
  color: black;
  line-height: 1.35;
-/* background: #ccd0d6; */
  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
  background-color: #e0e0e0;
+}
+
+body > *::not(#nav) {
+ max-width: 80%;
+ margin: 0 auto;
 }
 
 /* Increase of emphasis */
@@ -19,11 +23,23 @@ div {
  padding: 0.5rem;
 }
 
-.statement {
- background: white;
+main .statement {
+ background-color: #fcfcfc;
+}
+
+.statement, details {
+ background: #f0f0f0;
  margin: 0.5rem;
 }
 
+.statement .metadata, .statebox, summary {
+ background: white;
+}
+
+.statebox {
+ padding: 0.5rem;
+ margin-top: 0.5rem;
+}
 
 /* Highlights */
 
@@ -32,12 +48,24 @@ mark, mark * {
 }
 
 mark {
- font-weight: lighter;
+/* font-weight: lighter; */
  font-style: italic;
 }
 
 /* REPLACE THIS SECTION WHEN YOU HAVE CODES */
-.exampleCode, .exampleCode * { background-color: #eeffee !important; } .exampleTwo, .exampleTwo * { background-color: #ffffee !important; } .exampleThree, .exampleThree * { background-color: #eeffff !important; } .test, .test * { background-color: #f6a4c4 !important; } .test2, .test2 * { background-color: #e5a0c9 !important; } .test3, .test3 * { background-color: #e6b7f3 !important; } .test4, .test4 * { background-color: #f9b1d4 !important; } .inputTest, .inputTest * { background-color: #efffc4 !important; } .showingPeter, .showingPeter * { background-color: #f4fbc3 !important; } .ChromeTest, .ChromeTest * { background-color: #cdb1fc !important; }
+.exampleCode, .exampleCode * { background-color: #eeffee !important; }
+.exampleTwo, .exampleTwo * { background-color: #ffffee !important; }
+.exampleThree, .exampleThree * { background-color: #eeffff !important; }
+.test, .test * { background-color: #f6a4c4 !important; }
+.test2, .test2 * { background-color: #e5a0c9 !important; }
+.test3, .test3 * { background-color: #e6b7f3 !important; }
+.test4, .test4 * { background-color: #f9b1d4 !important; }
+.inputTest, .inputTest * { background-color: #efffc4 !important; }
+.showingPeter, .showingPeter * { background-color: #f4fbc3 !important; }
+.ChromeTest, .ChromeTest * { background-color: #cdb1fc !important; }
+.blue, .blue * { background-color: #c7f9fc !important; }
+
+/* "!important" is generally considered bad practice, but was necessary to override every other source of background color.
 
 /* Glossary */
 .glossary, .glossary * {
@@ -49,3 +77,84 @@ mark {
  margin-right: 0.5rem;
 }
 
+#codepage > div, #codepage form > div, #justcss div code {
+ display: flex;
+ flex-direction: column;
+}
+
+#sassmap > div, #justcss > div {
+ background: black;
+ color: white;
+ padding: 1.5rem;
+}
+
+#justcss div code, #sassmap div code {
+ color: white;
+ font-family: 'Victor Mono', 'Courier Prime', monospace;
+}
+
+/* [statementID].tsx */
+#reader .metadata {
+ font-family: 'Victor Mono', 'Courier Prime', monospace;
+}
+
+#reader #statebox {
+ padding: 1.3rem;
+}
+
+#reader #nav {
+ position: fixed;
+ margin: 0 auto;
+ bottom: 0;
+ width: 95vw;
+ background: #e0e0e0;
+ display: flex;
+ justify-content: space-around;
+}
+
+#reader .statement {
+ overflow-y: scroll;
+ max-height: 80vh;
+}
+
+#reader #center {
+ position: absolute;
+ right: 26vw;
+ left: 1vw;
+ overflow-y: scroll;
+ height: 85vh;
+ bottom: 10vh;
+}
+
+#coder {
+ position: absolute;
+ right: 0;
+ top: 0;
+ width: 25vw;
+ font-size: 23px;
+}
+
+#codepick {
+ position: fixed;
+ background-color: #efefef;
+ top: 0;
+}
+
+#codepick select {
+ margin-top: 1rem;
+}
+
+#codepick + .flagtracker {
+ overflow-y: scroll;
+ margin-top: 20vh;
+ margin-bottom: 20vh;
+ right: 5px;
+}
+
+#reader .glossary, #reader .glossary details {
+ font-size: 20px;
+}
+
+#coder select {
+ font-size: 0.8rem;
+}
