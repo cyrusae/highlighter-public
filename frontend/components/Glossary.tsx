@@ -19,11 +19,14 @@ const Glossary: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
  return (
   <details className= 'glossary'>
    <summary>Currently-existing codes:</summary>
-   {glossary?.map(code => (
+   <div id='definitions'>
+    {glossary?.map(code => (
     <p key={code.shortCode}>
      <mark className={code.shortCode}><dfn><b>{code.codeName}</b></dfn> (<abbr title={code.codeName}><code>{code.shortCode}</code></abbr>)</mark>: <i>{code.codeGloss}</i>
     </p>
    ))}
+   </div>
+   
   <style jsx>
     {`mark {
        font-family: "Victor Mono", "Anonymous Pro", "Courier Prime", monospace;

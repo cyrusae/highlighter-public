@@ -9,12 +9,12 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
  return (
   <div id='codepick'>
    <select id='code-select' onChange={ (e) => setCode(e.target.value)}>
-     <option value={null}>Select a code</option>
+     <option value={null}>---Select a code---</option>
     {props.glossary?.map(code => 
      <option key={code.shortCode} value={code.shortCode}>{code.codeName}</option>
     )}
    </select>
-   <CodeButton code={code} current={props.current} />
+   <CodeButton code={code} current={props.current} glossary={props.glossary} />
   </div>
  )
 }

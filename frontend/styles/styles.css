@@ -43,6 +43,10 @@ main .statement {
 
 /* Highlights */
 
+* > mark {
+ position: relative;
+}
+
 mark, mark * {
  font-family: 'Victor Mono', 'Courier Prime', monospace;
 }
@@ -65,7 +69,43 @@ mark {
 .ChromeTest, .ChromeTest * { background-color: #cdb1fc !important; }
 .blue, .blue * { background-color: #c7f9fc !important; }
 
-/* "!important" is generally considered bad practice, but was necessary to override every other source of background color.
+/* "!important" is generally considered bad practice, but was necessary to override every other source of background color. */
+
+/* add a tooltip: */ 
+mark .tooltip, mark + .tooltip {
+ visibility: hidden;
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ font-size: 0.7rem;
+ width: 200px;
+ background: rgba(0, 0, 0, 0.5) !important;
+/* background-color: black !important; */
+ color: #f0f0f0;
+ text-align: center;
+ border-radius: 6px;
+ padding: 5px 0;
+ position: absolute;
+ z-index: 1;
+ top: 150%;
+ right: 50%;
+ margin-right: -100px;
+}
+
+mark .tooltip::after {
+ content: "";
+ position: absolute;
+ bottom: 100%;
+ right: 50%;
+ margin-right: -5px;
+ border-width: 5px;
+ border-style: solid;
+ border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
+}
+
+mark:hover .tooltip, .tooltip:hover {
+ visibility: visible;
+ display: inline-block;
+ z-index: 10;
+}
 
 /* Glossary */
 .glossary, .glossary * {
@@ -151,8 +191,12 @@ mark {
  right: 5px;
 }
 
-#reader .glossary, #reader .glossary details {
- font-size: 20px;
+div#definitions {
+ padding: 0.5rem;
+}
+
+div#definitions p, div#definitions p * {
+ font-size: 0.8rem;
 }
 
 #coder select {
