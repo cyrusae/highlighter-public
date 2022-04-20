@@ -13,11 +13,12 @@ const Map: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
   <div id='sassmap'>
   <h2>Map for use in Sass</h2>
   <p><i>Reload the page to regenerate.</i></p>
-   <code>
+  <div><code>
     $codes: (</code>
     {glossary?.map(code => <code key={code.shortCode}>"{code.shortCode}": {code.colorCode}, </code>)}
     <code>);
-   </code>
+   </code></div>
+
    <details open>
      <summary>When using...</summary>
      <i>Remember to trim the trailing space and comma off of your output before using it. When pasting into <code>markers.css</code>, check that no data has been lost.</i>
@@ -25,7 +26,7 @@ const Map: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
   </div>
   <div id='justcss'>
     <h2>Plain CSS to copy and paste</h2>
-    {glossary?.map(code => <code key={code.shortCode}>.{code.shortCode}, .{code.shortCode} * {bgopen}{code.colorCode} !important{bgclose}</code>)}
+    <div>{glossary?.map(code => <code key={code.shortCode}>.{code.shortCode}, .{code.shortCode} * {bgopen}{code.colorCode} !important{bgclose}</code>)}</div>
   </div>
   </>
  )

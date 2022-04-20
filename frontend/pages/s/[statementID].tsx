@@ -27,12 +27,16 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
 // console.log("statementID attempts to log the previous ID"); console.log(prev);
 
  return (
-  <div>
-    <StatementBox sample={sample} />
-		<CodeDropdown current={statementID} glossary={glossary} />
-		<Glossary glossary={glossary} />
+  <div id='reader'>
+    <div id='center'>
+     <StatementBox sample={sample} />
+	  	<Glossary glossary={glossary} />    </div>
+		<div id='coder'>
+      <CodeDropdown current={statementID} glossary={glossary} />
+     <FlagTracker current={statementID}/>
+
+    </div>
     <Nav current={statement} />
-    <FlagTracker current={statementID}/>
   </div>
  )
 }

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { GetServerSideProps } from 'next'
 import Router from 'next/router';
 import axios from 'axios';
+import { CodeList } from './Glossary';
 
-const CodeButton: React.FC<{code: string, current: number}> = ({code, current}) => {
+const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}> = ({code, current, glossary}) => {
  return (
   <>
   <button onClick={() => {
@@ -12,7 +13,16 @@ const CodeButton: React.FC<{code: string, current: number}> = ({code, current}) 
    const highlight = document.getSelection();
    const phrase = highlight.toString();
    const html = statement.innerHTML.toString();
-   const highlighted = '<mark class="' + code + '">' + phrase + '</mark>';
+//to add tooltips:
+   for (let i = 0; i < glossary.length; i++) {
+    if (glossary[i].shortCode === code) {
+     var tooltip = '<span class="tooltip">' + glossary[i].codeName + '</span>';
+     break; }
+   }
+//remove that to remove tooltips
+//Add '(' + glossary[i].codeGloss + ')' +  to have the gloss alongside it, but this may cause issues fitting on your screen unless you shrink the tooltip size accordingly
+
+   const highlighted = '<mark class="' + code + '">' + phrase + tooltip + '</mark>';
    const output = html.replace(phrase, highlighted);
    console.log(output);
    statement.innerHTML = output;

@@ -36,38 +36,34 @@ const Colormaker: React.FC<{}> = () => {
  }
 
  return (
-  <div>
+  <div id='codemaker'>
    <h2>Add a new code:</h2>
    <form name='colormaker' onSubmit={handleSubmit}>
-    <div><label htmlFor='shortCode'title='This must be unique! Non-unique shortcodes will crash the server.'>Unique code (a-zA-Z, no spaces):
+    <label htmlFor='shortCode' title='This must be unique! Non-unique shortcodes will crash the server.'>Unique code (a-zA-Z, no spaces):
     </label>
-    <input required type='text' id='shortCode' name='shortCode' title='This must be unique! Non-unique shortcodes will crash the server.' value={code} onChange={(e) => setCode(e.target.value)}/><p>Note: non-unique codes <b>will</b> crash the server on submit. Refresh and check the most recent glossary if you're unsure.</p>
-    </div>
-    <label htmlFor='codeName'>Short name:</label>
+    <input required type='text' id='shortCode' name='shortCode' title='This must be unique! Non-unique shortcodes will crash the server.' pattern="[A-Za-z0-9]+" value={code} onChange={(e) => setCode(e.target.value)}/><p>Note: non-unique codes <b>will</b> crash the server on submit. Refresh and check the most recent glossary if you're unsure.</p>
+    <label htmlFor='codeName'>Short name: </label>
     <input type='text' id='codeName' name='codeName' value={name} onChange={(e) => setName(e.target.value)}/>
     <label htmlFor='codeGloss'>Description of code:</label>
     <textarea id='codeGloss' name='codeGloss' rows={2} cols={30} value={gloss} onChange={(e) => setGloss(e.target.value)}/>
-
     <label htmlFor='colorManual'>Color (for) code:</label>
-    <input type='text' id='colorManual' required value={color} onChange={(e) => setColor(e.target.value)}/>
-    <input type='color' id='colorPicker' value={color} onChange={(e) => setColor(e.target.value)}/>
-
     <button type='button' id='colorRandom' value={color} onClick={() => {
      const red = (Math.ceil(Math.random() * 65) + 190).toString(16);
      const blue = (Math.ceil(Math.random() * 65) + 190).toString(16);
      const green = (Math.ceil(Math.random() * 65) + 190).toString(16);
      const random = '#' + red + blue + green;
 //     console.log("the generated random color:"); console.log(random); //troubleshooting tool
-     setColor(random)}}>Generate random color</button>
+     setColor(random)}}>Random color</button><input type='text' id='colorManual' required value={color} onChange={(e) => setColor(e.target.value)}/> <input type='color' id='colorPicker' value={color} onChange={(e) => setColor(e.target.value)}/>  
+    
+    
 
     <div id='preview'>
-     <mark className={code}><b>{name}</b> (<code>{code}</code>): <i>{gloss}</i></mark>
-    </div>
-    <style jsx>{`
-     .${code}, ${code} * { 
-      background-color: ${color}
+     <p><mark className={code}><b>{name}</b> (<code>{code}</code>): <i>{gloss}</i></mark></p>
+    <style jsx>{` mark.${code},.${code} * { 
+      background-color: ${color} !important;
      }
     `}</style>
+    </div>
     <button type='submit'>Submit</button>
    </form>
    <p><b><i>Refresh the page after submitting</i></b> in order to see an updated code list (recommended to avoid accidental duplicates).</p>
