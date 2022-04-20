@@ -41,6 +41,12 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
     });
     phrase.addEventListener('pointerleave', () => {
      phrase.innerHTML = words;
+    });
+    document.addEventListener('selectionstart', () => {
+     phrase.innerHTML = words;
+     phrase.removeEventListener('pointerenter', () => {
+      phrase.innerHTML += tooltip;
+     });
     })
    }
   }

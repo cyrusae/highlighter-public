@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next'
 import { CodeList } from './Glossary'
+import Phraseview from './Phraseview';
 import CodeButton from './CodeButton'
 
 const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props => {
-  const [code, setCode] = useState('');
+ const [code, setCode] = useState('');
+ const [phrase, setPhrase] = useState('');
+ //TO DO: move phrase into props for the buttons, this is easier
 
  return (
   <div id='codepick'>
+   <div id='phReview' />
    <select id='code-select' onChange={ (e) => setCode(e.target.value)}>
      <option value={null}>---Select a code---</option>
     {props.glossary?.map(code => 

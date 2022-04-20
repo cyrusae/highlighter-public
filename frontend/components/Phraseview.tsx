@@ -13,6 +13,9 @@ const Phraseview: React.FC<{code: string}> = ({ code }) => {
  useEffect(() => {
   const statement = document.getElementById('statebox');
   const dropdown = document.getElementById('code-select');
+  dropdown.onchange = () => {
+   setCodePick(code)
+  }
   statement.onselectionchange = () => {
    const selection = document.getSelection().anchorNode.parentElement;
    if (selection.tagName === 'mark') {
@@ -23,7 +26,7 @@ const Phraseview: React.FC<{code: string}> = ({ code }) => {
      setCodePick(code);
      if (codePick === null) {
       setPreview(phrase)
-     } else if (codePick !== codeD) {
+     } else if (codePick != codeD) {
       setPreview('<mark class="' + codePick + '">' + phrase + '</mark>');
      }
     })
@@ -41,9 +44,7 @@ const Phraseview: React.FC<{code: string}> = ({ code }) => {
 
  return (
   <div id='phraseview'>
-   <div id='phraseviewing'>
-    {preview}
-   </div>
+   <div id='phraseviewing' dangerouslySetInnerHTML={{__html: preview}}/>
   </div>
  )
 }
