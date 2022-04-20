@@ -18,7 +18,7 @@ app.use(cors(corsOptions))
 console.log("highlighter is here!")
 
 router.put('/', async(req, res, next) => {
-	console.log("log contents of req.body:"); console.log(req.body); //troubleshoot
+//	console.log("log contents of req.body:"); console.log(req.body); //troubleshoot
  const statementID = parseInt(req.body.currentID, 10);
 	const now = parseInt(req.body.now, 10);
 	const annot8 = req.body.annot8 as string;

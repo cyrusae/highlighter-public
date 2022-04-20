@@ -14,6 +14,7 @@ import random from './routeHaving/navigation/random'
 import gloss from './routeHaving/maintenance/codegloss'
 import newcode from './routeHaving/maintenance/newcode'
 import highlighter from './routeHaving/highlighter'
+import uncode from './routeHaving/uncode'
 import savenote from './routeHaving/maintenance/notetake'
 
 const prisma = new PrismaClient()
@@ -32,6 +33,7 @@ app.use('/unseen', unreads)
 app.use('/seen', reads)
 app.use('/all', all)
 app.use('/upd8/', highlighter)
+app.use('/uncode/', uncode)
 
 app.use('/saveflags', savenote)
 app.use(`/go`, mobility) //mobility is buggy right now 

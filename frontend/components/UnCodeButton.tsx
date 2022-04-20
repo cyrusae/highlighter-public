@@ -8,9 +8,11 @@ const UnCodeButton: React.FC<{current: number}> = ({ current }) => {
    const encoded = document.getSelection().anchorNode.parentElement;
    const phrase = encoded.innerText;
    encoded.replaceWith(phrase);
+   let html = document.getElementById('statebox').innerHTML;
    axios.put('http://localhost:3001/uncode/', {
     currentID: current,
-    phrase: phrase
+    phrase: phrase,
+    unnot8: html
    })
   })
  })
