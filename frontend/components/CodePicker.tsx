@@ -4,6 +4,8 @@ import { CodeList } from './Glossary'
 import Phraseview from './Phraseview';
 import CodeButton from './CodeButton'
 import Form from 'react-bootstrap/Form'
+import UnCodeButton from './UnCodeButton';
+import ReCodeButton from './ReCodeButton';
 
 const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props => {
  const [code, setCode] = useState('');
@@ -12,6 +14,7 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
 
  return (
   <div id='codepick'>
+   <UnCodeButton current={props.current} />
    <div id='phReview' />
    <Form.Group>
     <Form.Select id='code-select' onChange={(e) => setCode(e.target.value)}>
@@ -22,6 +25,7 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
     </Form.Select>
    </Form.Group>
    <CodeButton code={code} current={props.current} glossary={props.glossary} />
+   <ReCodeButton code={code} current={props.current} glossary={props.glossary} />
   </div>
  )
 }
@@ -36,7 +40,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
    { glossary }
  }
 }
-//The dropdown and glossary (for example) making separate requests seems profoundly inelegant at best; figure out how to streamline that.
 
 export default CodeDropdown 
 

@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 
 const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}> = ({code, current, glossary}) => {
  return (
-  <Button variant='primary' id='codeButton' className='codebutton' onClick={() => {
+  <Button size="sm" variant='primary' id='codeButton' className='codebutton' onClick={() => {
    if (typeof document !== undefined) {
    const statement = document.getElementById('statebox');
    const highlight = document.getSelection();
