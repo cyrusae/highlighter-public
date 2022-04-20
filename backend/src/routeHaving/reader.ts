@@ -26,9 +26,9 @@ console.log("reader is here")
 
 router.get('/:statementID', async (req, res, next) => {
  const received = req.params.statementID as string;
-	console.log("params received"); console.log(req.params);
+//	console.log("params received"); console.log(req.params);
 	const statementID = parseInt(received, 10);
- console.log("value of 'statementID':"); console.log(statementID)
+// console.log("value of 'statementID':"); console.log(statementID)
 
 	const recent = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY lastSeenAsInt DESC LIMIT 2`;
 	console.log("output of 'recent' raw query:"); console.log(recent);
