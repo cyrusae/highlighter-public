@@ -3,10 +3,11 @@ import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { StatementProps } from '../../components/Statement'
 import { Nav } from '../../components/Navigation'
-import Glossary, { CodeList } from '../../components/Glossary'
+import Glossary, { FootBook, CodeList } from '../../components/Glossary'
 import CodeDropdown from '../../components/CodePicker'
 import StatementBox from '../../components/Workspace'
-import FlagTracker from '../../components/FlagTracker'
+import FlagTracker, { FlagBar } from '../../components/FlagTracker'
+import { Row, Col, Container, Stack } from 'react-bootstrap'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -35,34 +36,27 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
    for (let i = 0; i < coded.length; i++) {
     let phrase = coded[i];
     let words = phrase.innerHTML;
-    let tooltip = '<span class="tooltip">' + name + '</span>';
+    let tooltip = '<span class="toltip">' + name + `\u{202F}` + '</span>';
     phrase.addEventListener('pointerenter', () => {
      phrase.innerHTML += tooltip;
     });
     phrase.addEventListener('pointerleave', () => {
      phrase.innerHTML = words;
     });
-    document.addEventListener('selectionstart', () => {
-     phrase.innerHTML = words;
-     phrase.removeEventListener('pointerenter', () => {
-      phrase.innerHTML += tooltip;
-     });
-    })
    }
   }
  })
 
  return (
   <div id='reader'>
-    <div id='center'>
-     <StatementBox sample={sample} glossary={glossary} />
-	  	<Glossary glossary={glossary} />    </div>
+   <FlagBar />
+   <StatementBox sample={sample} glossary={glossary} />
 		<div id='coder'>
-      <CodeDropdown current={statementID} glossary={glossary} />
-     <FlagTracker current={statementID}/>
-
-    </div>
-    <Nav current={statement} />
+   <CodeDropdown current={statementID} glossary={glossary} />
+   <FlagTracker current={statementID}/>
+   <Nav current={statement} />
+  </div>
+   <FootBook glossary={glossary} />
   </div>
  )
 }

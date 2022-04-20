@@ -2,6 +2,9 @@ import React from 'react'
 import { GetServerSideProps } from 'next'
 import Statement, { StatementProps } from '../components/Statement'
 import { NavMini } from '../components/Navigation'
+import Card from 'react-bootstrap/Card'
+import { Row, Col, Container, Stack } from 'react-bootstrap'
+
 
 type Props = {
   pile: StatementProps[]
@@ -11,10 +14,9 @@ const Desk: React.FC<Props> = props => {
   return (
     <main>
      {props.pile.map(statement => (
-      <div key={statement.statementID} className="statement">
+      <Card body key={statement.statementID} className="statement">
        <Statement statement={statement} />
-       <NavMini current={statement.statementID} />
-     </div>
+     </Card>
     ))}
   </main>
   )

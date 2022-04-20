@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
+import Button from 'react-bootstrap/Button'
 
 const UnCodeButton: React.FC<{current: number}> = ({ current }) => {
  useEffect(() => {
@@ -17,7 +18,7 @@ const UnCodeButton: React.FC<{current: number}> = ({ current }) => {
   })
  })
  return (
-  <button id='unCodeButton' className='codebutton uncode'>Uncode</button>
+  <Button size="sm" variant='outline-danger' id='unCodeButton' className='codebutton uncode'>Uncode</Button>
  )
 }
 

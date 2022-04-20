@@ -47,7 +47,6 @@ function StatementAnnotation(props: { comment: string | null }) {
 
 export type EncodingProps = {
  parent: number | null;
-// id: number | null;
  codeUsed: string | null;
  phrase: string | null;
  comments: string | null;

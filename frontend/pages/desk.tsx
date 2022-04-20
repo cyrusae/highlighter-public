@@ -1,6 +1,7 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import Statement, { StatementProps } from '../components/Statement'
+import { Row, Col, Container, Stack } from 'react-bootstrap'
 
 
 type Props = {

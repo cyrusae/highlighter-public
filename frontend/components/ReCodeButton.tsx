@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { CodeList } from './Glossary';
+import Button from 'react-bootstrap/Button'
 
 const ReCodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}> = ({ code, current, glossary }) => {
  useEffect(() => {
@@ -24,7 +25,7 @@ const ReCodeButton: React.FC<{code: string, current: number, glossary: CodeList[
   })
  });
  return (
-  <button id='reCodeButton' className='codebutton recode'>Recode</button>
+  <Button size="sm" variant='outline-warning' id='reCodeButton' className='codebutton recode'>Recode</Button>
  )
 }
 
