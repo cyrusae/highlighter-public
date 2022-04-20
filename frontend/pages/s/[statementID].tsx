@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Router from 'next/router'
 import { GetServerSideProps } from 'next'
 import { StatementProps } from '../../components/Statement'
@@ -19,17 +19,37 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
  let sample = statement.statement;
  let statementID: number = sample["statementID"];
 // console.log('statementID attempts to log the current ID:'); console.log(statementID);
- let content = sample["content"];
+// let content = sample["content"];
 // console.log("statementID attempts to log the statement content:"); console.log(content);
- let next = statement.nextID;
+// let next = statement.nextID;
 // console.log("statementID attempts to log next ID"); console.log(next);
- let prev = statement.prevID;
+// let prev = statement.prevID;
 // console.log("statementID attempts to log the previous ID"); console.log(prev);
+
+ useEffect(() => {
+  const statement = document.getElementById('statement');
+//  const phrases = statement.getElementsByTagName('mark');
+  for (let i = 0; i < glossary.length; i++) {
+   const coded = statement.getElementsByClassName(glossary[i].shortCode);
+   const name = glossary[i].codeName;
+   for (let i = 0; i < coded.length; i++) {
+    let phrase = coded[i];
+    let words = phrase.innerHTML;
+    let tooltip = '<span class="tooltip">' + name + '</span>';
+    phrase.addEventListener('pointerenter', () => {
+     phrase.innerHTML += tooltip;
+    });
+    phrase.addEventListener('pointerleave', () => {
+     phrase.innerHTML = words;
+    })
+   }
+  }
+ })
 
  return (
   <div id='reader'>
     <div id='center'>
-     <StatementBox sample={sample} />
+     <StatementBox sample={sample} glossary={glossary} />
 	  	<Glossary glossary={glossary} />    </div>
 		<div id='coder'>
       <CodeDropdown current={statementID} glossary={glossary} />
