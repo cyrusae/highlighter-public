@@ -1,5 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Offcanvas from 'react-bootstrap/Offcanvas'
+
+export const FlagBar: React.FC<{}> = () => {
+ return (
+  <div id='flagbar' />
+ )
+}
 
 const FlagTracker: React.FC<{current: number}> = ({current}) => {
  console.log(current);
@@ -19,6 +27,15 @@ const FlagTracker: React.FC<{current: number}> = ({current}) => {
   });
  })
 
+ useEffect(() => {
+  const bar = document.getElementById('flagbar')
+  if (localStorage.getItem('flag') === null) {
+   bar.style.backgroundColor = "#53565A";
+  } else {
+   bar.style.backgroundColor = "#610C04"
+  }
+ })
+
  return (
   <div className='flagtracker'>
    <details>
@@ -26,18 +43,18 @@ const FlagTracker: React.FC<{current: number}> = ({current}) => {
     <div id='flags'>
      <ul dangerouslySetInnerHTML={{__html: flagged}}></ul>
     </div>
-    <button type='button' onClick={() => axios.post('http://localhost:3001/saveflags', {
+    <Button size="sm" type='button' onClick={() => axios.post('http://localhost:3001/saveflags', {
      content: flagged,
      type: 'flags'
     })}>
      Save flags
-    </button>
-    <button type='button' onClick={() => navigator.clipboard.writeText(flagged)}>
+    </Button>
+    <Button size="sm" type='button' onClick={() => navigator.clipboard.writeText(flagged)}>
      Copy flags
-    </button>
-    <button type='button' onClick={() => {localStorage.clear(); setFlagged('')}}>
+    </Button>
+    <Button size="sm" type='button' onClick={() => {localStorage.clear(); setFlagged('')}}>
      Clear flags
-    </button>
+    </Button>
    </details>
   </div>
  )
