@@ -1,7 +1,7 @@
 /* Basic formatting */
 
 * {
- font-size: 28px;
+ font-size: 25px;
  color: black;
  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -11,6 +11,8 @@
  max-width: 80%;
  margin: 0 auto;
 }*/
+
+/* Bottom bar codebook */ 
 
 .feet {
  width: 70vw;
@@ -24,7 +26,6 @@
 
 #codebook {
  z-index: 3;
- margin-left: 3rem;
  position: fixed;
 }
 
@@ -35,6 +36,16 @@
 #glable {
  background-color: white;
  position: relative;
+}
+
+/* Sidebar flags */
+
+#flagbar {
+ left: 0;
+ top: 10vh;
+ bottom: 0;
+ width: 3vw;
+ position: absolute;
 }
 
 /* Increase of emphasis */
@@ -53,16 +64,21 @@ div {
  margin: 0.5rem;
 }
 
-.statement {
+#reader .statement {
  left: 10vw;
  width: 60%;
+}
+
+main > .statement {
+ width: 80%;
+ margin: 0 auto;
 }
 
 .statement .metadata, .statebox, summary {
  background: white;
 }
 
-.statebox {
+.statebox, main .statement {
  padding: 0.5rem;
  margin-top: 0.5rem;
  line-height: 1.75;
@@ -212,7 +228,7 @@ mark:hover .toltip, .toltip:hover {
 .flagtracker {
  position: fixed;
  overflow-y: scroll;
- margin-top: 30vh;
+ margin-top: 35vh;
  width: 25vw;
  margin-bottom: 20vh;
  right: 5px;

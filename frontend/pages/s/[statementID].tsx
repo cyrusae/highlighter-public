@@ -6,7 +6,8 @@ import { Nav } from '../../components/Navigation'
 import Glossary, { FootBook, CodeList } from '../../components/Glossary'
 import CodeDropdown from '../../components/CodePicker'
 import StatementBox from '../../components/Workspace'
-import FlagTracker from '../../components/FlagTracker'
+import FlagTracker, { FlagBar } from '../../components/FlagTracker'
+import { Row, Col, Container, Stack } from 'react-bootstrap'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -48,6 +49,7 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
 
  return (
   <div id='reader'>
+   <FlagBar />
    <StatementBox sample={sample} glossary={glossary} />
 		<div id='coder'>
    <CodeDropdown current={statementID} glossary={glossary} />

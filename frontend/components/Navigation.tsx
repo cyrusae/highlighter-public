@@ -3,6 +3,10 @@ import Router from 'next/router'
 import axios from 'axios'
 import { ReaderProps } from '../pages/s/[statementID]'
 import { StatementProps } from './Statement'
+import Button from 'react-bootstrap/Button'
+import Navbar from 'react-bootstrap/Navbar'
+import Stack from 'react-bootstrap/Stack'
+
 
 export type NavButtonProps = {
  action: 'next' | 'prev' | 'flag' | 'pause';
@@ -20,7 +24,7 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 
  if (act === 'next') {
   return (
-   <button id='nextButton' type='button' className='button' onClick={() => {
+   <Button id='nextButton' type='button' className='button' onClick={() => {
 					const now = Date.now();
     	axios.put('http://localhost:3001/leave/', { 
 						currentID: current,
@@ -28,17 +32,17 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 					});
      Router.push('/s/', `/s/${next}`)}}>
       {act}
-   </button>
+   </Button>
   )} else if (act === 'prev') {
     return (
-     <button id='prevButton' type='button' className='button' onClick={() => {
+     <Button id='prevButton' type='button' className='button' onClick={() => {
       axios.put('http://localhost:3001/leave/', { currentID: current });
       Router.push('/s/', `/s/${prev}`)}}>
        {act}
- 		</button>
+ 		</Button>
  	)} else if (act === 'flag') {
    	return (
-      <button id='flagButton' type='button' className='button' onClick={() => {
+      <Button variant="danger" id='flagButton' type='button' className='button' onClick={() => {
        const now = Date.now();
   				 axios.put('http://localhost:3001/leave/', { 
 								currentID: current,
@@ -46,10 +50,10 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 							});
 							}}>
 							{act}
-						</button>
+						</Button>
  	)} else {
 				return (
-   	 <button 
+   	 <Button 
      id='pauseButton' type='button' className='button' 
 					onClick={() => {
 						const now = Date.now();
@@ -58,32 +62,32 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 							now: now,
 						});}}>
    	   {act}
-  	  </button>
+  	  </Button>
   )
   }
 }
 
 export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
  return (
-  <div id='nav'>
+  <Stack gap={2} id='nav'>
    <NavButton from={current} act={'prev'} />
    <NavButton from={current} act={'pause'} />
    <NavButton from={current} act={'flag'} />
    <NavButton from={current} act={'next'} />
-  </div>
+  </Stack>
  )
 }
 
 export const NavMini: React.FC<{current: number}> = ({current}) => {
 	return (
 		<div className='multinav'>
-			<button id='flagButton' type='button' className='button' onClick={() => {
+			<Button variant="outline-danger" id='flagButton' type='button' className='button' onClick={() => {
   		 axios.put('http://localhost:3001/leave/', { 
 					currentID: current,
 				});
 			}}>
 				flag
-			</button>
+			</Button>
 		</div>
 	)
 }
