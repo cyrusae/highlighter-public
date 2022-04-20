@@ -17,7 +17,7 @@ const UnCodeButton: React.FC<{current: number}> = ({ current }) => {
   })
  })
  return (
-  <button id='unCodeButton'>Uncode</button>
+  <button id='unCodeButton' className='codebutton uncode'>Uncode</button>
  )
 }
 

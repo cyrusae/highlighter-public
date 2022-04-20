@@ -7,7 +7,7 @@ import { CodeList } from './Glossary';
 const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}> = ({code, current, glossary}) => {
  return (
   <>
-  <button id='codeButton' onClick={() => {
+  <button id='codeButton' className='codebutton' onClick={() => {
    if (typeof document !== undefined) {
    const statement = document.getElementById('statebox');
    const highlight = document.getSelection();
@@ -15,7 +15,7 @@ const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}
    const html = statement.innerHTML.toString();
    const highlighted = '<mark class="' + code + '">' + phrase + '</mark>';
    const output = html.replace(phrase, highlighted);
-   console.log(output);
+//   console.log(output);
    statement.innerHTML = output;
    const plaintext = statement.innerText;
    const now = Date.now();
