@@ -21,7 +21,7 @@ const FlagTracker: React.FC<{current: number}> = ({current}) => {
 
  return (
   <div className='flagtracker'>
-   <details open>
+   <details>
     <summary>Statements flagged this session:</summary>
     <div id='flags'>
      <ul dangerouslySetInnerHTML={{__html: flagged}}></ul>

@@ -3,11 +3,11 @@ import { GetServerSideProps } from 'next'
 import Router from 'next/router';
 import axios from 'axios';
 import { CodeList } from './Glossary';
+import Button from 'react-bootstrap/Button'
 
 const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}> = ({code, current, glossary}) => {
  return (
-  <>
-  <button id='codeButton' className='codebutton' onClick={() => {
+  <Button variant='primary' id='codeButton' className='codebutton' onClick={() => {
    if (typeof document !== undefined) {
    const statement = document.getElementById('statebox');
    const highlight = document.getSelection();
@@ -33,8 +33,7 @@ const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}
 //    ID of statement we're on (current) to tie the record to it; actually I think that might be it
   }}>
    Code
-  </button>
-  </>
+  </Button>
  )
 }
 

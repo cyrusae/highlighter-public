@@ -3,17 +3,38 @@
 * {
  font-size: 28px;
  color: black;
- line-height: 1.35;
  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-body {
- background-color: #e0e0e0;
-}
 
-body > *::not(#nav) {
+/*body > *:not(#nav), body:not(#nav), body:not(Table), body :not(Table) {
  max-width: 80%;
  margin: 0 auto;
+}*/
+
+.feet {
+ width: 70vw;
+ z-index: 2;
+ bottom: 0;
+ right: 0;
+ left: 0;
+ position: fixed;
+ background: white;
+}
+
+#codebook {
+ z-index: 3;
+ margin-left: 3rem;
+ position: fixed;
+}
+
+#glable, #glable td, #glable td *, #glable th, #glable th * {
+ font-size: 0.8rem;
+}
+
+#glable {
+ background-color: white;
+ position: relative;
 }
 
 /* Increase of emphasis */
@@ -23,13 +44,18 @@ div {
  padding: 0.5rem;
 }
 
-main .statement {
+.statement, main .statement {
  background-color: #fcfcfc;
 }
 
 .statement, details {
  background: #f0f0f0;
  margin: 0.5rem;
+}
+
+.statement {
+ left: 10vw;
+ width: 60%;
 }
 
 .statement .metadata, .statebox, summary {
@@ -39,6 +65,7 @@ main .statement {
 .statebox {
  padding: 0.5rem;
  margin-top: 0.5rem;
+ line-height: 1.75;
 }
 
 /* Highlights */
@@ -54,6 +81,10 @@ mark, mark * {
 mark {
 /* font-weight: lighter; */
  font-style: italic;
+}
+
+mark > b {
+ font-style: normal;
 }
 
 /* REPLACE THIS SECTION WHEN YOU HAVE CODES */
@@ -72,7 +103,7 @@ mark {
 /* "!important" is generally considered bad practice, but was necessary to override every other source of background color. */
 
 /* add a tooltip: */ 
-mark .tooltip, mark + .tooltip {
+mark .toltip, mark + .toltip {
  visibility: hidden;
  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
  font-size: 0.7rem;
@@ -90,7 +121,7 @@ mark .tooltip, mark + .tooltip {
  margin-right: -100px;
 }
 
-mark .tooltip::after {
+mark .toltip::after {
  content: "";
  position: absolute;
  bottom: 100%;
@@ -101,13 +132,14 @@ mark .tooltip::after {
  border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
 }
 
-mark:hover .tooltip, .tooltip:hover {
+mark:hover .toltip, .toltip:hover {
  visibility: visible;
  display: inline-block;
  z-index: 10;
 }
 
-/* Glossary */
+/* Glossary in a details pane */
+/* Note: the 'details' glossary is .glossary, the footer glossary is #glossary */
 .glossary, .glossary * {
  background: white;
 }
@@ -138,32 +170,25 @@ mark:hover .tooltip, .tooltip:hover {
  font-family: 'Victor Mono', 'Courier Prime', monospace;
 }
 
+#reader {
+ overflow-y: hidden;
+}
+
 #reader #statebox {
  padding: 1.3rem;
 }
 
 #reader #nav {
  position: fixed;
- margin: 0 auto;
- bottom: 0;
- width: 95vw;
- background: #e0e0e0;
- display: flex;
- justify-content: space-around;
+ bottom: 5vh;
+ right: 0;
 }
 
 #reader .statement {
  overflow-y: scroll;
- max-height: 80vh;
-}
-
-#reader #center {
- position: absolute;
- right: 26vw;
- left: 1vw;
- overflow-y: scroll;
- height: 85vh;
- bottom: 10vh;
+ height: 80vh;
+ width: 70vw;
+ left: 5vw;
 }
 
 #coder {
@@ -184,9 +209,11 @@ mark:hover .tooltip, .tooltip:hover {
  margin-top: 1rem;
 }
 
-#codepick + .flagtracker {
+.flagtracker {
+ position: fixed;
  overflow-y: scroll;
- margin-top: 20vh;
+ margin-top: 30vh;
+ width: 25vw;
  margin-bottom: 20vh;
  right: 5px;
 }
