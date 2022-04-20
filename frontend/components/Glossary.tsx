@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { GetServerSideProps } from 'next'
 import { CodeProps } from './Colormaker'
 import Table from 'react-bootstrap/Table'
+import Button from 'react-bootstrap/Button'
 
 export type CodeList = {
  shortCode: string;
@@ -34,13 +35,12 @@ export const FootBook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
    flossary.style.overflowY = "scroll";
    glable.style.height = "50vh";
    flossary.style.height = "50vh";
-//   openbook.style.bottom = "50vh";
+   openbook.style.bottom = "50vh";
   }
  })
  return (
   <div id="glossary" className="feet">
-   <button id='codebook' onClick={() => { if (footer === true) { setFooter(false) } else { setFooter(true) }; }}>Codebook</button>
-   <div></div>
+   <Button variant="outline-secondary" size="sm" id='codebook' onClick={() => { if (footer === true) { setFooter(false) } else { setFooter(true) }; }}>Codebook</Button>
    <Table id="glable" size="sm" striped bordered hover>
     <thead>
      <tr>
