@@ -25,7 +25,7 @@ const ReCodeButton: React.FC<{code: string, current: number, glossary: CodeList[
   })
  });
  return (
-  <Button size="sm" variant='outline-warning' id='reCodeButton' className='codebutton recode'>Recode</Button>
+  <Button size="sm" variant='outline-warning' id='reCodeButton' className='ms-auto codebutton recode' disabled>Recode</Button>
  )
 }
 
