@@ -1,15 +1,18 @@
 import react from 'react'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
+import Layout from './Layout'
 
-const Multiview: React.FC<{props}> = (props) => {
+const Multiview: React.FC<{}> = (props) => {
  return (
-  <Container fluid="md">
+  <Layout>
+  <Container fluid="md" className="multiview">
    <Row>
     <Col>
      {props.children}
     </Col>
    </Row>
   </Container>
+  </Layout>
  )
 }
 
