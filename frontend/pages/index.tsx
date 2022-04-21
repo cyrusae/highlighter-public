@@ -4,7 +4,8 @@ import Statement, { StatementProps } from '../components/Statement'
 import { NavMini } from '../components/Navigation'
 import Card from 'react-bootstrap/Card'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
-
+import Layout from '../components/Layout'
+import Multiview from '../components/Multiview'
 
 type Props = {
   pile: StatementProps[]
@@ -12,13 +13,13 @@ type Props = {
 
 const Desk: React.FC<Props> = props => {
   return (
-    <main>
+    <Multiview>
      {props.pile.map(statement => (
       <Card body key={statement.statementID} className="statement">
        <Statement statement={statement} />
      </Card>
     ))}
-  </main>
+  </Multiview>
   )
 }
 

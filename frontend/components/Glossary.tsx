@@ -11,6 +11,17 @@ export type CodeList = {
  colorCode: string | null;
 }
 
+export const Codebook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
+ const [show, setShow] = useState(false);
+ const handleClose = () => setShow(false);
+ const handleOpen = () => setShow(true);
+ return (
+  <>
+   <div id='codeS' onClick={handleOpen}>📖</div>
+  </>
+ )
+}
+
 export const FootBook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
 
  const [ footer, setFooter ] = useState(Boolean)

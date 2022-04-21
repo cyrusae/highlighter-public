@@ -1,11 +1,49 @@
 /* Basic formatting */
 
-* {
+body, html {
  font-size: 25px;
  color: black;
  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+#__next {
+ min-height: 100vh;
+/* width: 100%;
+ overflow: hidden; */
+ background-color: #e0e0e0;
+}
+/*
+* > .container-fluid {
+ overflow: hidden;
+} */
+
+.container-fluid {
+ margin: 0;
+}
+
+/* things in the ".sideshow" */
+.sideshow {
+ background-color: black;
+ color: white;
+ z-index: 2;
+}
+
+/* Button for flagbar:*/
+#flagS {
+ top: 0;
+}
+
+#flagS, #codeS {
+ left: 0;
+ position: absolute;
+ font-size: 50px;
+ width: 50px;
+}
+
+/*Button for codebook:*/
+#codeS {
+ bottom: 0;
+}
 
 /*body > *:not(#nav), body:not(#nav), body:not(Table), body :not(Table) {
  max-width: 80%;
@@ -50,12 +88,8 @@
 
 /* Increase of emphasis */
 
-div {
-/* background: #efefef; */
- padding: 0.5rem;
-}
 
-.statement, main .statement {
+.statement, .multiview .statement {
  background-color: #fcfcfc;
 }
 
@@ -64,24 +98,28 @@ div {
  margin: 0.5rem;
 }
 
-#reader .statement {
- left: 10vw;
- width: 60%;
+.multiview {
+ font-size: 25px;
+ overflow-y: scroll;
+ margin: 0 auto;
 }
 
-main > .statement {
- width: 80%;
- margin: 0 auto;
+.multiview > .col {
+ overflow-y: scroll;
 }
 
 .statement .metadata, .statebox, summary {
  background: white;
 }
 
-.statebox, main .statement {
+.statebox, .multiview .statement {
  padding: 0.5rem;
  margin-top: 0.5rem;
  line-height: 1.75;
+}
+
+#envelope {
+ height: 100%;
 }
 
 /* Highlights */
@@ -207,7 +245,7 @@ mark:hover .toltip, .toltip:hover {
  left: 5vw;
 }
 
-#coder {
+/* #coder {
  position: absolute;
  right: 0;
  top: 0;
@@ -223,7 +261,7 @@ mark:hover .toltip, .toltip:hover {
 
 #codepick select {
  margin-top: 1rem;
-}
+} */
 
 .flagtracker {
  position: fixed;

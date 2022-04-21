@@ -13,7 +13,7 @@ const Layout: React.FC<{}> = (props) => {
  return (
   <Container fluid>
   <Row>
-   <Col style={{ paddingLeft: 0, paddingRight: 0 }} className="col-auto">
+   <Col style={{ paddingLeft: 0, paddingRight: 0 }} className="sideshow col-auto">
     <FlagBar />
    </Col>
    {props.children}

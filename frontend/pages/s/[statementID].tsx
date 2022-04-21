@@ -8,6 +8,7 @@ import CodeDropdown from '../../components/CodePicker'
 import StatementBox from '../../components/Workspace'
 import FlagTracker, { FlagBar } from '../../components/FlagTracker'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
+import Layout from '../../components/Layout'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -47,17 +48,22 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
   }
  })
 
+ //TO DO: add FlagTracker back in as a layout component once rewritten
  return (
-  <div id='reader'>
-   <FlagBar />
+  <Layout>
+   <Col md={8}>
    <StatementBox sample={sample} glossary={glossary} />
-		<div id='coder'>
-   <CodeDropdown current={statementID} glossary={glossary} />
-   <FlagTracker current={statementID}/>
-   <Nav current={statement} />
-  </div>
-   <FootBook glossary={glossary} />
-  </div>
+   </Col>
+   <Col md={4}>
+    <Row>
+     <CodeDropdown current={statementID} glossary={glossary} />
+    </Row>
+    <Row>
+     <Nav current={statement} />
+    </Row>
+   </Col> 
+  <FootBook glossary={glossary} />
+  </Layout>
  )
 }
 

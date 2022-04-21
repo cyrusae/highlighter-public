@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import axios from 'axios'
 import { ReaderProps } from '../pages/s/[statementID]'
@@ -35,7 +35,7 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
    </Button>
   )} else if (act === 'prev') {
     return (
-     <Button id='prevButton' type='button' className='button' onClick={() => {
+     <Button disabled id='prevButton' type='button' className='button' onClick={() => {
       axios.put('http://localhost:3001/leave/', { currentID: current });
       Router.push('/s/', `/s/${prev}`)}}>
        {act}
@@ -68,8 +68,32 @@ const NavButton: React.FC<{from: ReaderProps; act: NavButtonProps["action"]}> = 
 }
 
 export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
+
+	const [ flagged, setFlagged ] = useState('');
+	useEffect(() => {
+		const bg = document.getElementById('flagS');
+  let flags = localStorage.getItem('flag');
+		bg.style.backgroundColor = '#53565A';
+		if (flags !== null) {
+			setFlagged(localStorage.getItem('flag'));
+			bg.style.backgroundColor = '#610C04';
+		}; 
+  if (flags === null) {
+			flags = '';
+	  document.getElementById('flagButton').addEventListener('click', function flag() {
+  	 if (flags.includes(current.toString()) === false) {
+  	  const commentary = prompt('Why flag this?', '');
+  	  flags += ('<li>' + current + ': ' + commentary + '</li>');
+					return;
+ 	  };
+ 	  localStorage.setItem('flag', flags);
+ 	  setFlagged(localStorage.getItem('flag'));
+				bg.style.backgroundColor = '#53565A';
+ 	 });
+		}
+ })
  return (
-  <Stack gap={2} id='nav'>
+  <Stack gap={1} id='nav'>
    <NavButton from={current} act={'prev'} />
    <NavButton from={current} act={'pause'} />
    <NavButton from={current} act={'flag'} />

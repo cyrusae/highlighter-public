@@ -6,6 +6,7 @@ export const FlagBar: React.FC<{}> = () => {
  const [show, setShow] = useState(false);
  const handleClose = () => setShow(false);
  const handleOpen = () => setShow(true);
+
  return (
   <>
    <div id='flagS' onClick={handleOpen}>⚑</div>
