@@ -1,7 +1,6 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import Statement, { StatementProps } from '../components/Statement'
-import { NavMini } from '../components/Navigation'
 import Card from 'react-bootstrap/Card'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
 import Layout from '../components/Layout'
