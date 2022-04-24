@@ -21,9 +21,8 @@ console.log("randomizer is here")
 //Not working yet!
 
 router.get('/', async (req, res, next) => {
- const grabBag = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 10`;
- const grab = Math.ceil(Math.random() * grabBag.length);
- const statement = grabBag[grab];
+ const grabBag = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 1`;
+ const statement = grabBag[0];
  console.log("randomly-grabbed statement has the ID:"); console.log(statement.statementID);
  res.location(`/s/${statement.statementID}`)
 })
