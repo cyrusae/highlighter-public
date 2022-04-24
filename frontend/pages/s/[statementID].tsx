@@ -54,13 +54,16 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
    <Col md={8}>
    <StatementBox sample={sample} glossary={glossary} />
    </Col>
-   <Col md={4}>
-    <Row>
+   <Col className='barside' md={4}>
+    <Stack>
+     <Row className='coder'>
      <CodeDropdown current={statementID} glossary={glossary} />
     </Row>
-    <Row>
+    <Row></Row>
+    <Row className='navvy'>
      <Nav current={statement} />
     </Row>
+    </Stack>
    </Col> 
   <FootBook glossary={glossary} />
   </Layout>
