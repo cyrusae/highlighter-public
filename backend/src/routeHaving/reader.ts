@@ -31,12 +31,12 @@ router.get('/:statementID', async (req, res, next) => {
 // console.log("value of 'statementID':"); console.log(statementID)
 
 	const recent = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY lastSeenAsInt DESC LIMIT 2`;
-	console.log("output of 'recent' raw query:"); console.log(recent);
+//	console.log("output of 'recent' raw query:"); console.log(recent); //troubleshooting
 	let fresh: number[] = [];
 	for (let i = 0; i < recent.length; i++) {
 		fresh.push(recent[i].statementID);
 	}
-	console.log("contents of fresh:"); console.log(fresh);
+//	console.log("contents of fresh:"); console.log(fresh);
 	const lastOne = (fresh: number[], statementID: number) => {
 		if (fresh[0] === statementID) {
 			return fresh[1];
@@ -45,15 +45,15 @@ router.get('/:statementID', async (req, res, next) => {
 		}
 	}
 	const prevID = lastOne(fresh, statementID);
-	console.log("lastOne result as prevID:"); console.log(prevID);
+//	console.log("lastOne result as prevID:"); console.log(prevID);
 
 	const oldest = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY lastSeenAsInt ASC LIMIT 2`;
-	console.log("output of oldest query:"); console.log(oldest);
+//	console.log("output of oldest query:"); console.log(oldest);
 	let stale: number[] = [];
 	for (let i = 0; i < oldest.length; i++) {
 		stale.push(oldest[i].statementID);
 	}
-	console.log("contents of stale:"); console.log(stale);
+//	console.log("contents of stale:"); console.log(stale);
 	const nextOne = (stale: number[], statementID: number) => {
 		if (stale[0] === statementID) {
 			return stale[1];
@@ -62,7 +62,24 @@ router.get('/:statementID', async (req, res, next) => {
 		}
 	}
 	const nextID = nextOne(stale, statementID);
-	console.log("resulting nextOne nextID:"); console.log(nextID);
+//	console.log("resulting nextOne nextID:"); console.log(nextID);
+
+//THIS NEEDS TESTED:
+	const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 4`
+
+	let randomIDs: number[] = [];
+	for (let i = 0; i < random.length; i++) {
+		randomIDs.push(random[1].statementID);
+	}
+	for (let i = 0; i < randomIDs.length; i++) {
+		const contender = randomIDs[i];
+		if (contender != nextID || contender != prevID || contender != statementID) {
+			i = randomIDs.length; //stop loop
+			return contender;
+		} 
+	}
+//END SECTION THAT NEEDS TESTED
+//Test and then integrate into a) response and b) buttons
 
  try 
  {{console.log("check statementID:"); console.log(statementID);
@@ -73,7 +90,7 @@ router.get('/:statementID', async (req, res, next) => {
  });
 // console.log(statement); //troubleshooting tool 
 
- const output = [statement, nextID, prevID]; console.log("value of 'output':"); console.log(output); //troubleshooting tool
+// const output = [statement, nextID, prevID]; console.log("value of 'output':"); console.log(output); //troubleshooting tool
 
  res.json({statement: statement, nextID: nextID, prevID: prevID})}}
  catch (e) {console.log(e)};
