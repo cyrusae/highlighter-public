@@ -7,6 +7,7 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+//Note: some of these models are suggestions for expanded features and may not suit your needs. This schema can and should be edited, but use caution. Detailed instructions on what "use caution" means in this context TK.
 model CodingNotes {
   dateUpdated   DateTime    @default(now()) @updatedAt
   noteContent   String
