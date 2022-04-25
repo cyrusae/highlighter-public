@@ -7,7 +7,7 @@ import unreads from './routeHaving/swathes/inbox'
 import reads from './routeHaving/swathes/outbox'
 import all from './routeHaving/swathes/all'
 
-import mobility from './routeHaving/navigation/moving'
+//import mobility from './routeHaving/navigation/moving'
 import pinstick from './routeHaving/navigation/pinstick'
 import random from './routeHaving/navigation/random'
 
@@ -38,7 +38,7 @@ app.use('/recode/', recode)
 app.use('/uncode/', uncode)
 
 app.use('/saveflags', savenote)
-app.use(`/go`, mobility) 
+//app.use(`/go`, mobility) 
 app.use(`/statement/`, reader)
 app.use('/leave/', pinstick)
 
