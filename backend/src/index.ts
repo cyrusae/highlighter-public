@@ -2,20 +2,25 @@ import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
 
+//display statements:
 import reader from './routeHaving/reader'
 import unreads from './routeHaving/swathes/inbox' 
 import reads from './routeHaving/swathes/outbox'
 import all from './routeHaving/swathes/all'
 
+//navigation and session management:
 import pinstick from './routeHaving/navigation/pinstick'
-import random from './routeHaving/navigation/random'
+//import random from './routeHaving/navigation/random'
 
+//handle coding:
 import gloss from './routeHaving/maintenance/codegloss'
 import newcode from './routeHaving/maintenance/newcode'
+import savenote from './routeHaving/maintenance/notetake'
+
+//highlight:
 import highlighter from './routeHaving/highlighter'
 import recode from './routeHaving/recode'
 import uncode from './routeHaving/uncode'
-import savenote from './routeHaving/maintenance/notetake'
 
 const prisma = new PrismaClient()
 const app = express()

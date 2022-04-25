@@ -11,7 +11,7 @@ const DoingButtons: React.FC<{}> = () => {
    <Col md={4}></Col>
    <Col md={4}>
     <Row>
-     <Stack>
+     <Stack gap={2}>
       <Button href='/desk' size='lg' variant='primary'>
        Fresh statements
       </Button>
@@ -31,3 +31,5 @@ const DoingButtons: React.FC<{}> = () => {
   </Layout>
  )
 }
+
+export default DoingButtons 

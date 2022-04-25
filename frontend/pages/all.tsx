@@ -2,7 +2,9 @@ import React from 'react'
 import { GetServerSideProps } from 'next'
 import Statement, { StatementProps } from '../components/Statement'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 import Multiview from '../components/Multiview'
+import Router from 'next/router'
 
 type Props = {
   pile: StatementProps[]
@@ -12,9 +14,12 @@ const Desk: React.FC<Props> = props => {
   return (
     <Multiview>
      {props.pile.map(statement => (
-      <Card body key={statement.statementID} className="statement">
-       <Statement statement={statement} />
-     </Card>
+      <div key={statement.statementID} onClick={() => {
+       Router.push('/s/[statementID]', `/s/${statement.statementID}`)
+      }}>
+      <Statement statement={statement} />
+      </div>
+     
     ))}
   </Multiview>
   )

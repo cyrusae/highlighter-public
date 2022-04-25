@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Router from 'next/router'
+import { Button, Card } from 'react-bootstrap';
 
 export type StatementProps = {
  statementID: number;
@@ -12,13 +13,28 @@ export type StatementProps = {
 }
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
-  console.log(statement);
-  let content = statement.content;
+//  console.log(statement);
+ let content = statement.content;
+ let IDstring = statement.statementID.toString()
+//removed:
+//  
+// useEffect(() => {
+//  let the = document.getElementById(IDstring);
+//  the.addEventListener(//'onclick', () => {
+//   Router.push('/s/[statementID]', `/s/${statement.statementID}`)
+//  })
+// })
+
 
  return (
-  <div className='statementBox' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>
-    <div className='statement' id={statement.statementID.toString()} dangerouslySetInnerHTML={{__html: content}}/>
-  </div>
+ <div id={IDstring} className='statementBox' > 
+ <Card body>
+  <Card.Text>
+   <div className='statement' id={statement.statementID.toString()} dangerouslySetInnerHTML={{__html: content}}/>
+  </Card.Text>
+  <Button onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+ </Card>
+ </div>
  )
 }
 

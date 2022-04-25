@@ -65,19 +65,19 @@ router.get('/:statementID', async (req, res, next) => {
 //	console.log("resulting nextOne nextID:"); console.log(nextID);
 
 //THIS NEEDS TESTED:
-	const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 4`
+//	const random = await prisma.$queryRaw<Statement[]>`SELECT * FROM Statement ORDER BY random() LIMIT 4`
 
-	let randomIDs: number[] = [];
-	for (let i = 0; i < random.length; i++) {
-		randomIDs.push(random[1].statementID);
-	}
-	for (let i = 0; i < randomIDs.length; i++) {
-		const contender = randomIDs[i];
-		if (contender != nextID || contender != prevID || contender != statementID) {
-			i = randomIDs.length; //stop loop
-			return contender;
-		} 
-	}
+//	let randomIDs: number[] = [];
+//	for (let i = 0; i < random.length; i++) {
+//		randomIDs.push(random[1].statementID);
+//	}
+//	for (let i = 0; i < randomIDs.length; i++) {
+//		const contender = randomIDs[i];
+//		if (contender != nextID || contender != prevID || contender != statementID) {
+//			i = randomIDs.length; //stop loop
+//			return contender;
+//		} 
+//	}
 //END SECTION THAT NEEDS TESTED
 //Test and then integrate into a) response and b) buttons
 

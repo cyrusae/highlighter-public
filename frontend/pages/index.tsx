@@ -5,20 +5,17 @@ import Card from 'react-bootstrap/Card'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
 import Layout from '../components/Layout'
 import Multiview from '../components/Multiview'
+import DoingButtons from '../components/Signposts'
 
 type Props = {
   pile: StatementProps[]
 }
 
-const Desk: React.FC<Props> = props => {
+const Desk: React.FC<{}> = () => {
   return (
-    <Multiview>
-     {props.pile.map(statement => (
-      <Card body key={statement.statementID} className="statement">
-       <Statement statement={statement} />
-     </Card>
-    ))}
-  </Multiview>
+   <Layout>
+    <DoingButtons />
+   </Layout>
   )
 }
 
