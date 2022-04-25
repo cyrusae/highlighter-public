@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Router from 'next/router'
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Stack } from 'react-bootstrap';
 
 export type StatementProps = {
  statementID: number;
@@ -27,12 +27,17 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
 
 
  return (
- <div id={IDstring} className='statementBox' > 
+ <div id={`${statement.statementID}`} className='statementBox' > 
  <Card body>
   <Card.Text>
    <div className='statement' id={statement.statementID.toString()} dangerouslySetInnerHTML={{__html: content}}/>
   </Card.Text>
-  <Button onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+  <Stack direction='horizontal'>
+  <Button variant='danger' size='sm' id={`${statement.statementID}`} className='flagCard' disabled>flag</Button>
+  <Button variant='info' size='sm' className='ms-auto' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+  
+  </Stack>
+  
  </Card>
  </div>
  )
