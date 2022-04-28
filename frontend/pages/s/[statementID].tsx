@@ -8,6 +8,7 @@ import CodeDropdown from '../../components/CodePicker'
 import StatementBox from '../../components/Workspace'
 import FlagTracker, { FlagBar } from '../../components/FlagTracker'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
+import Layout from '../../components/Layout'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -20,12 +21,9 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
  let sample = statement.statement;
  let statementID: number = sample["statementID"];
 // console.log('statementID attempts to log the current ID:'); console.log(statementID);
-// let content = sample["content"];
-// console.log("statementID attempts to log the statement content:"); console.log(content);
-// let next = statement.nextID;
-// console.log("statementID attempts to log next ID"); console.log(next);
-// let prev = statement.prevID;
-// console.log("statementID attempts to log the previous ID"); console.log(prev);
+// let content = sample["content"]; console.log("statementID attempts to log the statement content:"); console.log(content);
+// let next = statement.nextID; console.log("statementID attempts to log next ID"); console.log(next);
+// let prev = statement.prevID; console.log("statementID attempts to log the previous ID"); console.log(prev);
 
  useEffect(() => {
   const statement = document.getElementById('statement');
@@ -47,17 +45,25 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
   }
  })
 
+ //TO DO: add FlagTracker back in as a layout component once rewritten
  return (
-  <div id='reader'>
-   <FlagBar />
+  <Layout>
+   <Col md={8}>
    <StatementBox sample={sample} glossary={glossary} />
-		<div id='coder'>
-   <CodeDropdown current={statementID} glossary={glossary} />
-   <FlagTracker current={statementID}/>
-   <Nav current={statement} />
-  </div>
-   <FootBook glossary={glossary} />
-  </div>
+   </Col>
+   <Col className='barside' md={4}>
+    <Stack>
+     <Row className='coder'>
+     <CodeDropdown current={statementID} glossary={glossary} />
+    </Row>
+    <Row></Row>
+    <Row className='navvy'>
+     <Nav current={statement} />
+    </Row>
+    </Stack>
+   </Col> 
+  <FootBook glossary={glossary} />
+  </Layout>
  )
 }
 
