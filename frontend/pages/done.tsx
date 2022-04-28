@@ -13,7 +13,6 @@ const Desk: React.FC<Props> = props => {
      {props.pile.map(statement => (
       <div key={statement.statementID} className="statement">
        <Statement statement={statement} />
-       <NavMini current={statement.statementID} />
      </div>
     ))}
   </main>
