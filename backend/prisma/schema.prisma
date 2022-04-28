@@ -2,10 +2,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
+//put the name of your database file here if you have one, you probably don't want to call it 'dev'.
 datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
 }
+
+//Note: some of these models are suggestions for expanded features and may not suit your needs. This schema can and should be edited, but use caution. Detailed instructions on what "use caution" means in this context TK.
 
 model CodingNotes {
   dateUpdated   DateTime    @default(now()) @updatedAt
