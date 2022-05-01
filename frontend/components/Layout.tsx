@@ -1,9 +1,10 @@
 import { Row, Col, Container, Stack } from 'react-bootstrap'
-import react, { useEffect } from 'react'
+import react, { useEffect, useState } from 'react'
 import React from 'react'
 import { FlagBar } from './FlagTracker'
 
 const Layout: React.FC<{}> = (props) => {
+ const [flagged, setFlagged] = useState('')
  useEffect(() => {
   //add flags here!
  })

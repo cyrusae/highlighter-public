@@ -3,7 +3,6 @@ import Router from 'next/router'
 import axios from 'axios'
 import { ReaderProps } from '../pages/s/[statementID]'
 import Button from 'react-bootstrap/Button'
-import Navbar from 'react-bootstrap/Navbar'
 import Stack from 'react-bootstrap/Stack'
 import { Col, ButtonGroup, ToggleButtonGroup } from 'react-bootstrap'
 
@@ -19,17 +18,23 @@ const NavTogl: React.FC<{from: ReaderProps}> = ({ from }) => {
 	return (
 		<>
 		<ButtonGroup>
-			<Button size='lg' id='nextButton' type='button' className='ton' onClick={() => {
+			<Button size='lg' id='nextButton' type='button' className='button' onClick={() => {
 					const now = Date.now();
     	axios.put('http://localhost:3001/leave/',	{
 						currentID: currentID,
 						now: now,
 					});
      Router.push('/s/', `/s/${next}`)}}>
-
+						next
 			</Button>
-			<Button>
-
+			<Button size='lg' id='prevButton' type='button' className='button' onClick={() => {
+					const now = Date.now();
+    	axios.put('http://localhost:3001/leave/',	{
+						currentID: currentID,
+						now: now,
+					});
+     Router.push('/s/', `/s/${prev}`)}}>
+						back
 			</Button>
 		</ButtonGroup>
 		</>
@@ -96,10 +101,10 @@ export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
 	useEffect(() => {
 		const bg = document.getElementById('flagS');
   let flags = localStorage.getItem('flag');
-		bg.style.backgroundColor = '#53565A';
+//		bg.style.backgroundColor = '#53565A';
 		if (flags !== null) {
 			setFlagged(localStorage.getItem('flag'));
-			bg.style.backgroundColor = '#610C04';
+//			bg.style.backgroundColor = '#610C04';
 		}; 
   if (flags === null) {
 			flags = '';
@@ -125,9 +130,10 @@ export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
 }
 
 export const NavMini: React.FC<{current: number}> = ({current}) => {
+	const thisOne = current.toString();
 	return (
 		<div className='multinav'>
-			<Button variant="outline-danger" id='flagButton' type='button' className='button' onClick={() => {
+			<Button variant="outline-danger" id={thisOne} type='button' className='flagButton button' onClick={() => {
   		 axios.put('http://localhost:3001/leave/', { 
 					currentID: current,
 				});

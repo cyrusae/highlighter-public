@@ -10,7 +10,7 @@ export const FlagBar: React.FC<{}> = () => {
 }
 
 const FlagTracker: React.FC<{current: number}> = ({current}) => {
- console.log(current);
+// console.log(current);
  const [ flagged, setFlagged ] = useState('')
 
  // fix letting this track where it's heading:
