@@ -15,7 +15,6 @@ export type StatementProps = {
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
 //  console.log(statement);
  let content = statement.content;
- let IDstring = statement.statementID.toString()
 
  return (
  <div id={`${statement.statementID}`} className='statementBox' > 
@@ -24,8 +23,8 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
    <div className='statement' id={statement.statementID.toString()} dangerouslySetInnerHTML={{__html: content}}/>
   </Card.Text>
   <Stack direction='horizontal'>
-  <Button variant='danger' size='sm' id={`${statement.statementID}`} className='flagCard' disabled>flag</Button>
-  <Button variant='info' size='sm' className='ms-auto' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+  <Button variant='danger' size='sm' id={`${statement.statementID}`} className='flagCard flagButton button' disabled>flag</Button>
+  <Button variant='info' size='sm' className='ms-auto button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
   
   </Stack>
   
