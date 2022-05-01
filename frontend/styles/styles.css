@@ -89,8 +89,8 @@ body, html {
 /* Increase of emphasis */
 
 
-.statement, .multiview .statement {
- background-color: #fcfcfc;
+.statement, .multiview .statement, .statext {
+ background-color: #fff;
 }
 
 .statement, details {
@@ -108,11 +108,15 @@ body, html {
  overflow-y: scroll;
 }
 
+.statementBox {
+ margin: 1em;
+}
+
 .statement .metadata, .statebox, summary {
  background: white;
 }
 
-.statebox, .multiview .statement {
+.statebox, .multiview .statement, .statext {
  padding: 0.5rem;
  margin-top: 0.5rem;
  line-height: 1.75;
