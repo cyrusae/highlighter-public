@@ -8,7 +8,7 @@ const Multiview: React.FC<{}> = (props) => {
   <Container fluid="md" className="multiview">
    <Row>
     <Col></Col>
-    <Col md={8}>
+    <Col md={9}>
      {props.children}
     </Col>
     <Col></Col>
