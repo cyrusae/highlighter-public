@@ -16,15 +16,6 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
 //  console.log(statement);
  let content = statement.content;
  let IDstring = statement.statementID.toString()
-//removed:
-//  
-// useEffect(() => {
-//  let the = document.getElementById(IDstring);
-//  the.addEventListener(//'onclick', () => {
-//   Router.push('/s/[statementID]', `/s/${statement.statementID}`)
-//  })
-// })
-
 
  return (
  <div id={`${statement.statementID}`} className='statementBox' > 
