@@ -13,6 +13,7 @@ const FlagTracker: React.FC<{current: number}> = ({current}) => {
  console.log(current);
  const [ flagged, setFlagged ] = useState('')
 
+ // fix letting this track where it's heading:
  useEffect(() => {
   let flags = localStorage.getItem('flag');
   if (flags !== null) setFlagged(localStorage.getItem('flag')); 
@@ -27,6 +28,7 @@ const FlagTracker: React.FC<{current: number}> = ({current}) => {
   });
  })
 
+ //this isn't working both ways yet:
  useEffect(() => {
   const bar = document.getElementById('flagbar')
   if (localStorage.getItem('flag') === null) {
