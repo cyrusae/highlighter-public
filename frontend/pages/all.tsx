@@ -14,12 +14,9 @@ const Desk: React.FC<Props> = props => {
   return (
     <Multiview>
      {props.pile.map(statement => (
-      <div key={statement.statementID} onClick={() => {
-       Router.push('/s/[statementID]', `/s/${statement.statementID}`)
-      }}>
+      <div key={statement.statementID}>
       <Statement statement={statement} />
       </div>
-     
     ))}
   </Multiview>
   )
