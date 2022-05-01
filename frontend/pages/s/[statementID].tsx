@@ -9,6 +9,7 @@ import StatementBox from '../../components/Workspace'
 import FlagTracker, { FlagBar } from '../../components/FlagTracker'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
 import Layout from '../../components/Layout'
+import Singleview from '../../components/Singleview'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -47,11 +48,11 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
 
  //TO DO: add FlagTracker back in as a layout component once rewritten
  return (
-  <Layout>
+  <Singleview>
    <Col md={8}>
    <StatementBox sample={sample} glossary={glossary} />
    </Col>
-   <Col className='barside' md={4}>
+   <Col className='barside'>
     <Stack>
      <Row className='coder'>
      <CodeDropdown current={statementID} glossary={glossary} />
@@ -63,7 +64,7 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
     </Stack>
    </Col> 
   <FootBook glossary={glossary} />
-  </Layout>
+  </Singleview>
  )
 }
 
