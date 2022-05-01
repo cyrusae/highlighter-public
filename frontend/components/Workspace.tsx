@@ -15,7 +15,7 @@ const StatementBox: React.FC<{sample: StatementProps[], glossary: CodeList[]}> =
     ID: {statementID}
    </Card.Header>
    <Card.Text>
-    <div className="statext" dangerouslySetInnerHTML={{__html: content}}/>
+    <div id='statement' className="statext" dangerouslySetInnerHTML={{__html: content}}/>
    </Card.Text>
    <Card.Footer>
     
