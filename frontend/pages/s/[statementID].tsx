@@ -6,10 +6,10 @@ import { Nav } from '../../components/Navigation'
 import Glossary, { FootBook, CodeList } from '../../components/Glossary'
 import CodeDropdown from '../../components/CodePicker'
 import StatementBox from '../../components/Workspace'
-import FlagTracker, { FlagBar } from '../../components/FlagTracker'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
-import Layout from '../../components/Layout'
 import Singleview from '../../components/Singleview'
+import { NavFoot, NavTogl, NavNap } from '../../components/Navigation'
+import WorkFoot from '../../components/WorkFooter'
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -49,21 +49,22 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
  //TO DO: add FlagTracker back in as a layout component once rewritten
  return (
   <Singleview>
-   <Col md={8}>
+   <Col md={8} className='barmain'>
    <StatementBox sample={sample} glossary={glossary} />
+   <NavNap from={statement}/>
    </Col>
    <Col className='barside'>
     <Stack>
      <Row className='coder'>
      <CodeDropdown current={statementID} glossary={glossary} />
     </Row>
-    <Row></Row>
-    <Row className='navvy'>
-     <Nav current={statement} />
+    <Row>
     </Row>
     </Stack>
-   </Col> 
-  <FootBook glossary={glossary} />
+    <div></div>
+     <NavTogl from={statement} />
+   </Col>
+   <FootBook glossary={glossary} />
   </Singleview>
  )
 }
