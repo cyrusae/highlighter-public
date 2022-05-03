@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next'
 import { CodeProps } from './Colormaker'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import { ReaderProps } from '../pages/s/[statementID]'
 
 export type CodeList = {
  shortCode: string;
@@ -12,35 +13,51 @@ export type CodeList = {
 }
 
 export const FootBook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
-
- const [ footer, setFooter ] = useState(Boolean)
-  let css: string = '';
+ const [ footer, setFooter ] = useState(Boolean);
+ let css: string = '';
   for (let i = 0; i < glossary.length; i++) {
     const str = 'mark.' + glossary[i].shortCode + ' { background-color: ' + glossary[i].colorCode + '; } ';
     css += str;
   }
  
  useEffect(() => {
+  const flippers = document.getElementById('flippers');
   const flossary = document.getElementById('glossary');
   const glable = document.getElementById('glable');
   const openbook = document.getElementById('codebook');
+  const pause = document.getElementById('puase');
+  const enclosure = document.getElementById('sparebtns')
   if (footer === false) {
    flossary.style.height = "0";
    flossary.style.overflowY = "hidden";
    glable.style.height = "0"
    glable.style.display = "none";
-   openbook.style.bottom = "0.5vh"
+   openbook.style.bottom = "0.5vh";
+   flippers.style.bottom = "0.5vh";
+   enclosure.style.bottom = "0.5vh";
+//   flippers.style.top = "50.5vh";
+   pause.style.bottom = "0.5vh"
   } else {
    glable.style.display = "inline-block";
    flossary.style.overflowY = "scroll";
-   glable.style.height = "50vh";
-   flossary.style.height = "50vh";
-   openbook.style.bottom = "50vh";
+   glable.style.height = "30vh";
+   flossary.style.height = "30vh";
+   openbook.style.bottom = "30.5vh";
+   pause.style.bottom = "30.5vh";
+   flippers.style.bottom = "30.5vh";
+ //  flippers.style.top = "29.5vh"
+//   enclosure.style.bottom = "30.5vh"
   }
- })
+  const button = document.getElementById('codebook');
+  button.addEventListener('onclick', () => {
+   if (footer === true) { setFooter(false) } else { setFooter(true) }
+  })
+ }) 
  return (
   <div id="glossary" className="feet">
-   <Button variant="outline-secondary" size="sm" id='codebook' onClick={() => { if (footer === true) { setFooter(false) } else { setFooter(true) }; }}>Codebook</Button>
+   <Button variant="outline-secondary" id='codebook' onClick={(() => {
+    if (footer === true) { setFooter(false) } else { setFooter(true) }
+   })}>Codebook</Button>
    <Table id="glable" size="sm" striped bordered hover>
     <thead>
      <tr>

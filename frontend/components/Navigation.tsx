@@ -4,30 +4,36 @@ import axios from 'axios'
 import { ReaderProps } from '../pages/s/[statementID]'
 import Button from 'react-bootstrap/Button'
 import Stack from 'react-bootstrap/Stack'
-import { Col, ButtonGroup, ToggleButtonGroup } from 'react-bootstrap'
+import { Container, Row, Col, ButtonGroup, ToggleButtonGroup } from 'react-bootstrap'
 
 export type NavButtonProps = {
  action: 'next' | 'prev' | 'flag' | 'pause';
 	read: ReaderProps[];
 }
 
-const NavTogl: React.FC<{from: ReaderProps}> = ({ from }) => {
+export const NavNap: React.FC<{from: ReaderProps}> = ({ from }) => {
+	const currentID = from.statement["statementID"];
+	return (
+		<div id='sparebtns'>
+			<div className='btnspace'>	
+			<div id='psace'><Button id='puase' className='ms-auto flipper' onClick={() => {
+					axios.put('http://localhost:3001/leave/', { currentID: currentID })
+				} }>
+					pause
+				</Button></div>
+				</div>
+			</div>
+	)
+}
+
+export const NavTogl: React.FC<{from: ReaderProps}> = ({ from }) => {
 	const currentID = from.statement["statementID"];
 	const next = from.nextID;
 	const prev = from.prevID;
+
 	return (
-		<>
-		<ButtonGroup>
-			<Button size='lg' id='nextButton' type='button' className='button' onClick={() => {
-					const now = Date.now();
-    	axios.put('http://localhost:3001/leave/',	{
-						currentID: currentID,
-						now: now,
-					});
-     Router.push('/s/', `/s/${next}`)}}>
-						next
-			</Button>
-			<Button size='lg' id='prevButton' type='button' className='button' onClick={() => {
+		<ButtonGroup id='flippers' className='btn-group btn-block flipper' role="group">
+		<Button id='prevButton' type='button' className='btn button' onClick={() => {
 					const now = Date.now();
     	axios.put('http://localhost:3001/leave/',	{
 						currentID: currentID,
@@ -36,8 +42,25 @@ const NavTogl: React.FC<{from: ReaderProps}> = ({ from }) => {
      Router.push('/s/', `/s/${prev}`)}}>
 						back
 			</Button>
+			<Button id='nextButton' type='button' className='btn button' onClick={() => {
+					const now = Date.now();
+    	axios.put('http://localhost:3001/leave/',	{
+						currentID: currentID,
+						now: now,
+					});
+     Router.push('/s/', `/s/${next}`)}}>
+						next
+			</Button>
 		</ButtonGroup>
-		</>
+	)
+}
+
+export const NavFoot: React.FC<{from: ReaderProps}> = ({ from }) => {
+	const currentID = from.statement["statementID"];
+	return (
+		<Stack id='flippers' className='navFoot'>
+			<NavTogl from={from} />
+		</Stack>
 	)
 }
 
