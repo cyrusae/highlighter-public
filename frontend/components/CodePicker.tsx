@@ -6,6 +6,7 @@ import CodeButton from './CodeButton'
 import Form from 'react-bootstrap/Form'
 import UnCodeButton from './UnCodeButton';
 import ReCodeButton from './ReCodeButton';
+import Stack from 'react-bootstrap/Stack'
 
 const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props => {
  const [code, setCode] = useState('');
@@ -13,9 +14,11 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
  //TO DO: move phrase into props for the buttons, this is easier
 
  return (
-  <div id='codepick'>
-   <UnCodeButton current={props.current} />
+  <Stack gap={1} id='codepick'>
    <div id='phReview' />
+   <div id='uncodiv'>
+    <UnCodeButton current={props.current} />
+   </div>
    <Form.Group>
     <Form.Select id='code-select' onChange={(e) => setCode(e.target.value)}>
      <option value={null}>---Select a code---</option>
@@ -24,9 +27,9 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
     )}
     </Form.Select>
    </Form.Group>
-   <CodeButton code={code} current={props.current} glossary={props.glossary} />
-   <ReCodeButton code={code} current={props.current} glossary={props.glossary} />
-  </div>
+   <Stack direction='horizontal'><CodeButton code={code} current={props.current} glossary={props.glossary} />   <ReCodeButton code={code} current={props.current} glossary={props.glossary} />
+   </Stack>
+  </Stack>
  )
 }
 
