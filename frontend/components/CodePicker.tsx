@@ -27,7 +27,8 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
     )}
     </Form.Select>
    </Form.Group>
-   <Stack direction='horizontal'><CodeButton code={code} current={props.current} glossary={props.glossary} />   <ReCodeButton code={code} current={props.current} glossary={props.glossary} />
+   <Stack direction='horizontal'><CodeButton code={code} current={props.current} glossary={props.glossary} />   
+   <ReCodeButton code={code} current={props.current} glossary={props.glossary} />
    </Stack>
   </Stack>
  )
