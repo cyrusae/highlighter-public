@@ -27,7 +27,7 @@ You're welcome to clone the repository if you think it'd help you, but `highligh
 
 ### You might still benefit if...
 - You have qualitative data in need of coding that you've stored in, or can import into, a SQLite database
-- You're comfortable with editing small to medium amounts of JavaScript and CSS[^1] with step-by-step instructions 
+- You're comfortable with editing small to medium amounts of JavaScript and CSS with instructions as you go  
 - You're doing data analysis in RStudio or similar software and can't find a good way to reference your qualitative data coding there 
 
 If that sounds like you, *please* be my guest, it would be nice for making this public to benefit someone other than my need for thought exercises.
@@ -78,10 +78,6 @@ But! The good news is: that's about it.
 ## Set up `highlighter` on your own machine
 
 > ***[INSTRUCTIONS TK]***
-
-***
-
-[^1] The end version of `highlighter` is planned to use Sass, but a) editing Sass is a lot like editing CSS and b) if that's still outside your comfort zone, you can delete the `.scss` files and edit their compiled `.css` files to suit your needs instead.
 
 ---
 
