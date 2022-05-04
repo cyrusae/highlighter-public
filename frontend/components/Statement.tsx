@@ -18,18 +18,25 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
 
  return (
  <div id={`${statement.statementID}`} className='statementBox' > 
- <Card body>
-  <Card.Text>
+ <Card>
+  <Card.Body>
    <div className='statement' id={statement.statementID.toString()} dangerouslySetInnerHTML={{__html: content}}/>
-  </Card.Text>
-  <Stack direction='horizontal'>
-  <Button variant='danger' size='sm' id={`${statement.statementID}`} className='flagCard flagButton button' disabled>flag</Button>
-  <Button variant='info' size='sm' className='ms-auto button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
-  
-  </Stack>
-  
+  </Card.Body>
+  <Card.Footer>
+   <Browsing statement={statement} />
+  </Card.Footer>
  </Card>
  </div>
+ )
+}
+
+const Browsing: React.FC<{statement: StatementProps}> = ({ statement }) => {
+ return (
+  <div className='smallbuttons' id='smallbuttons'>
+  <Button variant='danger' size='sm' id={`${statement.statementID}`} className='flagCard flagButton button' disabled>flag</Button>
+  <Button variant='info' size='sm' className='ms-auto viewOne button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+  
+  </div>
  )
 }
 
