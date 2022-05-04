@@ -1,21 +1,28 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import Statement, { StatementProps } from '../components/Statement'
-import { NavMini } from '../components/Navigation'
+import Multiview from '../components/Multiview'
 
 type Props = {
   pile: StatementProps[]
 }
 
 const Desk: React.FC<Props> = props => {
+  if (props.pile.length < 1) {
+    return (
+      <>
+        There's nothing to see here yet!
+      </>
+    )
+  }
   return (
-    <main>
+  <Multiview>
      {props.pile.map(statement => (
-      <div key={statement.statementID} className="statement">
-       <Statement statement={statement} />
-     </div>
+      <div key={statement.statementID}>
+      <Statement statement={statement} />
+      </div>
     ))}
-  </main>
+  </Multiview>
   )
 }
 

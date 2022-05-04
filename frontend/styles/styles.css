@@ -53,7 +53,7 @@ body, html {
 /* Bottom bar codebook */ 
 
 .feet {
- width: 70vw;
+/* width: 70vw; */
  z-index: 2;
  bottom: 0;
  right: 0;
@@ -62,9 +62,75 @@ body, html {
  background: white;
 }
 
-#codebook {
+.navFoot, .flippers, #codebook  {
  z-index: 3;
  position: fixed;
+}
+.barside, .barmain {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ height: 100vh;
+ bottom: 0.5vh;
+}
+.barmain {
+ padding-top: 1rem;
+}
+#flippers {
+ align-self: flex-end;
+ width: 100%;
+}
+#spacer {
+ flex-grow: 6;
+}
+#puase {
+ bottom: 0.5vh;
+ position: fixed;
+}
+#sparebtns {
+ display: flex;
+ flex-direction: column-reverse;
+ flex-grow: 0;
+ flex-wrap: nowrap;
+}
+.btnspace, #psace {
+ display: flex;
+ flex-direction: row-reverse;
+ justify-content: space-between;
+ position: relative;
+}
+
+.btn-group.btn-block {
+ display: flex;
+}
+.btn-group.btn-block > .btn {
+ flex: 1;
+}
+.smallbuttons, #smallbuttons {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+#flagShower {
+ margin-top: 1rem;
+ margin-left: 0.5rem;
+ padding-right: 1rem;
+ width: 50px;
+ height: 50px;
+ position: fixed;
+}
+#workspace > #flagShower {
+ padding: 0;
+ margin-left: 0;
+}
+#flagstack {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-evenly;
+}
+.nofeet > #codebook {
+ margin-left: 0.5rem;
+ margin-right: 0.5rem;
 }
 
 #glable, #glable td, #glable td *, #glable th, #glable th * {
@@ -76,6 +142,46 @@ body, html {
  position: relative;
 }
 
+.recode, .viewOne {
+ margin-left: auto;
+}
+
+#uncodiv {
+ display: flex;
+ flex-direction: row-reverse;
+}
+
+#prevButton svg {
+ transform:rotate(180deg)
+}
+
+/* #workspace {
+ margin-left: 1.5rem;
+} */
+#workspace {
+ margin: 0;
+ padding: 0;
+}
+#shooshThis {
+ pointer-events: none;
+ z-index: 30;
+ cursor: not-allowed;
+}
+body.modal-open .toltip, body.modal-open .toltip:hover, body.modal-open .toltip::after {
+ display: none;
+ pointer-events: none;
+ cursor: not-allowed;
+}
+body.modal-open *:not(.offcanvas):not(.offcanvas *):not(.offcanvas-show) {
+ pointer-events: none;
+}
+.barmain {
+ max-width: 70%;
+ margin-left: 1.75rem;
+}
+.barside {
+ max-width: 30%;
+}
 /* Sidebar flags */
 
 #flagbar {
@@ -88,9 +194,12 @@ body, html {
 
 /* Increase of emphasis */
 
+.card {
+ max-height: fit-content;
+}
 
-.statement, .multiview .statement {
- background-color: #fcfcfc;
+.statement, .multiview .statement, .statext {
+ background-color: #fff;
 }
 
 .statement, details {
@@ -108,14 +217,19 @@ body, html {
  overflow-y: scroll;
 }
 
+.statementBox {
+ margin: 1em;
+}
+
 .statement .metadata, .statebox, summary {
  background: white;
 }
 
-.statebox, .multiview .statement {
- padding: 0.5rem;
- margin-top: 0.5rem;
+.statebox, .multiview .statement, .statext {
+/* padding: 0.5rem;
+ margin-top: 0.5rem;*/
  line-height: 1.75;
+ font-size: 1.05rem;
 }
 
 #envelope {
@@ -130,7 +244,7 @@ body, html {
 .coder {
  padding-top: 1rem;
  padding-bottom: 1rem;
- height: 70vh;
+/* height: 70vh; */
 }
 .navvy {
  bottom: 0;
@@ -144,6 +258,7 @@ body, html {
 
 mark, mark * {
  font-family: 'Victor Mono', 'Courier Prime', monospace;
+ font-size: 0.95rem;
 }
 
 mark {
@@ -206,6 +321,9 @@ mark:hover .toltip, .toltip:hover {
  z-index: 10;
 }
 
+#flagstack button {
+ z-index: 40;
+}
 /* Glossary in a details pane */
 /* Note: the 'details' glossary is .glossary, the footer glossary is #glossary */
 .glossary, .glossary * {

@@ -1,1 +1,4 @@
-frontend/.next/
+*/.next
+backend/dist/
+*.env*
+*/node_modules

@@ -1,12 +1,10 @@
 import { Row, Col, Container, Stack } from 'react-bootstrap'
-import react, { useEffect } from 'react'
+import react, { useEffect, useState } from 'react'
 import React from 'react'
 import { FlagBar } from './FlagTracker'
+import { Flagging } from './FlagTracker'
 
 const Layout: React.FC<{}> = (props) => {
- useEffect(() => {
-  //add flags here!
- })
  const styles = {
   col: {
    paddingLeft: 0,
@@ -16,9 +14,6 @@ const Layout: React.FC<{}> = (props) => {
  return (
   <Container fluid>
   <Row>
-   <Col style={{ paddingLeft: 0, paddingRight: 0 }} className="sideshow col-auto">
-    <FlagBar />
-   </Col>
    {props.children}
   </Row>
   </Container>

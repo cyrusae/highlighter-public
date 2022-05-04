@@ -3,36 +3,65 @@ import Router from 'next/router'
 import axios from 'axios'
 import { ReaderProps } from '../pages/s/[statementID]'
 import Button from 'react-bootstrap/Button'
-import Navbar from 'react-bootstrap/Navbar'
 import Stack from 'react-bootstrap/Stack'
-import { Col, ButtonGroup, ToggleButtonGroup } from 'react-bootstrap'
+import { Container, Row, Col, ButtonGroup, ToggleButtonGroup } from 'react-bootstrap'
+import { GiForwardSun, GiPauseButton } from 'react-icons/gi'
 
 export type NavButtonProps = {
  action: 'next' | 'prev' | 'flag' | 'pause';
 	read: ReaderProps[];
 }
 
-const NavTogl: React.FC<{from: ReaderProps}> = ({ from }) => {
+export const NavNap: React.FC<{from: ReaderProps}> = ({ from }) => {
+	const currentID = from.statement["statementID"];
+	return (
+		<div id='sparebtns'>
+			<div className='btnspace'>	
+			<div id='psace'><Button aria-label='save session' id='puase' variant='outline-info' className='ms-auto flipper' onClick={() => {
+					axios.put('http://localhost:3001/leave/', { currentID: currentID })
+				} }>
+					<GiPauseButton />
+				</Button></div>
+				</div>
+			</div>
+	)
+}
+
+export const NavTogl: React.FC<{from: ReaderProps}> = ({ from }) => {
 	const currentID = from.statement["statementID"];
 	const next = from.nextID;
 	const prev = from.prevID;
+
 	return (
-		<>
-		<ButtonGroup>
-			<Button size='lg' id='nextButton' type='button' className='ton' onClick={() => {
+		<ButtonGroup id='flippers' className='btn-group btn-block flipper' aria-label='navigation buttons' role="group">
+		<Button id='prevButton' type='button' size='lg' aria-label='previous statement' variant='outline-primary' className='btn button' onClick={() => {
+					const now = Date.now();
+    	axios.put('http://localhost:3001/leave/',	{
+						currentID: currentID,
+						now: now,
+					});
+     Router.push('/s/', `/s/${prev}`)}}>
+						<GiForwardSun />
+			</Button>
+			<Button id='nextButton' type='button' size='lg' aria-label='next statement' variant='primary' className='btn button' onClick={() => {
 					const now = Date.now();
     	axios.put('http://localhost:3001/leave/',	{
 						currentID: currentID,
 						now: now,
 					});
      Router.push('/s/', `/s/${next}`)}}>
-
-			</Button>
-			<Button>
-
+						<GiForwardSun />
 			</Button>
 		</ButtonGroup>
-		</>
+	)
+}
+
+export const NavFoot: React.FC<{from: ReaderProps}> = ({ from }) => {
+	const currentID = from.statement["statementID"];
+	return (
+		<Stack id='flippers' className='navFoot'>
+			<NavTogl from={from} />
+		</Stack>
 	)
 }
 
@@ -96,10 +125,10 @@ export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
 	useEffect(() => {
 		const bg = document.getElementById('flagS');
   let flags = localStorage.getItem('flag');
-		bg.style.backgroundColor = '#53565A';
+//		bg.style.backgroundColor = '#53565A';
 		if (flags !== null) {
 			setFlagged(localStorage.getItem('flag'));
-			bg.style.backgroundColor = '#610C04';
+//			bg.style.backgroundColor = '#610C04';
 		}; 
   if (flags === null) {
 			flags = '';
@@ -125,9 +154,10 @@ export const Nav: React.FC<{current: ReaderProps}> = ({current}) => {
 }
 
 export const NavMini: React.FC<{current: number}> = ({current}) => {
+	const thisOne = current.toString();
 	return (
 		<div className='multinav'>
-			<Button variant="outline-danger" id='flagButton' type='button' className='button' onClick={() => {
+			<Button variant="outline-danger" id={thisOne} type='button' className='flagButton button' onClick={() => {
   		 axios.put('http://localhost:3001/leave/', { 
 					currentID: current,
 				});

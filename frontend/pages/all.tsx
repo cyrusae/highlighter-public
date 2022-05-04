@@ -11,15 +11,19 @@ type Props = {
 }
 
 const Desk: React.FC<Props> = props => {
+  if (props.pile.length < 1) {
+    return (
+      <>
+        You don't seem to have any statements lying around.
+      </>
+    )
+  }
   return (
     <Multiview>
      {props.pile.map(statement => (
-      <div key={statement.statementID} onClick={() => {
-       Router.push('/s/[statementID]', `/s/${statement.statementID}`)
-      }}>
+      <div key={statement.statementID}>
       <Statement statement={statement} />
       </div>
-     
     ))}
   </Multiview>
   )

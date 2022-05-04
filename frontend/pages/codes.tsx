@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 import React, { useState } from 'react'
 import Colormaker, { CodeProps } from '../components/Colormaker'
-import Glossary, { CodeList } from '../components/Glossary'
+import Glossary, { FootlessBook, CodeList, FootBook } from '../components/Glossary'
 import Map from '../components/Remap'
 import { Row, Col, Container, Stack } from 'react-bootstrap'
 
@@ -14,22 +14,14 @@ const Codepage: React.FC<Props> = (props) => {
  useState();
  return (
   <Container fluid="md" id='codepage'>
-  <Row>
-   <Col>
-    <Glossary glossary={props.initialGlossary} />
-   </Col>
-  </Row>
-    <Colormaker glossary={props.initialGlossary}/>
-   <Row>
-    <Col>
-     <Glossary glossary={props.initialGlossary} />
-    </Col>
-   </Row>
-   <Row>
-    <Col>
-    <Map glossary={props.initialGlossary}/>
-    </Col>
-   </Row>
+  <Stack gap={3}>
+  <Glossary glossary={props.initialGlossary} />
+  <Colormaker glossary={props.initialGlossary}/>
+  <Glossary glossary={props.initialGlossary} />
+  <Map glossary={props.initialGlossary}/>
+
+  </Stack>
+  <FootlessBook glossary={props.initialGlossary} />
   </Container>
  )
 }

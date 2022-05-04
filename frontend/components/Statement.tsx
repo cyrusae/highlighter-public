@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import { Button, Card, Stack } from 'react-bootstrap';
 
@@ -15,31 +15,42 @@ export type StatementProps = {
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
 //  console.log(statement);
  let content = statement.content;
- let IDstring = statement.statementID.toString()
-//removed:
-//  
-// useEffect(() => {
-//  let the = document.getElementById(IDstring);
-//  the.addEventListener(//'onclick', () => {
-//   Router.push('/s/[statementID]', `/s/${statement.statementID}`)
-//  })
-// })
-
 
  return (
  <div id={`${statement.statementID}`} className='statementBox' > 
- <Card body>
-  <Card.Text>
+ <Card>
+  <Card.Body>
    <div className='statement' id={statement.statementID.toString()} dangerouslySetInnerHTML={{__html: content}}/>
-  </Card.Text>
-  <Stack direction='horizontal'>
-  <Button variant='danger' size='sm' id={`${statement.statementID}`} className='flagCard' disabled>flag</Button>
-  <Button variant='info' size='sm' className='ms-auto' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
-  
-  </Stack>
-  
+  </Card.Body>
+  <Card.Footer>
+   <Browsing statement={statement} />
+  </Card.Footer>
  </Card>
  </div>
+ )
+}
+
+const Browsing: React.FC<{statement: StatementProps}> = ({ statement }) => {
+ const [ button, setButton ] = useState('outline-danger')
+ function checkStatus() {
+  {
+   if (typeof document !== undefined) {
+    const flags = localStorage.getItem('flag');
+    if (!(!flags) && flags !== '') {
+     setButton('danger')
+    } else {
+     setButton('outline-danger')
+    }
+   }
+  }
+ }
+ useEffect(() => checkStatus())
+ return (
+  <div className='smallbuttons' id='smallbuttons'>
+  <Button variant={button} size='sm' id={`f${statement.statementID}`} className='flagCard flagButton button' onMouseLeave={() => checkStatus()}>{ (button === 'danger') ? 'flagged' : 'flag'}</Button>
+  <Button variant='outline-info' size='sm' className='ms-auto viewOne button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+  
+  </div>
  )
 }
 
