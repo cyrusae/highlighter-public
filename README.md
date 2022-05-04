@@ -10,11 +10,11 @@
 
 ***Note:*** `highlighter` v1 is currently under development. In order to understand what that means for this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do). 
 
-Or you can just skip [to the third section for installation instructions](#set-up-highlighter-on-your-own-machine) *(tk)*. 
+~~Or you can just skip [to the third section for installation instructions](#set-up-highlighter-on-your-own-machine)~~ *(instructions tk pending more testing)*. 
 
-**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data. [Click here if you want it](#set-up-highlighter-on-your-own-machine).
+**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data. ~~[Click here if you want it](#set-up-highlighter-on-your-own-machine).~~ *(see above re: instructions)*
 
-For code that hasn't been integrated all the way yet but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [cleanup_steps.md](cleanup_steps.md).
+For code didn't make it in but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For the most recent survey of things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [the issue tracker](https://github.com/cyrusae/highlighter-public/issues); for the least mixed with other to-do items, see [cleanup_steps.md](cleanup_steps.md).
 
 ## ***Why***lighter
 
