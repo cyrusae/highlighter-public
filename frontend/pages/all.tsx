@@ -11,6 +11,13 @@ type Props = {
 }
 
 const Desk: React.FC<Props> = props => {
+  if (props.pile.length < 1) {
+    return (
+      <>
+        You don't seem to have any statements lying around.
+      </>
+    )
+  }
   return (
     <Multiview>
      {props.pile.map(statement => (
