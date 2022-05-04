@@ -86,6 +86,69 @@ export const FootBook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
  )
 }
 
+export const FootlessBook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
+ const [ footer, setFooter ] = useState(Boolean);
+ let css: string = '';
+  for (let i = 0; i < glossary.length; i++) {
+    const str = 'mark.' + glossary[i].shortCode + ' { background-color: ' + glossary[i].colorCode + '; } ';
+    css += str;
+  }
+ 
+ useEffect(() => {
+  const flossary = document.getElementById('glossary');
+  const glable = document.getElementById('glable');
+  const openbook = document.getElementById('codebook');
+  if (footer === false) {
+   flossary.style.height = "0";
+   flossary.style.overflowY = "hidden";
+   glable.style.height = "0"
+   glable.style.display = "none";
+   openbook.style.bottom = "0.5vh";
+  } else {
+   glable.style.display = "inline-block";
+   flossary.style.overflowY = "scroll";
+   glable.style.height = "30vh";
+   flossary.style.height = "30vh";
+   openbook.style.bottom = "30.5vh";
+  }
+  const button = document.getElementById('codebook');
+  button.addEventListener('onclick', () => {
+   if (footer === true) { setFooter(false) } else { setFooter(true) }
+  })
+ }) 
+ return (
+  <div id="glossary" className="feet nofeet">
+   <Button variant="outline-secondary" id='codebook' onClick={(() => {
+    if (footer === true) { setFooter(false) } else { setFooter(true) }
+   })}>Codebook</Button>
+   <Table id="glable" size="sm" striped bordered hover>
+    <thead>
+     <tr>
+      <th scope='col'>Code</th>
+      <th scope='col'>Name</th>
+      <th scope='col'>Gloss</th>
+     </tr>
+    </thead>
+    <tbody>
+     {glossary?.map(code => 
+      <tr key={code.shortCode}>
+       <td>
+        <mark className={code.shortCode}><b>{code.shortCode}</b></mark>
+       </td>
+       <td>
+        <mark className={code.shortCode}>{code.codeName}</mark>
+       </td>
+       <td>
+        {code.codeGloss}
+       </td>
+      </tr>
+     )}
+    </tbody>
+   </Table>
+  </div>
+ )
+}
+
 const Glossary: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
   let css: string = '';
   for (let i = 0; i < glossary.length; i++) {
