@@ -4,6 +4,7 @@ import Router from 'next/router';
 import axios from 'axios';
 import { CodeList } from './Glossary';
 import Button from 'react-bootstrap/Button'
+import Phraseview from './Phraseview';
 
 const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}> = ({code, current, glossary}) => {
  return (
@@ -28,9 +29,6 @@ const CodeButton: React.FC<{code: string, current: number, glossary: CodeList[]}
      codeUsed: code
    })}
    //send this to the backend (output, plaintext, the phrase, and the highlight, along with existing context of where we are)
-//   axios.put('../upd8', {})
-//   will need to change props handling so that this can know the following:
-//    ID of statement we're on (current) to tie the record to it; actually I think that might be it
   }}>
    Code
   </Button>
