@@ -103,6 +103,16 @@ body, html {
 .btn-group.btn-block > .btn {
  flex: 1;
 }
+.smallbuttons, #smallbuttons {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+}
+
+.nofeet > #codebook {
+ margin-left: 1rem;
+ margin-right: 1rem;
+}
 
 #glable, #glable td, #glable td *, #glable th, #glable th * {
  font-size: 0.8rem;
@@ -113,8 +123,13 @@ body, html {
  position: relative;
 }
 
-.recode, .uncode {
+.recode, .viewOne {
  margin-left: auto;
+}
+
+#uncodiv {
+ display: flex;
+ flex-direction: row-reverse;
 }
 
 /* Sidebar flags */
@@ -129,6 +144,9 @@ body, html {
 
 /* Increase of emphasis */
 
+.card {
+ max-height: fit-content;
+}
 
 .statement, .multiview .statement, .statext {
  background-color: #fff;
@@ -158,17 +176,11 @@ body, html {
 }
 
 .statebox, .multiview .statement, .statext {
- padding: 0.5rem;
- margin-top: 0.5rem;
+/* padding: 0.5rem;
+ margin-top: 0.5rem;*/
  line-height: 1.75;
  font-size: 1.05rem;
 }
-
-/* This is broken in a very stupid way that will be fixed later or when I'm out of fucking Bootstrap, we'll see which 
-.flipper {
- top: 59.5vh;
- bottom: 0.5vh;
-}*/
 
 #envelope {
  height: 90vh;
