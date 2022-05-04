@@ -1,7 +1,7 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
 import Statement, { StatementProps } from '../components/Statement'
-import { NavMini } from '../components/Navigation'
+import Multiview from '../components/Multiview'
 
 type Props = {
   pile: StatementProps[]
@@ -9,13 +9,13 @@ type Props = {
 
 const Desk: React.FC<Props> = props => {
   return (
-    <main>
+  <Multiview>
      {props.pile.map(statement => (
-      <div key={statement.statementID} className="statement">
-       <Statement statement={statement} />
-     </div>
+      <div key={statement.statementID}>
+      <Statement statement={statement} />
+      </div>
     ))}
-  </main>
+  </Multiview>
   )
 }
 
