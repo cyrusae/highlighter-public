@@ -10,6 +10,8 @@ import { Row, Col, Container, Stack } from 'react-bootstrap'
 import Singleview from '../../components/Singleview'
 import { NavFoot, NavTogl, NavNap } from '../../components/Navigation'
 import WorkFoot from '../../components/WorkFooter'
+import { Flagging } from "../../components/FlagTracker";
+
 
 export type ReaderProps = {
   statement: StatementProps[];
@@ -46,9 +48,9 @@ const Statement: React.FC<{statement: ReaderProps, glossary: CodeList[]}> = ({st
   }
  })
 
- //TO DO: add FlagTracker back in as a layout component once rewritten
  return (
   <Singleview>
+    <Flagging />
    <Col md={8} className='barmain'>
    <StatementBox sample={sample} glossary={glossary} />
    <NavNap from={statement}/>

@@ -1,7 +1,114 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
+import Stack from 'react-bootstrap/Stack'
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import { GiFlyingFlag } from 'react-icons/gi'
+
+export const Flagging: React.FC<{}> = () => {
+ const [ show, setShow ] = useState(false);
+// const [ flagged, setFlagged ] = useState('');
+ const [ button, setButton ] = useState('outline-danger');
+ const handleClose = () => {
+  setShow(false);
+ };
+ const handleOpen = () => setShow(true);
+ let flagged = '';
+
+ function colorFlag(flags) {
+  if (typeof document !== undefined) {
+   if (!(!flags) && flags !== '') {
+    setButton('danger');
+   } else {
+    setButton('outline-danger')
+   }
+  }
+ }
+ function checkFlags(flags) {
+  if (flags !== null && flags !== undefined) {
+   colorFlag(flags);
+   if (flags.length > flagged.length) flagged = flags;
+  }
+ }
+ function addFlags(flags, instance: string) {
+  const now = new Date(Date.now())
+  flagged = (flags === null ? '' : flags) + `<li id='${instance}'>${instance} was flagged at ` + now.toTimeString() + `</li>`;
+  localStorage.setItem('flag', flagged);
+ }
+
+ function makeComment(current: string) {
+  const comment = prompt('Why flag this?', 'answer here');
+  return comment;
+ }
+
+ useEffect(() => {
+//  colorFlag();
+  if (typeof document !== undefined) {
+   let flags = localStorage.getItem('flag');
+   const buttons = document.querySelectorAll('.flagButton.flagCard:not(.viewOne)');
+//   checkFlags(flagged);
+   buttons.forEach(button => {
+  //  console.log(`trying ${button.id} now`);
+    const gotOne = button.id.replace('f', '');
+    button.addEventListener('click', () => {
+ //    console.log('before comentary');
+ //    const comment = () => {
+ //     const reply = prompt('Why flag this?', 'enter comment');
+ ///     return reply;
+ //    }
+ //    const commentary = comment.toString();
+ //    console.log('after comentary');
+     addFlags(flags, gotOne);
+ //    console.log(`clicking ${gotOne}`);
+     flagged = flags;
+     colorFlag(flags);
+     return flagged;
+    })
+   })
+   if (show === true) {
+    document.getElementById('flagstuff').innerHTML = flagged;
+   }
+   colorFlag(flags);
+  }
+ })
+
+
+ return (
+  <>
+   <Button id='flagShower' variant={button} aria-label='Show flags' size='sm' onClick={handleOpen}><GiFlyingFlag /></Button>
+
+  <Offcanvas backdropClassName='shooshThis' show={show} onHide={handleClose} onShow={() => {
+   let flags = localStorage.getItem('flag');
+   let destination = document.getElementById('flagstuff');
+   flagged = flags;
+   destination.innerHTML = flagged;
+  }}>
+   <Offcanvas.Header closeButton>
+    <Offcanvas.Title>
+     Flags this session:
+    </Offcanvas.Title>
+   </Offcanvas.Header>
+   <Offcanvas.Body>
+    <ul id="flagstuff">{flagged}</ul>
+   <Stack direction='horizontal' id='flagstack' gap={2}>
+    <Button size="sm"  type='button' onClick={() => axios.post('http://localhost:3001/saveflags', {
+     content: flagged,
+     type: 'flags'
+     })}>
+     Save
+     </Button>
+    <Button size="sm" type='button' onClick={() => navigator.clipboard.writeText(flagged)}>
+     Copy
+    </Button>
+    <Button size="sm" type='button' onClick={() => {localStorage.clear(); flagged=''; document.getElementById('flagstuff').innerHTML = flagged; setButton('outline-danger')}}>
+     Clear
+    </Button>
+   </Stack>
+   </Offcanvas.Body>
+  </Offcanvas>
+  </>
+ )
+}
 
 export const FlagBar: React.FC<{}> = () => {
  return (

@@ -73,6 +73,9 @@ body, html {
  height: 100vh;
  bottom: 0.5vh;
 }
+.barmain {
+ padding-top: 1rem;
+}
 #flippers {
  align-self: flex-end;
  width: 100%;
@@ -108,10 +111,26 @@ body, html {
  flex-direction: row;
  justify-content: space-between;
 }
-
+#flagShower {
+ margin-top: 1rem;
+ margin-left: 0.5rem;
+ padding-right: 1rem;
+ width: 50px;
+ height: 50px;
+ position: fixed;
+}
+#workspace > #flagShower {
+ padding: 0;
+ margin-left: 0;
+}
+#flagstack {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-evenly;
+}
 .nofeet > #codebook {
- margin-left: 1rem;
- margin-right: 1rem;
+ margin-left: 0.5rem;
+ margin-right: 0.5rem;
 }
 
 #glable, #glable td, #glable td *, #glable th, #glable th * {
@@ -132,6 +151,37 @@ body, html {
  flex-direction: row-reverse;
 }
 
+#prevButton svg {
+ transform:rotate(180deg)
+}
+
+/* #workspace {
+ margin-left: 1.5rem;
+} */
+#workspace {
+ margin: 0;
+ padding: 0;
+}
+#shooshThis {
+ pointer-events: none;
+ z-index: 30;
+ cursor: not-allowed;
+}
+body.modal-open .toltip, body.modal-open .toltip:hover, body.modal-open .toltip::after {
+ display: none;
+ pointer-events: none;
+ cursor: not-allowed;
+}
+body.modal-open *:not(.offcanvas):not(.offcanvas *):not(.offcanvas-show) {
+ pointer-events: none;
+}
+.barmain {
+ max-width: 70%;
+ margin-left: 1.75rem;
+}
+.barside {
+ max-width: 30%;
+}
 /* Sidebar flags */
 
 #flagbar {
@@ -271,6 +321,9 @@ mark:hover .toltip, .toltip:hover {
  z-index: 10;
 }
 
+#flagstack button {
+ z-index: 40;
+}
 /* Glossary in a details pane */
 /* Note: the 'details' glossary is .glossary, the footer glossary is #glossary */
 .glossary, .glossary * {

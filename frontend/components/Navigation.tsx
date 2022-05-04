@@ -5,6 +5,7 @@ import { ReaderProps } from '../pages/s/[statementID]'
 import Button from 'react-bootstrap/Button'
 import Stack from 'react-bootstrap/Stack'
 import { Container, Row, Col, ButtonGroup, ToggleButtonGroup } from 'react-bootstrap'
+import { GiForwardSun, GiPauseButton } from 'react-icons/gi'
 
 export type NavButtonProps = {
  action: 'next' | 'prev' | 'flag' | 'pause';
@@ -16,10 +17,10 @@ export const NavNap: React.FC<{from: ReaderProps}> = ({ from }) => {
 	return (
 		<div id='sparebtns'>
 			<div className='btnspace'>	
-			<div id='psace'><Button id='puase' className='ms-auto flipper' onClick={() => {
+			<div id='psace'><Button aria-label='save session' id='puase' variant='outline-info' className='ms-auto flipper' onClick={() => {
 					axios.put('http://localhost:3001/leave/', { currentID: currentID })
 				} }>
-					pause
+					<GiPauseButton />
 				</Button></div>
 				</div>
 			</div>
@@ -32,24 +33,24 @@ export const NavTogl: React.FC<{from: ReaderProps}> = ({ from }) => {
 	const prev = from.prevID;
 
 	return (
-		<ButtonGroup id='flippers' className='btn-group btn-block flipper' role="group">
-		<Button id='prevButton' type='button' className='btn button' onClick={() => {
+		<ButtonGroup id='flippers' className='btn-group btn-block flipper' aria-label='navigation buttons' role="group">
+		<Button id='prevButton' type='button' size='lg' aria-label='previous statement' variant='outline-primary' className='btn button' onClick={() => {
 					const now = Date.now();
     	axios.put('http://localhost:3001/leave/',	{
 						currentID: currentID,
 						now: now,
 					});
      Router.push('/s/', `/s/${prev}`)}}>
-						back
+						<GiForwardSun />
 			</Button>
-			<Button id='nextButton' type='button' className='btn button' onClick={() => {
+			<Button id='nextButton' type='button' size='lg' aria-label='next statement' variant='primary' className='btn button' onClick={() => {
 					const now = Date.now();
     	axios.put('http://localhost:3001/leave/',	{
 						currentID: currentID,
 						now: now,
 					});
      Router.push('/s/', `/s/${next}`)}}>
-						next
+						<GiForwardSun />
 			</Button>
 		</ButtonGroup>
 	)

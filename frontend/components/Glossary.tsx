@@ -4,6 +4,10 @@ import { CodeProps } from './Colormaker'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import { ReaderProps } from '../pages/s/[statementID]'
+import { GiSecretBook, GiSpellBook } from 'react-icons/gi'
+import { IconType } from 'react-icons'
+
+const book = GiSpellBook
 
 export type CodeList = {
  shortCode: string;
@@ -55,9 +59,9 @@ export const FootBook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) => {
  }) 
  return (
   <div id="glossary" className="feet">
-   <Button variant="outline-secondary" id='codebook' onClick={(() => {
+   <Button variant="outline-secondary" id='codebook' aria-label='Show codebook' onClick={(() => {
     if (footer === true) { setFooter(false) } else { setFooter(true) }
-   })}>Codebook</Button>
+   })}><GiSpellBook/></Button>
    <Table id="glable" size="sm" striped bordered hover>
     <thead>
      <tr>
@@ -120,7 +124,7 @@ export const FootlessBook: React.FC<{glossary: CodeProps[]}> = ({ glossary }) =>
   <div id="glossary" className="feet nofeet">
    <Button variant="outline-secondary" id='codebook' onClick={(() => {
     if (footer === true) { setFooter(false) } else { setFooter(true) }
-   })}>Codebook</Button>
+   })}><GiSpellBook/></Button>
    <Table id="glable" size="sm" striped bordered hover>
     <thead>
      <tr>

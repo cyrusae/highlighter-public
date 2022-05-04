@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import { Button, Card, Stack } from 'react-bootstrap';
 
@@ -31,10 +31,24 @@ const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
 }
 
 const Browsing: React.FC<{statement: StatementProps}> = ({ statement }) => {
+ const [ button, setButton ] = useState('outline-danger')
+ function checkStatus() {
+  {
+   if (typeof document !== undefined) {
+    const flags = localStorage.getItem('flag');
+    if (!(!flags) && flags !== '') {
+     setButton('danger')
+    } else {
+     setButton('outline-danger')
+    }
+   }
+  }
+ }
+ useEffect(() => checkStatus())
  return (
   <div className='smallbuttons' id='smallbuttons'>
-  <Button variant='danger' size='sm' id={`${statement.statementID}`} className='flagCard flagButton button' disabled>flag</Button>
-  <Button variant='info' size='sm' className='ms-auto viewOne button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+  <Button variant={button} size='sm' id={`f${statement.statementID}`} className='flagCard flagButton button' onMouseLeave={() => checkStatus()}>{ (button === 'danger') ? 'flagged' : 'flag'}</Button>
+  <Button variant='outline-info' size='sm' className='ms-auto viewOne button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
   
   </div>
  )
