@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import { Button, Card, Stack } from 'react-bootstrap';
+import { GiAllSeeingEye } from 'react-icons/gi'
 
 export type StatementProps = {
  statementID: number;
@@ -48,7 +49,7 @@ const Browsing: React.FC<{statement: StatementProps}> = ({ statement }) => {
  return (
   <div className='smallbuttons' id='smallbuttons'>
   <Button variant={button} size='sm' id={`f${statement.statementID}`} className='flagCard flagButton button' onMouseLeave={() => checkStatus()}>{ (button === 'danger') ? 'flagged' : 'flag'}</Button>
-  <Button variant='outline-info' size='sm' className='ms-auto viewOne button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}>view</Button>
+  <Button aria-label='view this statement' variant='outline-info' size='sm' className='ms-auto viewOne button' onClick={() => Router.push('/s/[statementID]', `/s/${statement.statementID}`)}><GiAllSeeingEye /></Button>
   
   </div>
  )
