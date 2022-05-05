@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
-import { Button, Card, Stack } from 'react-bootstrap';
+import { Button, Card, } from 'react-bootstrap';
 import { GiAllSeeingEye } from 'react-icons/gi'
 
 export type StatementProps = {
@@ -9,8 +9,6 @@ export type StatementProps = {
  coded: boolean;
  comment: string | null;
  updatedAt: Date;
-// nextID: number | null;
-// prevID: number | null;
 }
 
 const Statement: React.FC<{statement: StatementProps}> = ({ statement }) => {
@@ -55,13 +53,6 @@ const Browsing: React.FC<{statement: StatementProps}> = ({ statement }) => {
  )
 }
 
-// Previously I'd had this in:
-// <div id='notes'>
-//<StatementAnnotation comment={statement.comment} />
-// </div>
-// However, since annotations will need to be directly editable, best to leave for later.
-
-
 function StatementAnnotation(props: { comment: string | null }) {
  const comments = props.comment;
  if (comments === null) {
@@ -84,7 +75,5 @@ export type EncodingProps = {
  phrase: string | null;
  comments: string | null;
 }
-
-// TO DO: Best way to also query and load information about the existing encodings, if any 
 
 export default Statement

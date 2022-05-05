@@ -1,8 +1,7 @@
-import React, { ReactNode, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import Card from 'react-bootstrap/Card'
 import { CodeList } from "./Glossary";
 import { StatementProps } from "./Statement"
-import { Flagging } from "./FlagTracker";
 import { Button } from "react-bootstrap";
 
 // import styles from './Statement.module.css'
