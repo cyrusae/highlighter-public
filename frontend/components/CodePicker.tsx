@@ -36,9 +36,9 @@ const CodeDropdown: React.FC<{glossary: CodeList[], current: number}> = props =>
 
 export const getServerSideProps: GetServerSideProps = async () => {
  const res = await fetch(`https://localhost:3001/gloss`);
- console.log("here's await res clone text output:"); console.log(await res.clone().text());
+// console.log("here's await res clone text output:"); console.log(await res.clone().text());
  const glossary = await res.json();
- console.log("here's the glossary output:"); console.log(glossary);
+// console.log("here's the glossary output:"); console.log(glossary);
  return {
   props:
    { glossary }
