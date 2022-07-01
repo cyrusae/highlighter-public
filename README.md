@@ -8,11 +8,13 @@
 
 ---
 
-***Note:*** `highlighter` v1 is currently under development. In order to understand what that means for this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do). 
+***Note:*** `highlighter` v1 is currently under development. **It is not safe to use yet.** In order to understand what that means for this repo, [see the first section](#whylighter) below. For what it is meant to do, [see the second](#great-but-what-does-it-actually-do). 
 
 ~~Or you can just skip [to the third section for installation instructions](#set-up-highlighter-on-your-own-machine)~~ *(instructions tk pending more testing)*. 
 
-**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset requires some edits to adapt it to your data. ~~[Click here if you want it](#set-up-highlighter-on-your-own-machine).~~ *(see above re: instructions)*
+**tl;dr:** It's a GUI for coding qualitative data, but initial setup on a new dataset will require some edits to adapt it to your data. ~~[Click here if you want it](#set-up-highlighter-on-your-own-machine).~~ *(see above re: instructions)*
+
+**It will also break unpredictably while in alpha.** A specific family of [issues](https://github.com/cyrusae/highlighter-public/issues) recur when I add features due to underlying issues with how the prototype works. I know what they are and the prototype exists in part to have let me find them. Refactoring to make this cycle obsolete is now possible but bottlenecked behind the fact that I'm a full-time student for whom this is an unlicensed extracurricular. 
 
 For code didn't make it in but exists, see [noodle.tsx](noodle.tsx) and [noodle_harder.md](noodle_harder.md). For the most recent survey of things I need to do once `highlighter` is working in order for it to be more human-friendly to people who aren't me, see [the issue tracker](https://github.com/cyrusae/highlighter-public/issues); for the least mixed with other to-do items, see [cleanup_steps.md](cleanup_steps.md).
 
